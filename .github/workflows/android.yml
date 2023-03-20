@@ -20,6 +20,10 @@ jobs:
       # Checks-out repository
       - uses: actions/checkout@v3
       
+      # Adds execution permission to Gradle
+      - name: Gradle execution permission
+        run: chmod +x gradlew
+      
 #       (currently disabled)
 #       # Prepares google-services.json file
 #       - name: Prepare google services file
