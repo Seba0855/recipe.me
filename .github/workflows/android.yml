@@ -50,6 +50,6 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleDebug --scan
         
-      # Runs ktlint checks
-      - name: Run ktlint
-        run: ./gradlew ktlint
+#       # Runs ktlint checks (disabled until added to project)
+#       - name: Run ktlint
+#         run: ./gradlew ktlint
