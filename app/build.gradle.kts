@@ -1,3 +1,5 @@
+import pl.smcebi.recipeme.buildSrc.Versions
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,27 +7,36 @@ plugins {
 
 android {
     namespace = "pl.smcebi.recipeme"
-    compileSdk = 33
+    compileSdk = Versions.compileSdk
+    buildToolsVersion = Versions.buildTools
 
     defaultConfig {
         applicationId = "pl.smcebi.recipeme"
-        versionCode = 1
+        minSdk = Versions.minSdk
+        targetSdk = Versions.targetSdk
+
+        versionCode = System.getenv("VERSION_CODE")?.toInt() ?: 1
         versionName = "1.0"
-        minSdk = 26
-        targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        debug {
+            isDebuggable = true
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-DEBUG"
+        }
+
         release {
-            isMinifyEnabled = false
+            isDebuggable = false
+            isMinifyEnabled = true
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
-        debug {}
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
