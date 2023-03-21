@@ -14,8 +14,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(libs.groovy.core)
-
+        classpath(libs.gradle.plugin)
 //        classpath(Libs.Kotlin.gradlePlugin)
 //        classpath(Libs.Android.gradlePlugin)
 //        classpath(Libs.Google.servicesGradlePlugin)
