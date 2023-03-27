@@ -1,5 +1,6 @@
 [versions]
 # AndroidX
+android-gradle = "7.4.2"
 androidxAnnotation = "1.5.0"
 androidxAppCompat = "1.5.1"
 androidxAutofill = "1.1.0"
@@ -31,7 +32,10 @@ zxing = "3.5.1"
 # Firebase
 firebaseBom = "31.2.0"
 firebaseCrashlyticsPlugin = "2.9.2"
+firebaseCrashlytics = "18.3.1"
+firebaseAnalytics = "21.2.0"
 firebasePerfPlugin = "1.4.2"
+firebasePerformance = "20.1.0"
 
 # PlayServices
 gmsAuth = "20.3.0"
@@ -47,6 +51,7 @@ glide = "4.14.2"
 timber = "5.0.1"
 shimmer = "0.5.0"
 libPhoneNumber = "8.12.57"
+ktlint = "10.3.0"
 
 # JUnit
 junit4 = "4.13.2"
@@ -125,25 +130,69 @@ navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", 
 navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidxNavigation" }
 
 # Google
+google-servicesGradlePlugin = { module = "com.google.gms:google-services", version.ref = "gmsPlugin" }
+google-barcodeMlKit = { module = "com.google.android.gms:play-services-mlkit-barcode-scanning", version.ref = "barcodeMlKit" }
+google-zxing = { module = "com.google.zxing:core", version.ref = "zxing" }
+google-gms-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutines" }
+google-gms-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "gmsAuth" }
+google-gms-phone = { module = "com.google.android.gms:play-services-auth-api-phone", version.ref = "gmsPhone" }
+google-gms-location = { module = "com.google.android.gms:play-services-location", version.ref = "gmsLocation" }
+google-maps-ktx = { module = "com.google.android.gms:play-services-location", version.ref = "gmsLocation" }
 
 # Firebase
-
-# PlayServices
+firebase-crashlyticsGradlePlugin = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsPlugin" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx", version.ref = "firebaseCrashlytics" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx", version.ref = "firebaseAnalytics" }
+firebase-performance = { module = "com.google.firebase:firebase-perf-ktx", version.ref = "firebasePerformance" }
+firebase-performanceGradlePlugin = { module = "com.google.firebase:perf-plugin", version.ref = "firebasePerfPlugin" }
 
 # Gradle
 gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugin" }
 
 # Utils
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+libphonenumber = { module = "io.michaelrocks:libphonenumber-android", version.ref = "libPhoneNumber" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
 
 # JUnit
+junit-core = { module = "junit:junit", version.ref = "junit4" }
+junit-testExt = { module = "androidx.test.ext:junit", version.ref = "junitTestExt" }
 
 # Testing
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 # Dagger
+dagger-hiltGradlePlugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
+dagger-hiltLib = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+dagger-hiltProc = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+dagger-daggerLib = { module = "com.google.dagger:dagger", version.ref = "hilt" }
+dagger-daggerProc = { module = "com.google.dagger:dagger-compiler", version.ref = "hilt" }
 
 # Kotlin
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-serialization-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+kotlin-serialization-serializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlin-serialization-retrofitConverter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerializationJson" }
+kotlin-coroutines-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "kotlinxCoroutines" }
+kotlin-coroutines-android = { module = "com.squareup.retrofit2:retrofit", version.ref = "kotlinxCoroutines" }
+kotlin-coroutines-test = { module = "com.squareup.retrofit2:retrofit", version.ref = "kotlinxCoroutines" }
 
 # Networking
+networking-retrofit = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "okhttp" }
+networking-okhttp = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "okhttp" }
+networking-okhttpLogging = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "okhttp" }
 
 
 [plugins]
+android-application = { id = "com.android.application", version.ref = "android-gradle" }
+android-library = { id = "com.android.library", version.ref = "android-gradle" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+google-services = { id = "com.google.gms.google-services", version.ref = "gmsPlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
