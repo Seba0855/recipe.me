@@ -1,5 +1,3 @@
-import pl.smcebi.recipeme.buildSrc.Versions
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -7,13 +5,13 @@ plugins {
 
 android {
     namespace = "pl.smcebi.recipeme"
-    compileSdk = Versions.compileSdk
-    buildToolsVersion = Versions.buildTools
+    compileSdk = 33
+    buildToolsVersion =  "30.0.3"
 
     defaultConfig {
         applicationId = "pl.smcebi.recipeme"
-        minSdk = Versions.minSdk
-        targetSdk = Versions.targetSdk
+        minSdk = 26
+        targetSdk = 33
 
         versionCode = System.getenv("VERSION_CODE")?.toInt() ?: 1
         versionName = "1.0"

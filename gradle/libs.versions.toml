@@ -44,7 +44,7 @@ gmsPhone = "18.0.1"
 gmsLocation = "21.0.1"
 
 # Gradle
-gradlePlugin = "7.4.1"
+gradlePlugin = "7.3.1"
 
 # Utils
 glide = "4.14.2"
@@ -147,7 +147,8 @@ firebase-performance = { module = "com.google.firebase:firebase-perf-ktx", versi
 firebase-performanceGradlePlugin = { module = "com.google.firebase:perf-plugin", version.ref = "firebasePerfPlugin" }
 
 # Gradle
-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugin" }
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
 # Utils
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
@@ -171,7 +172,6 @@ dagger-daggerLib = { module = "com.google.dagger:dagger", version.ref = "hilt" }
 dagger-daggerProc = { module = "com.google.dagger:dagger-compiler", version.ref = "hilt" }
 
 # Kotlin
-kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-serialization-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 kotlin-serialization-serializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
