@@ -1,5 +1,6 @@
 package pl.smcebi.recipeme.plugins
 
+import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -11,22 +12,17 @@ import pl.smcebi.recipeme.androidTestImplementation
 import pl.smcebi.recipeme.configureKotlinAndroid
 import pl.smcebi.recipeme.testImplementation
 
-class AndroidLibraryConventionPlugin : Plugin<Project> {
+class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply {
-                apply("com.android.library")
+                apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
             }
 
-            extensions.configure<LibraryExtension> {
+            extensions.configure<ApplicationExtension> {
                 defaultConfig.targetSdk = Versions.targetSdk
                 configureKotlinAndroid(this)
-
-                dependencies {
-                    androidTestImplementation(kotlin("test"))
-                    testImplementation(kotlin("test"))
-                }
             }
         }
     }

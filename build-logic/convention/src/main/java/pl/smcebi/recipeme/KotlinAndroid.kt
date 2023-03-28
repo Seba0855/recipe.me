@@ -32,19 +32,12 @@ internal fun Project.configureKotlinAndroid(
         compileOptions {
             sourceCompatibility = JavaVersion.VERSION_1_8
             targetCompatibility = JavaVersion.VERSION_1_8
-            isCoreLibraryDesugaringEnabled = true
         }
 
         kotlinOptions {
             // Set JVM target to 1.8
             jvmTarget = JavaVersion.VERSION_1_8.toString()
         }
-    }
-
-    val libs = the<VersionCatalogsExtension>().named("libs")
-
-    dependencies {
-        add("coreLibraryDesugaring", libs.findLibrary("desugar-jdk-libs").get())
     }
 }
 

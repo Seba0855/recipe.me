@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.dagger.hilt) apply false
 }
 
@@ -12,13 +13,6 @@ buildscript {
         google()
         gradlePluginPortal()
         mavenCentral()
-    }
-}
-
-allprojects {
-    repositories {
-        mavenCentral()  // Maven Central repository
-        google()  // Google's Maven repository
     }
 }
 

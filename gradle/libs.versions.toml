@@ -28,6 +28,7 @@ androidxNavigation = "2.5.3"
 # Google
 barcodeMlKit = "18.1.0"
 zxing = "3.5.1"
+material = "1.8.0"
 
 # Firebase
 firebaseBom = "31.2.0"
@@ -138,6 +139,8 @@ google-gms-auth = { module = "com.google.android.gms:play-services-auth", versio
 google-gms-phone = { module = "com.google.android.gms:play-services-auth-api-phone", version.ref = "gmsPhone" }
 google-gms-location = { module = "com.google.android.gms:play-services-location", version.ref = "gmsLocation" }
 google-maps-ktx = { module = "com.google.android.gms:play-services-location", version.ref = "gmsLocation" }
+google-material = { module = "com.google.android.material:material", version.ref = "material" }
+
 
 # Firebase
 firebase-crashlyticsGradlePlugin = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsPlugin" }
