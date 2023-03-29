@@ -18,8 +18,8 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenCentral()  // Maven Central repository
-        google()  // Google's Maven repository
+        mavenCentral() // Maven Central repository
+        google() // Google's Maven repository
     }
 }
 
