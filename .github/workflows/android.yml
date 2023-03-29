@@ -51,5 +51,5 @@ jobs:
         run: ./gradlew assembleDebug --scan
         
        # Runs ktlint checks
-       - name: Run ktlint
-         run: ./gradlew ktlintCheck
+      - name: Run ktlint
+        run: ./gradlew ktlintCheck
