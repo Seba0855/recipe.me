@@ -3,13 +3,14 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ktlint)
     id("pl.smcebi.recipeme.configuration")
 }
 
 android {
     namespace = "pl.smcebi.recipeme"
     compileSdk = 33
-    buildToolsVersion =  "30.0.3"
+    buildToolsVersion = "30.0.3"
 
     defaultConfig {
         applicationId = "pl.smcebi.recipeme"
