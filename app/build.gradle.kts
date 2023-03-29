@@ -71,6 +71,7 @@ dependencies {
 
     testImplementation(libs.junit.core)
     androidTestImplementation(libs.junit.testExt)
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
 // Allow references to generated code
