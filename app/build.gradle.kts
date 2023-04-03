@@ -21,6 +21,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"test\"")
     }
 
     buildTypes {
@@ -66,6 +68,7 @@ dependencies {
 
     // Networking
     implementation(libs.kotlin.serialization.serializationJson)
+    implementation(libs.kotlin.serialization.retrofitConverter)
     implementation(libs.kotlin.coroutines.core)
     implementation(libs.networking.retrofit)
     implementation(libs.networking.okhttp)
