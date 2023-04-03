@@ -179,14 +179,14 @@ kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "
 kotlin-serialization-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 kotlin-serialization-serializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 kotlin-serialization-retrofitConverter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerializationJson" }
-kotlin-coroutines-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "kotlinxCoroutines" }
-kotlin-coroutines-android = { module = "com.squareup.retrofit2:retrofit", version.ref = "kotlinxCoroutines" }
-kotlin-coroutines-test = { module = "com.squareup.retrofit2:retrofit", version.ref = "kotlinxCoroutines" }
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 
 # Networking
-networking-retrofit = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "okhttp" }
-networking-okhttp = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "okhttp" }
-networking-okhttpLogging = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "okhttp" }
+networking-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+networking-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+networking-okhttpLogging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 
 
 [plugins]
