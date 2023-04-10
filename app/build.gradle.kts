@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.secrets.plugin)
     id("pl.smcebi.recipeme.configuration")
 }
 
@@ -50,6 +51,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {
@@ -64,11 +68,22 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
 
+    // Networking
+    implementation(libs.kotlin.serialization.serializationJson)
+    implementation(libs.kotlin.serialization.retrofitConverter)
+    implementation(libs.kotlin.coroutines.core)
+    implementation(libs.networking.retrofit)
+    implementation(libs.networking.okhttp)
+    implementation(libs.networking.okhttpLogging)
+
     // Dagger
     implementation(libs.dagger.hiltLib)
     kapt(libs.dagger.hiltProc)
     implementation(libs.dagger.daggerLib)
     kapt(libs.dagger.daggerProc)
+
+    // Utils
+    implementation(libs.timber)
 
     testImplementation(libs.junit.core)
     androidTestImplementation(libs.junit.testExt)
