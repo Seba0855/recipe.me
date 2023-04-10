@@ -158,6 +158,7 @@ timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 libphonenumber = { module = "io.michaelrocks:libphonenumber-android", version.ref = "libPhoneNumber" }
 shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+secrets = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secrets" }
 
 # JUnit
 junit-core = { module = "junit:junit", version.ref = "junit4" }
@@ -199,3 +200,4 @@ kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+secrets-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
