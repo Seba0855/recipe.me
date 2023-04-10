@@ -63,7 +63,7 @@ mockk = "1.13.2"
 turbine = "0.12.1"
 
 # Dagger
-hilt = "2.44.2"
+hilt = "2.45"
 hiltExt = "1.0.0"
 
 # Kotlin

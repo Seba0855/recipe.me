@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 fun ViewModel.withProgressBar(
     indicator: (Boolean) -> Unit,
-    block: suspend CoroutineScope.() -> Unit,
+    block: suspend CoroutineScope.() -> Unit
 ): Job =
     viewModelScope.launch {
         indicator(true)

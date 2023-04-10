@@ -88,13 +88,13 @@ fun View.setPadding(
     left: Int? = null,
     top: Int? = null,
     right: Int? = null,
-    bottom: Int? = null,
+    bottom: Int? = null
 ) {
     setPadding(
         left ?: paddingLeft,
         top ?: paddingTop,
         right ?: paddingRight,
-        bottom ?: paddingBottom,
+        bottom ?: paddingBottom
     )
 }
 

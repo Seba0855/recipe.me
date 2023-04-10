@@ -11,7 +11,7 @@ class CachedFlow<T> private constructor(
         MutableSharedFlow(
             replay = 1,
             extraBufferCapacity = 1,
-            onBufferOverflow = BufferOverflow.DROP_OLDEST,
+            onBufferOverflow = BufferOverflow.DROP_OLDEST
         )
     ) {
         internalFlow.tryEmit(Cached.Empty())

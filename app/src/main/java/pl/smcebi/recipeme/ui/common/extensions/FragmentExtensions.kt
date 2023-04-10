@@ -42,7 +42,7 @@ fun Fragment.showDialog(
     onPositiveButtonClick: OnClick = {},
     onNeutralButtonClick: OnClick = {},
     onNegativeButtonClick: OnClick = {},
-    onDismissed: () -> Unit = {},
+    onDismissed: () -> Unit = {}
 ) = MaterialAlertDialogBuilder(
     requireContext()
 ).apply {

@@ -5,14 +5,12 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
 import retrofit2.HttpException
-
 import timber.log.Timber
-
 
 suspend fun <T : Any> apiCall(
     dispatcher: CoroutineDispatcher,
     json: Json,
-    block: suspend () -> T,
+    block: suspend () -> T
 ): NetworkResult<T> =
     withContext(dispatcher) {
         try {
