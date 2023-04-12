@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.ExperimentalSerializationApi
 import java.time.Duration
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
@@ -41,6 +42,7 @@ internal object RetrofitBaseModule {
             .callTimeout(Duration.ofSeconds(CALL_TIMEOUT))
             .build()
 
+    @OptIn(ExperimentalSerializationApi::class)
     @Provides
     @Reusable
     fun provideRetrofit(

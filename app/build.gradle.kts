@@ -9,17 +9,6 @@ plugins {
     id("pl.smcebi.recipeme.configuration")
 }
 
-kotlin {
-    sourceSets {
-        debug {
-            kotlin.srcDir("build/generated/ksp/debug/kotlin")
-        }
-        release {
-            kotlin.srcDir("build/generated/ksp/release/kotlin")
-        }
-    }
-}
-
 android {
     namespace = "pl.smcebi.recipeme"
     compileSdk = 33
@@ -59,7 +48,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs = listOf("-Xjvm-default=enable")
     }
     buildFeatures {
         viewBinding = true
