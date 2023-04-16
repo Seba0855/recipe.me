@@ -19,7 +19,7 @@ internal class RecipesNetworkDataSource @Inject constructor(
         limitLicense: Boolean,
         tags: String,
         number: Int
-    ): NetworkResult<RecipeResponse> {
+    ): NetworkResult<List<RecipeResponse>> {
         return apiCall(dispatcher, json) {
             api.getRandomRecipes(
                 limitLicense = true,

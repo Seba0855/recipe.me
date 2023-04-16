@@ -26,9 +26,9 @@ internal class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             getRandomRecipesUseCase(tags = "garlic")
                 .onSuccess { recipes ->
-                    Timber.d("Recipe title: ${recipes.title}")
+                    Timber.d("Recipe title: ${recipes[0].title}")
                     mutableState.mutate {
-                        copy(title = recipes.title)
+                        copy(title = recipes[0].title)
                     }
                 }
                 .onFailure { message ->

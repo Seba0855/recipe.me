@@ -10,7 +10,7 @@ data class ProductMatchResponse(
     val price: String,
     val imageUrl: String,
     val averageRating: Double,
-    val ratingCount: Long,
+    val ratingCount: Double,
     val score: Double,
     val link: String
 )

@@ -9,5 +9,5 @@ internal interface RecipesDataSource {
         limitLicense: Boolean,
         tags: String,
         number: Int
-    ): NetworkResult<RecipeResponse>
+    ): NetworkResult<List<RecipeResponse>>
 }

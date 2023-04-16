@@ -68,7 +68,7 @@ hilt = "2.45"
 hiltExt = "1.0.0"
 
 # Kotlin
-kotlin = "1.8.0"
+kotlin = "1.8.20"
 kotlinxCoroutines = "1.6.4"
 kotlinSerialization = "1.8.20"
 kotlinxSerializationJson = "1.5.0"

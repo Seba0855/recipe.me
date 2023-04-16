@@ -11,5 +11,5 @@ internal interface RecipesApi {
         @Query("limitLicense") limitLicense: Boolean,
         @Query("tags") tags: String,
         @Query("number") number: Int
-    ): RecipeResponse
+    ): List<RecipeResponse>
 }
