@@ -28,7 +28,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         with(binding) {
             recipeTitle.text = "Initial text"
             getRecipeButton.setSafeOnClickListener {
-                viewModel.getRecipes()
+                viewModel.getQuickAnswer()
             }
         }
     }
