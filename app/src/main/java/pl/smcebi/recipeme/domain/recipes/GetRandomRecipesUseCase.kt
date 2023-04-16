@@ -1,6 +1,5 @@
 package pl.smcebi.recipeme.domain.recipes
 
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import pl.smcebi.recipeme.di.DispatcherIO
@@ -9,6 +8,7 @@ import pl.smcebi.recipeme.domain.common.getErrorMessage
 import pl.smcebi.recipeme.domain.recipes.model.RecipesUI
 import pl.smcebi.recipeme.infrastructure.model.recipes.RecipeResponse
 import pl.smcebi.recipeme.infrastructure.remote.datasource.recipes.RecipesDataSource
+import javax.inject.Inject
 
 class GetRandomRecipesUseCase @Inject internal constructor(
     private val dataSource: RecipesDataSource,

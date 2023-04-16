@@ -1,14 +1,14 @@
 package pl.smcebi.recipeme.infrastructure.remote.datasource.recipes
 
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.serialization.json.Json
-import pl.smcebi.recipeme.infrastructure.model.recipes.RecipeResponse
-import pl.smcebi.recipeme.infrastructure.remote.api.recipes.RecipesApi
 import pl.smcebi.recipeme.di.NetworkCoroutineDispatcher
 import pl.smcebi.recipeme.infrastructure.model.recipes.QuickAnswerResponse
+import pl.smcebi.recipeme.infrastructure.model.recipes.RecipeResponse
+import pl.smcebi.recipeme.infrastructure.remote.api.recipes.RecipesApi
 import pl.smcebi.recipeme.infrastructure.remote.common.NetworkResult
 import pl.smcebi.recipeme.infrastructure.remote.common.apiCall
+import javax.inject.Inject
 
 internal class RecipesNetworkDataSource @Inject constructor(
     private val api: RecipesApi,

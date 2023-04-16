@@ -2,8 +2,8 @@ package pl.smcebi.recipeme
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 @HiltAndroidApp
 class App : Application() {

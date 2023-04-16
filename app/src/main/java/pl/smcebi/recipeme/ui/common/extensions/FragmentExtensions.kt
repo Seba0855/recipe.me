@@ -7,7 +7,9 @@ import androidx.activity.addCallback
 import androidx.annotation.StringRes
 import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.R.id.snackbar_action
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
