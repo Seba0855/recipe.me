@@ -5,4 +5,12 @@
     <string name="common_something_went_wrong">Wystąpił błąd. \nSpróbuj ponownie później</string>
 
     <string name="common_copy_confirmation">Skopiowano</string>
+
+    <string name="fragment_home_logged_in_placeholder">Cześć, Sebastian</string>
+
+    <string name="fragment_home_log_in">Zaloguj się</string>
+    <string name="fragment_home_headline">Co dziś <b>upichcimy?</b></string>
+    <string name="fragment_home_search">Szukaj…</string>
+    <string name="fragment_home_label">Przepisy</string>
+    <string name="fragment_home_random">Losowe</string>
 </resources>

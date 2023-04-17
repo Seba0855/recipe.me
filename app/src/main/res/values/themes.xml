@@ -26,12 +26,12 @@
         <item name="colorOnErrorContainer">@color/error10</item>
 
         <!--    Color surface/background/support    -->
-        <item name="android:colorBackground">@color/neutral99</item>
-        <item name="colorOnBackground">@color/neutral10</item>
-        <item name="colorSurface">@color/neutral95</item>
-        <item name="colorOnSurface">@color/neutral10</item>
-        <item name="colorSurfaceVariant">@color/neutral_variant90</item>
-        <item name="colorOnSurfaceVariant">@color/neutral_variant30</item>
+        <item name="android:colorBackground">@color/secondary0</item>
+        <item name="colorOnBackground">@color/secondary100</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorOnSurface">@color/secondary100</item>
+        <item name="colorSurfaceVariant">@color/neutral_variant50</item>
+        <item name="colorOnSurfaceVariant">@color/neutral_variant90</item>
         <item name="colorOutline">@color/neutral_variant50</item>
 
         <!--    Text appearance    -->

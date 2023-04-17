@@ -50,7 +50,7 @@
 
     <!--     Title     -->
     <style name="TextAppearance.RecipeMe.Title">
-        <item name="android:fontFamily">@font/biotif_regular</item>
+        <item name="android:fontFamily">@font/biotif_medium</item>
     </style>
 
     <style name="TextAppearance.RecipeMe.Title.Large">

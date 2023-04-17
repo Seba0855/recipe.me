@@ -8,6 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.R
 import pl.smcebi.recipeme.databinding.FragmentHomeBinding
 import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
+import pl.smcebi.recipeme.ui.common.extensions.notImplemented
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
 import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
@@ -26,16 +27,21 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun initViews() {
         with(binding) {
-            recipeTitle.text = "Initial text"
-            getRecipeButton.setSafeOnClickListener {
-                viewModel.getQuickAnswer()
+            menuButton.setSafeOnClickListener {
+                notImplemented()
             }
+            randomButton.setSafeOnClickListener {
+                notImplemented()
+            }
+//            getRecipeButton.setSafeOnClickListener {
+//                viewModel.getQuickAnswer()
+//            }
         }
     }
 
     private fun onNewState(state: HomeViewState) {
         with(binding) {
-            recipeTitle.text = state.title
+//            recipeTitle.text = state.title
         }
     }
 
