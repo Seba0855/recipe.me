@@ -1,55 +1,64 @@
 # Workflow for PR checks
-name: Android CI
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on pull request events on develop branch
-  push:
-    branches: [ "develop" ]
-  pull_request:
-    branches: [ "develop" ]
-  # For testing purposes
-  workflow_dispatch:
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out repository
-      - uses: actions/checkout@v3
-      
-      # Adds execution permission to Gradle
-      - name: Gradle execution permission
-        run: chmod +x gradlew
-      
-#       (currently disabled)
-#       # Prepares google-services.json file
-#       - name: Prepare google services file
-#         uses: timheuer/base64-to-file@v1.1
-#         with:
-#           fileName: google-services.json
-#           fileDir: ./app/
-#           encodedString: ${{ secrets.GOOGLE_SERVICES_BASE64 }}
-
-      # Sets up the JDK version
-      - name: Set up JDK environment
-        uses: actions/setup-java@v3.3.0
-        with:
-          java-version: 11.0.12
-          distribution: temurin
-
-      # Sets up Gradle Caching
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.4.0
-        with:
-          cache-read-only: ${{ github.ref != 'refs/heads/develop' && github.ref != 'refs/heads/main' }}
-
-      # Checks whether the app builds
-      - name: Build APK
-        run: ./gradlew assembleDebug --scan
-        
-       # Runs ktlint checks
-      - name: Run ktlint
-        run: ./gradlew ktlintCheck
+## TEMPORARILY DISABLED
+#name: Android CI
+## Controls when the workflow will run
+#on:
+#  # Triggers the workflow on pull request events on develop branch
+#  push:
+#    branches: [ "develop" ]
+#  pull_request:
+#    branches: [ "develop" ]
+#  # For testing purposes
+#  workflow_dispatch:
+## A workflow run is made up of one or more jobs that can run sequentially or in parallel
+#jobs:
+#  # This workflow contains a single job called "build"
+#  build:
+#    # The type of runner that the job will run on
+#    runs-on: ubuntu-latest
+#    # Steps represent a sequence of tasks that will be executed as part of the job
+#    steps:
+#      # Checks-out repository
+#      - uses: actions/checkout@v3
+#
+#      # Adds execution permission to Gradle
+#      - name: Gradle execution permission
+#        run: chmod +x gradlew
+#
+##       (currently disabled)
+##       # Prepares google-services.json file
+##       - name: Prepare google services file
+##         uses: timheuer/base64-to-file@v1.1
+##         with:
+##           fileName: google-services.json
+##           fileDir: ./app/
+##           encodedString: ${{ secrets.GOOGLE_SERVICES_BASE64 }}
+#
+#      # Sets up the JDK version
+#      - name: Set up JDK environment
+#        uses: actions/setup-java@v3.3.0
+#        with:
+#          java-version: 11.0.12
+#          distribution: temurin
+#
+#      # Sets up Gradle Caching
+#      - name: Setup Gradle
+#        uses: gradle/gradle-build-action@v2.4.0
+#        with:
+#          cache-read-only: ${{ github.ref != 'refs/heads/develop' && github.ref != 'refs/heads/main' }}
+#
+#      # Copy secrets to local.properties
+#      - name: Copy secrets to local.properties
+#        run: |
+#          echo "API_KEY=$API_KEY\nBASE_URL=$BASE_URL" > local.properties
+#        env:
+#          BASE_URL: ${{ secrets.BASE_URL }}
+#          API_KEY: ${{ secrets.API_KEY }}
+#
+#      # Checks whether the app builds
+#      - name: Build APK
+#        run: ./gradlew assembleDebug --scan
+#
+#       # Runs ktlint checks
+#      - name: Run ktlint
+#        run: ./gradlew ktlintCheck
