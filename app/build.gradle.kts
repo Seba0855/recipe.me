@@ -1,10 +1,15 @@
+@file:Suppress("UnstableApiUsage", "DSL_SCOPE_VIOLATION")
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.secrets.plugin)
+    alias(libs.plugins.kotlin.serialization)
     id("pl.smcebi.recipeme.configuration")
 }
 

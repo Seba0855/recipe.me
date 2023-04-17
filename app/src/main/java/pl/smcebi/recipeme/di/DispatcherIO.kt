@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.domain.common.dispatchers
+package pl.smcebi.recipeme.di
 
 import javax.inject.Qualifier
 

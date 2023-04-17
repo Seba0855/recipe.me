@@ -1,9 +1,9 @@
 package pl.smcebi.recipeme.infrastructure.remote.api.base
 
-import javax.inject.Inject
 import okhttp3.Interceptor
 import okhttp3.Response
 import pl.smcebi.recipeme.BuildConfig
+import javax.inject.Inject
 
 internal class ApiKeyInterceptor @Inject constructor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {

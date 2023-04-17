@@ -6,15 +6,17 @@ import dagger.Provides
 import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import java.time.Duration
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import pl.smcebi.recipeme.BuildConfig
 import pl.smcebi.recipeme.infrastructure.remote.api.base.BaseUrlStore
 import retrofit2.Retrofit
+import java.time.Duration
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -33,7 +35,7 @@ internal object RetrofitBaseModule {
                 if (BuildConfig.DEBUG) {
                     addInterceptor(
                         HttpLoggingInterceptor().apply {
-                            level = HttpLoggingInterceptor.Level.BODY
+                            level = BODY
                         }
                     )
                 }
@@ -41,6 +43,7 @@ internal object RetrofitBaseModule {
             .callTimeout(Duration.ofSeconds(CALL_TIMEOUT))
             .build()
 
+    @OptIn(ExperimentalSerializationApi::class)
     @Provides
     @Reusable
     fun provideRetrofit(

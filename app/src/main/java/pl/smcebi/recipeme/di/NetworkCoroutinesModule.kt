@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.domain.common.dispatchers
+package pl.smcebi.recipeme.di
 
 import dagger.Module
 import dagger.Provides
@@ -9,9 +9,8 @@ import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal class DispatchersModule {
-
+internal object NetworkCoroutinesModule {
     @Provides
-    @DispatcherIO
-    fun provideDispatcherIO(): CoroutineDispatcher = Dispatchers.IO
+    @NetworkCoroutineDispatcher
+    fun provideNetworkCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.IO
 }

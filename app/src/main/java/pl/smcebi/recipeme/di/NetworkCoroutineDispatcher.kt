@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.infrastructure.remote.common
+package pl.smcebi.recipeme.di
 
 import javax.inject.Qualifier
 
