@@ -31,7 +31,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 notImplemented()
             }
             randomButton.setSafeOnClickListener {
-                notImplemented()
+                viewModel.getRecipes()
             }
 //            getRecipeButton.setSafeOnClickListener {
 //                viewModel.getQuickAnswer()
