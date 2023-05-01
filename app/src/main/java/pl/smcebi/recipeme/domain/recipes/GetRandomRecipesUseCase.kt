@@ -33,7 +33,9 @@ class GetRandomRecipesUseCase @Inject internal constructor(
     private fun RecipeListResponse.mapUI(): List<RecipesUI> =
         this.recipes.map { recipeResponse ->
             RecipesUI(
-                title = recipeResponse.title
+                id = recipeResponse.id,
+                title = recipeResponse.title,
+                image = recipeResponse.image
             )
         }
 
