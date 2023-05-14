@@ -30,7 +30,7 @@ internal class HomeViewModel @Inject constructor(
                 .onSuccess { recipes ->
                     Timber.d("Recipe title: ${recipes[0].title}")
                     mutableState.mutate {
-                        copy(title = recipes[0].title)
+                        copy(recipes = recipes)
                     }
                 }
                 .onFailure { message ->
@@ -45,9 +45,6 @@ internal class HomeViewModel @Inject constructor(
             getQuickAnswerUseCase(query = "How much vitamin c is in 2 apples?")
                 .onSuccess { quickAnswerUI ->
                     Timber.d("Answer: ${quickAnswerUI.answer} Image: ${quickAnswerUI.image}")
-                    mutableState.mutate {
-                        copy(title = quickAnswerUI.answer)
-                    }
                 }
                 .onFailure { message ->
                     Timber.e("Error: $message")

@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.glide)
 
     // Networking
     implementation(libs.kotlin.serialization.serializationJson)

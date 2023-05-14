@@ -35,7 +35,12 @@ class GetRandomRecipesUseCase @Inject internal constructor(
             RecipesUI(
                 id = recipeResponse.id,
                 title = recipeResponse.title,
-                image = recipeResponse.image
+                imageUrl = recipeResponse.image,
+                readyInMinutes = recipeResponse.readyInMinutes,
+                servings = recipeResponse.servings,
+                durationAndServings = buildString {
+                    append(recipeResponse.readyInMinutes, " Minutes | ", recipeResponse.servings, " Servings")
+                }
             )
         }
 

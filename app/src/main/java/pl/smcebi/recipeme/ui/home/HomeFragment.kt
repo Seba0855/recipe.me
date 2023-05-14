@@ -17,6 +17,7 @@ import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
 internal class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private val viewModel: HomeViewModel by viewModels()
+    private var adapter: HomeAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,27 +28,29 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun initViews() {
         with(binding) {
+            adapter = HomeAdapter()
             menuButton.setSafeOnClickListener {
                 notImplemented()
             }
             randomButton.setSafeOnClickListener {
                 viewModel.getRecipes()
             }
-//            getRecipeButton.setSafeOnClickListener {
-//                viewModel.getQuickAnswer()
-//            }
+            recipesRecyclerView.adapter = adapter
         }
     }
 
     private fun onNewState(state: HomeViewState) {
-        with(binding) {
-//            recipeTitle.text = state.title
-        }
+        adapter?.submitList(state.recipes)
     }
 
     private fun onNewEvent(event: HomeViewEvent) {
         when (event) {
             is HomeViewEvent.ShowError -> showSnackbar(event.message)
         }
+    }
+
+    override fun onDestroyView() {
+        adapter = null
+        super.onDestroyView()
     }
 }
