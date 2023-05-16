@@ -8,3 +8,4 @@ data class RecipesUI(
     val servings: Int,
     val durationAndServings: String
 )
+

@@ -33,7 +33,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 notImplemented()
             }
             randomButton.setSafeOnClickListener {
-                viewModel.getRecipes()
+//                viewModel.getRecipes()
             }
             recipesRecyclerView.adapter = adapter
         }
