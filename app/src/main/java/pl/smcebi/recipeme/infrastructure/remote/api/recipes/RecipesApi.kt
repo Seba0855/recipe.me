@@ -10,7 +10,7 @@ internal interface RecipesApi {
     @GET("recipes/random")
     suspend fun getRandomRecipes(
         @Query("limitLicense") limitLicense: Boolean,
-        @Query("tags") tags: String,
+        @Query("tags") tags: String?,
         @Query("number") number: Int
     ): RecipeListResponse
 

@@ -8,7 +8,7 @@ internal interface RecipesDataSource {
 
     suspend fun getRandomRecipes(
         limitLicense: Boolean,
-        tags: String,
+        tags: String?,
         number: Int
     ): NetworkResult<RecipeListResponse>
 

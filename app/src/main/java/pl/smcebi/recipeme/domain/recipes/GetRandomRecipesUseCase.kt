@@ -12,10 +12,10 @@ import pl.smcebi.recipeme.infrastructure.model.recipes.RecipeListResponse
 import pl.smcebi.recipeme.infrastructure.remote.datasource.recipes.RecipesDataSource
 
 class GetRandomRecipesUseCase @Inject internal constructor(
-    @Mock private val dataSource: RecipesDataSource,
+    private val dataSource: RecipesDataSource,
     @DispatcherIO private val dispatcher: CoroutineDispatcher
 ) {
-    suspend operator fun invoke(tags: String): DomainResult<List<RecipesUI>, String?> =
+    suspend operator fun invoke(tags: String?): DomainResult<List<RecipesUI>, String?> =
         withContext(dispatcher) {
             dataSource.getRandomRecipes(
                 limitLicense = true,

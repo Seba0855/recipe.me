@@ -9,7 +9,7 @@ import pl.smcebi.recipeme.infrastructure.remote.common.NetworkResult
 internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
     override suspend fun getRandomRecipes(
         limitLicense: Boolean,
-        tags: String,
+        tags: String?,
         number: Int
     ): NetworkResult<RecipeListResponse> = NetworkResult.Success(
         RecipeListResponse(

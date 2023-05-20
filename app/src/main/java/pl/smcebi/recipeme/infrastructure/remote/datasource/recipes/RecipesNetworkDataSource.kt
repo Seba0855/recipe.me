@@ -18,7 +18,7 @@ internal class RecipesNetworkDataSource @Inject constructor(
 
     override suspend fun getRandomRecipes(
         limitLicense: Boolean,
-        tags: String,
+        tags: String?,
         number: Int
     ): NetworkResult<RecipeListResponse> {
         return apiCall(dispatcher, json) {
