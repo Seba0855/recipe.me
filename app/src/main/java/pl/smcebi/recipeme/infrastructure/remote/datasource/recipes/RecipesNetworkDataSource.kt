@@ -2,7 +2,7 @@ package pl.smcebi.recipeme.infrastructure.remote.datasource.recipes
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.serialization.json.Json
-import pl.smcebi.recipeme.di.NetworkCoroutineDispatcher
+import pl.smcebi.recipeme.di.annotations.NetworkCoroutineDispatcher
 import pl.smcebi.recipeme.infrastructure.model.recipes.QuickAnswerResponse
 import pl.smcebi.recipeme.infrastructure.model.recipes.RecipeListResponse
 import pl.smcebi.recipeme.infrastructure.remote.api.recipes.RecipesApi

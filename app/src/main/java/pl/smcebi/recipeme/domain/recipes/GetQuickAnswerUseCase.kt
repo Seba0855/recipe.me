@@ -2,7 +2,7 @@ package pl.smcebi.recipeme.domain.recipes
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import pl.smcebi.recipeme.di.DispatcherIO
+import pl.smcebi.recipeme.di.annotations.DispatcherIO
 import pl.smcebi.recipeme.domain.common.DomainResult
 import pl.smcebi.recipeme.domain.common.getErrorMessage
 import pl.smcebi.recipeme.domain.recipes.model.QuickAnswerUI
