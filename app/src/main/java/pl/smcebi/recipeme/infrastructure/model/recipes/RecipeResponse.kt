@@ -32,7 +32,7 @@ data class RecipeResponse(
     val veryHealthy: Boolean,
     val veryPopular: Boolean,
     val whole30: Boolean? = null,
-    val dishTypes: List<String>,
-    val extendedIngredients: List<ExtendedIngredientResponse>,
+    val dishTypes: List<String>? = emptyList(),
+    val extendedIngredients: List<ExtendedIngredientResponse>? = emptyList(),
     val summary: String
 )
