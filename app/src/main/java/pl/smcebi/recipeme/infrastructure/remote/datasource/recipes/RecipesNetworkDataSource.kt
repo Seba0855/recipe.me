@@ -2,9 +2,9 @@ package pl.smcebi.recipeme.infrastructure.remote.datasource.recipes
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.serialization.json.Json
-import pl.smcebi.recipeme.di.NetworkCoroutineDispatcher
+import pl.smcebi.recipeme.di.annotations.NetworkCoroutineDispatcher
 import pl.smcebi.recipeme.infrastructure.model.recipes.QuickAnswerResponse
-import pl.smcebi.recipeme.infrastructure.model.recipes.RecipeResponse
+import pl.smcebi.recipeme.infrastructure.model.recipes.RecipeListResponse
 import pl.smcebi.recipeme.infrastructure.remote.api.recipes.RecipesApi
 import pl.smcebi.recipeme.infrastructure.remote.common.NetworkResult
 import pl.smcebi.recipeme.infrastructure.remote.common.apiCall
@@ -18,9 +18,9 @@ internal class RecipesNetworkDataSource @Inject constructor(
 
     override suspend fun getRandomRecipes(
         limitLicense: Boolean,
-        tags: String,
+        tags: String?,
         number: Int
-    ): NetworkResult<List<RecipeResponse>> {
+    ): NetworkResult<RecipeListResponse> {
         return apiCall(dispatcher, json) {
             api.getRandomRecipes(
                 limitLicense = true,

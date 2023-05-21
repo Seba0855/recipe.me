@@ -49,10 +49,13 @@ gradlePlugin = "7.3.1"
 
 # Utils
 glide = "4.14.2"
+glideRecyclerView = "4.14.2"
+glideTransformation = "4.3.0"
 timber = "5.0.1"
 shimmer = "0.5.0"
 libPhoneNumber = "8.12.57"
 ktlint = "11.3.1"
+lottie = "6.0.0"
 
 # JUnit
 junit4 = "4.13.2"
@@ -164,9 +167,12 @@ ksp = { group = "com.google.devtools.ksp", name = "symbol-processing-api", versi
 # Utils
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-recyclerView = { module = "com.github.bumptech.glide:recyclerview-integration", version.ref = "glideRecyclerView" }
+glide-transformation = { module = "jp.wasabeef:glide-transformations", version.ref = "glideTransformation" }
 libphonenumber = { module = "io.michaelrocks:libphonenumber-android", version.ref = "libPhoneNumber" }
 shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
 secrets = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secrets" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 
 # JUnit
 junit-core = { module = "junit:junit", version.ref = "junit4" }

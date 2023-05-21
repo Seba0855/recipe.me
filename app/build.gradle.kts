@@ -72,6 +72,13 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.glide)
+    implementation(libs.glide.recyclerView) {
+        // Excludes the support library because it's already included by Glide.
+        isTransitive = false
+    }
+    implementation(libs.glide.transformation)
+    implementation(libs.lottie)
 
     // Networking
     implementation(libs.kotlin.serialization.serializationJson)

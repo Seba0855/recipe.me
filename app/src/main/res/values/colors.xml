@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="primary0">#fef7ec</color>
+    <color name="primary10">#fef7ec</color>
+    <color name="primary20">#fad8a1</color>
+    <color name="primary30">#f9c97c</color>
+    <color name="primary40">#f7b957</color>
+    <color name="primary50">#f5aa31</color>
+    <color name="primary60">#f39a0c</color>
+    <color name="primary70">#ce820a</color>
+    <color name="primary80">#a86b08</color>
+    <color name="primary90">#835306</color>
+    <color name="primary95">#5d3b05</color>
+    <color name="primary99">#382403</color>
+    <color name="primary100">#130c01</color>
+
+    <color name="secondary0">#f5f5f5</color>
+    <color name="secondary10">#e2e2e2</color>
+    <color name="secondary20">#cecece</color>
+    <color name="secondary30">#bababa</color>
+    <color name="secondary40">#a7a7a7</color>
+    <color name="secondary50">#939393</color>
+    <color name="secondary60">#808080</color>
+    <color name="secondary70">#6c6c6c</color>
+    <color name="secondary80">#585858</color>
+    <color name="secondary90">#454545</color>
+    <color name="secondary95">#313131</color>
+    <color name="secondary99">#1d1d1d</color>
+    <color name="secondary100">#0a0a0a</color>
+
+    <color name="tertiary0">#000000</color>
+    <color name="tertiary10">#31101F</color>
+    <color name="tertiary20">#492534</color>
+    <color name="tertiary30">#623B4A</color>
+    <color name="tertiary40">#7D5262</color>
+    <color name="tertiary50">#986A7B</color>
+    <color name="tertiary60">#B48394</color>
+    <color name="tertiary70">#D19DAF</color>
+    <color name="tertiary80">#EFB8CB</color>
+    <color name="tertiary90">#FFD9E6</color>
+    <color name="tertiary95">#FFECF2</color>
+    <color name="tertiary99">#FCFCFC</color>
+    <color name="tertiary100">#FFFFFF</color>
+
+    <color name="error0">#000000</color>
+    <color name="error10">#410001</color>
+    <color name="error20">#680003</color>
+    <color name="error30">#930006</color>
+    <color name="error40">#BA1B1B</color>
+    <color name="error50">#DD3730</color>
+    <color name="error60">#FF5449</color>
+    <color name="error70">#FF897A</color>
+    <color name="error80">#FFB4A9</color>
+    <color name="error90">#FFDAD4</color>
+    <color name="error95">#FFEDE9</color>
+    <color name="error99">#FCFCFC</color>
+    <color name="error100">#FFFFFF</color>
+
+    <!-- TEMPORARY -->
+
+    <color name="neutral0">#000000</color>
+    <color name="neutral10">#000000</color>
+    <color name="neutral20">#000000</color>
+    <color name="neutral30">#000000</color>
+    <color name="neutral40">#000000</color>
+    <color name="neutral50">#000000</color>
+    <color name="neutral60">#000000</color>
+    <color name="neutral70">#000000</color>
+    <color name="neutral80">#000000</color>
+    <color name="neutral90">#000000</color>
+    <color name="neutral95">#000000</color>
+    <color name="neutral99">#000000</color>
+    <color name="neutral100">#000000</color>
+
+    <color name="neutral_variant0">#000000</color>
+    <color name="neutral_variant10">#000000</color>
+    <color name="neutral_variant20">#000000</color>
+    <color name="neutral_variant30">#000000</color>
+    <color name="neutral_variant40">#000000</color>
+    <color name="neutral_variant50">#e6e6e6</color>
+    <color name="neutral_variant60">#000000</color>
+    <color name="neutral_variant70">#000000</color>
+    <color name="neutral_variant80">#000000</color>
+    <color name="neutral_variant90">#797979</color>
+    <color name="neutral_variant95">#000000</color>
+    <color name="neutral_variant99">#000000</color>
+    <color name="neutral_variant100">#000000</color>
 </resources>

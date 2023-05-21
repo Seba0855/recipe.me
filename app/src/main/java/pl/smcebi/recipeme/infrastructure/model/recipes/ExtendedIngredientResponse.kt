@@ -8,7 +8,7 @@ data class ExtendedIngredientResponse(
     val amount: Double,
     val consistency: Consistency,
     val id: Long,
-    val image: String,
+    val image: String?,
     val measures: MeasuresResponse,
     val meta: List<String>,
     val name: String,
