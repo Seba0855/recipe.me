@@ -11,11 +11,9 @@ import pl.smcebi.recipeme.di.annotations.Mock
 @InstallIn(SingletonComponent::class)
 internal interface RecipesNetworkDataSourceModule {
 
-    @Singleton
     @Binds
     fun bindDataSource(impl: RecipesNetworkDataSource): RecipesDataSource
 
-    @Singleton
     @Binds
     @Mock
     fun bindMockDataSource(impl: MockRecipesDataSource): RecipesDataSource
