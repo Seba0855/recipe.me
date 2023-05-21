@@ -55,6 +55,7 @@ timber = "5.0.1"
 shimmer = "0.5.0"
 libPhoneNumber = "8.12.57"
 ktlint = "11.3.1"
+lottie = "6.0.0"
 
 # JUnit
 junit4 = "4.13.2"
@@ -171,6 +172,7 @@ glide-transformation = { module = "jp.wasabeef:glide-transformations", version.r
 libphonenumber = { module = "io.michaelrocks:libphonenumber-android", version.ref = "libPhoneNumber" }
 shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
 secrets = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secrets" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 
 # JUnit
 junit-core = { module = "junit:junit", version.ref = "junit4" }

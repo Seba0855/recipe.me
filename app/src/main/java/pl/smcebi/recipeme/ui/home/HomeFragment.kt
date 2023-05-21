@@ -2,6 +2,8 @@ package pl.smcebi.recipeme.ui.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,6 +14,7 @@ import pl.smcebi.recipeme.ui.common.extensions.notImplemented
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
 import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
+import timber.log.Timber
 
 @AndroidEntryPoint
 internal class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -33,14 +36,21 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 notImplemented()
             }
             randomButton.setSafeOnClickListener {
-//                viewModel.getRecipes()
+                notImplemented()
+            }
+            connectionError.tryAgainButton.setSafeOnClickListener {
+                viewModel.tryAgain()
             }
             recipesRecyclerView.adapter = adapter
         }
     }
 
     private fun onNewState(state: HomeViewState) {
-        adapter?.submitList(state.recipes)
+        with(binding) {
+            adapter?.submitList(state.recipes)
+            connectionError.root.isVisible = state.isError
+            broccoliLoading.isVisible = state.inProgress
+        }
     }
 
     private fun onNewEvent(event: HomeViewEvent) {

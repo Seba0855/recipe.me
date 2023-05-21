@@ -6,6 +6,9 @@
 
     <string name="common_copy_confirmation">Skopiowano</string>
 
+    <string name="common_connection_error">Wystąpił problem przy pobieraniu danych.</string>
+    <string name="common_connection_error_try_again">Spróbuj ponownie</string>
+
     <string name="fragment_home_logged_in_placeholder">Cześć, Sebastian</string>
 
     <string name="fragment_home_log_in">Zaloguj się</string>

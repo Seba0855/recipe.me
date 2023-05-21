@@ -15,7 +15,7 @@ class GetRandomRecipesUseCase @Inject internal constructor(
     private val dataSource: RecipesDataSource,
     @DispatcherIO private val dispatcher: CoroutineDispatcher
 ) {
-    suspend operator fun invoke(tags: String?): DomainResult<List<RecipesUI>, String?> =
+    suspend operator fun invoke(tags: String? = ""): DomainResult<List<RecipesUI>, String?> =
         withContext(dispatcher) {
             dataSource.getRandomRecipes(
                 limitLicense = true,

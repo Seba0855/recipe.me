@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import pl.smcebi.recipeme.domain.recipes.GetRandomRecipesUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
+import pl.smcebi.recipeme.ui.common.extensions.withProgressBar
 import timber.log.Timber
 
 @HiltViewModel
@@ -23,8 +24,21 @@ internal class HomeViewModel @Inject constructor(
     val event: Flow<HomeViewEvent> = mutableEvent.receiveAsFlow()
 
     init {
-        viewModelScope.launch {
-            getRandomRecipesUseCase(tags = "")
+        fetchRecipes()
+    }
+
+    fun tryAgain() {
+        mutableState.mutate { copy(isError = false) }
+        fetchRecipes()
+    }
+
+    private fun fetchRecipes() {
+        withProgressBar(indicator = { inProgress ->
+            mutableState.mutate {
+                copy(inProgress = inProgress)
+            }
+        }) {
+            getRandomRecipesUseCase()
                 .onSuccess { recipes ->
                     mutableState.mutate {
                         copy(recipes = recipes)
@@ -32,6 +46,7 @@ internal class HomeViewModel @Inject constructor(
                 }
                 .onFailure { message ->
                     Timber.e("Error: $message")
+                    mutableState.mutate { copy(isError = true) }
                     mutableEvent.send(HomeViewEvent.ShowError(message))
                 }
         }

@@ -78,6 +78,7 @@ dependencies {
         isTransitive = false
     }
     implementation(libs.glide.transformation)
+    implementation(libs.lottie)
 
     // Networking
     implementation(libs.kotlin.serialization.serializationJson)
