@@ -16,4 +16,12 @@
     <string name="fragment_home_search">Szukaj…</string>
     <string name="fragment_home_label">Przepisy</string>
     <string name="fragment_home_random">Losowe</string>
+
+    <string name="fragment_details_description">Opis</string>
+    <string name="fragment_details_nutrients">Wartości odżywcze</string>
+    <string name="fragment_details_calories">Kalorie</string>
+    <string name="fragment_details_proteins">Białka</string>
+    <string name="fragment_details_fats">Tłuszcze</string>
+    <string name="fragment_details_carbohydrates">Węglowodany</string>
+    <string name="fragment_details_ingredients">Składniki</string>
 </resources>
