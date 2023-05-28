@@ -2,10 +2,13 @@ package pl.smcebi.recipeme.ui.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isInvisible
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.R
 import pl.smcebi.recipeme.databinding.FragmentHomeBinding
@@ -14,7 +17,6 @@ import pl.smcebi.recipeme.ui.common.extensions.notImplemented
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
 import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
-import timber.log.Timber
 
 @AndroidEntryPoint
 internal class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -24,6 +26,12 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
+        exitTransition = MaterialElevationScale(false)
+        reenterTransition = MaterialElevationScale(true)
+
         initViews()
         collectOnViewLifecycle(viewModel.state, ::onNewState)
         collectOnViewLifecycle(viewModel.event, ::onNewEvent)
@@ -31,7 +39,10 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun initViews() {
         with(binding) {
-            adapter = HomeAdapter()
+            adapter = HomeAdapter(
+                onRecipeClick = ::navigateDetails,
+                onBookmarkClick = { notImplemented() }
+            )
             menuButton.setSafeOnClickListener {
                 notImplemented()
             }
@@ -57,6 +68,17 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         when (event) {
             is HomeViewEvent.ShowError -> showSnackbar(event.message)
         }
+    }
+
+    private fun navigateDetails(transitioningView: View, position: Int) {
+        val recipe = viewModel.state.value.recipes[position]
+
+        findNavController().navigate(
+            directions = HomeFragmentDirections.navigateDetails(recipe),
+            navigatorExtras = FragmentNavigatorExtras(
+                transitioningView to transitioningView.transitionName
+            )
+        )
     }
 
     override fun onDestroyView() {

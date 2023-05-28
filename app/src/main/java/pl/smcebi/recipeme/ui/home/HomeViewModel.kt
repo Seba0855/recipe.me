@@ -1,11 +1,9 @@
 package pl.smcebi.recipeme.ui.home
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import pl.smcebi.recipeme.domain.recipes.GetRandomRecipesUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
@@ -30,6 +28,10 @@ internal class HomeViewModel @Inject constructor(
     fun tryAgain() {
         mutableState.mutate { copy(isError = false) }
         fetchRecipes()
+    }
+
+    fun onBookmarkClick(position: Int) {
+        TODO("Not implemented")
     }
 
     private fun fetchRecipes() {

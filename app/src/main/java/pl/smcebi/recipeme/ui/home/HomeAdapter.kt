@@ -4,10 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import pl.smcebi.recipeme.databinding.ItemRecipeCardBinding
 import pl.smcebi.recipeme.domain.recipes.model.RecipesUI
 
-internal class HomeAdapter : ListAdapter<RecipesUI, HomeViewHolder>(RecipeDiffUtil()) {
+internal class HomeAdapter(
+    onRecipeClick: OnItemViewClick,
+    onBookmarkClick: OnItemClick
+) : ListAdapter<RecipesUI, HomeViewHolder>(RecipeDiffUtil()) {
+
+    private var onRecipeClickListener: OnItemViewClick? = onRecipeClick
+    private var onBookmarkClickListener: OnItemClick? = onBookmarkClick
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder =
         HomeViewHolder(
@@ -17,6 +24,24 @@ internal class HomeAdapter : ListAdapter<RecipesUI, HomeViewHolder>(RecipeDiffUt
                 false
             )
         )
+
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        onBookmarkClickListener = null
+        onRecipeClickListener = null
+        super.onDetachedFromRecyclerView(recyclerView)
+    }
+
+    override fun onViewAttachedToWindow(holder: HomeViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        with(holder) {
+            setOnRecipeClickListener { transitioningView, position ->
+                onRecipeClickListener?.invoke(transitioningView, position)
+            }
+            setOnBookmarkClickListener { position ->
+                onBookmarkClickListener?.invoke(position)
+            }
+        }
+    }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         holder.bind(getItem(position))
