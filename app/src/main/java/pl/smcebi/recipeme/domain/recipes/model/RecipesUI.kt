@@ -12,5 +12,6 @@ data class RecipesUI(
     val imageUrl: String,
     val readyInMinutes: Int,
     val servings: Int,
-    val durationAndServings: String
+    val durationAndServings: String,
+    val ingredientsList: List<IngredientUI>
 ) : Parcelable
