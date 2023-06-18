@@ -2,7 +2,9 @@ package pl.smcebi.recipeme.ui.details
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.transition.MaterialContainerTransform
@@ -10,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.R
 import pl.smcebi.recipeme.databinding.ActivityMainBinding.bind
 import pl.smcebi.recipeme.databinding.FragmentRecipeDetailsBinding
+import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.load
 import pl.smcebi.recipeme.ui.common.extensions.notImplemented
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
@@ -19,6 +22,7 @@ import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
 internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details) {
     private val binding by viewBinding(FragmentRecipeDetailsBinding::bind)
     private val args: RecipeDetailsFragmentArgs by navArgs()
+    private val viewModel: RecipeDetailsViewModel by viewModels()
     private var adapter: IngredientsAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,6 +30,7 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
 
         sharedElementEnterTransition = MaterialContainerTransform()
         initViews()
+        collectOnViewLifecycle(viewModel.state, ::onNewState)
     }
 
     private fun initViews() {
@@ -42,19 +47,26 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
 
             imageContainer.transitionName = recipe.imageUrl
             recipeNameTextView.text = recipe.title
-            dishTypeTextView.text = buildString {  }
-            durationTextView.text = buildString {  }
+            dishTypeTextView.isVisible = recipe.dishType != null
+            dishTypeTextView.text = getString(R.string.fragment_details_dish_type, recipe.dishType)
+            durationTextView.text =
+                getString(R.string.fragment_details_duration, recipe.readyInMinutes.toString())
+
             descriptionTextView.text = recipe.description
             servingsTextView.text =
                 getString(R.string.fragment_details_meal_servings, recipe.servings.toString())
 
-            caloriesTextView.text
-            proteinsTextView.text
-            fatsTextView.text
-            carbohydratesTextView.text
-
             ingredientsRecyclerView.adapter = adapter
             adapter?.submitList(recipe.ingredientsList)
+        }
+    }
+
+    private fun onNewState(state: RecipeDetailsState) {
+        with(binding) {
+            caloriesTextView.text = state.calories
+            proteinsTextView.text = state.protein
+            fatsTextView.text = state.fat
+            carbohydratesTextView.text = state.carbs
         }
     }
 

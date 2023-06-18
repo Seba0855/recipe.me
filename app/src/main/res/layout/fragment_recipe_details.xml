@@ -10,24 +10,28 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_big">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_big"
+            android:foreground="?attr/selectableItemBackground"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
             tools:ignore="ContentDescription" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/saveButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="@dimen/margin_big"
+            android:foreground="?attr/selectableItemBackground"
             android:src="@drawable/ic_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
             tools:ignore="ContentDescription" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -112,6 +116,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="4"
             android:textAppearance="?attr/textAppearanceBodySmall"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

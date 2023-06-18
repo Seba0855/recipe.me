@@ -1,5 +1,6 @@
 package pl.smcebi.recipeme.infrastructure.remote.datasource.recipes
 
+import pl.smcebi.recipeme.infrastructure.model.recipes.NutritionResponse
 import javax.inject.Inject
 import pl.smcebi.recipeme.infrastructure.model.recipes.QuickAnswerResponse
 import pl.smcebi.recipeme.infrastructure.model.recipes.RecipeListResponse
@@ -153,5 +154,10 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
     override suspend fun getQuickAnswer(query: String): NetworkResult<QuickAnswerResponse> =
         NetworkResult.Success(
             QuickAnswerResponse(answer = "dummy answer", image = "dummy link")
+        )
+
+    override suspend fun getRecipeNutrition(recipeId: String): NetworkResult<NutritionResponse> =
+        NetworkResult.Success(
+            NutritionResponse(calories = "384", carbs = "12g", fat = "14g", protein = "16g")
         )
 }

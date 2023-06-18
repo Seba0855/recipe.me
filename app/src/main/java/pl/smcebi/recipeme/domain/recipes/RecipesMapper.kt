@@ -28,6 +28,8 @@ internal class RecipesMapper @Inject internal constructor(
                     " Servings"
                 )
             },
+            dishType = recipeResponse.dishTypes?.firstOrNull()?.replaceFirstChar(Char::uppercase),
+            description = recipeResponse.summary,
             ingredientsList = recipeResponse.extendedIngredients?.map(::mapIngredients).orEmpty()
         )
 
