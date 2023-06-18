@@ -17,7 +17,7 @@ internal class RecipesMapper @Inject internal constructor(
         RecipesUI(
             id = recipeResponse.id,
             title = recipeResponse.title,
-            imageUrl = recipeResponse.image,
+            imageUrl = recipeResponse.image.orEmpty(),
             readyInMinutes = recipeResponse.readyInMinutes,
             servings = recipeResponse.servings,
             durationAndServings = buildString {
@@ -35,7 +35,7 @@ internal class RecipesMapper @Inject internal constructor(
         IngredientUI(
             id = ingredientResponse.id,
             name = ingredientResponse.name.replaceFirstChar(Char::uppercase),
-            image = ingredientResponse.image?.let(imageMapper::mapIngredients),
+            imageUrl = ingredientResponse.image?.let(imageMapper::mapIngredients),
             amount = ingredientResponse.measures.metric.amount,
             unit = ingredientResponse.measures.metric.unitShort,
         )

@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 data class RecipeResponse(
     val id: Long,
     val title: String,
-    val image: String,
-    val imageType: String,
+    val image: String? = null,
+    val imageType: String? = null,
     val servings: Int,
     val readyInMinutes: Int,
     val license: String? = null,

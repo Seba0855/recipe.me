@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 data class IngredientUI(
     val id: Long,
     val name: String,
-    val image: String?,
+    val imageUrl: String?,
     val amount: Double,
     val unit: String,
 ) : Parcelable

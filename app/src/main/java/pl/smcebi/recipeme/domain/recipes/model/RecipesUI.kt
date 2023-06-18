@@ -9,9 +9,11 @@ import kotlinx.parcelize.Parcelize
 data class RecipesUI(
     val id: Long,
     val title: String,
+    val description: String,
     val imageUrl: String,
     val readyInMinutes: Int,
     val servings: Int,
     val durationAndServings: String,
-    val ingredientsList: List<IngredientUI>
+    val dishType: String? = null,
+    val ingredientsList: List<IngredientUI>,
 ) : Parcelable
