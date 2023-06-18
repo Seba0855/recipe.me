@@ -12,7 +12,7 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.secrets.plugin)
     alias(libs.plugins.kotlin.serialization)
-    id("pl.smcebi.recipeme.configuration")
+    id("pl.smcebi.recipeme.application")
 }
 
 android {

@@ -1,4 +1,13 @@
 [versions]
+# Application version name
+versionName = "1.0.0"
+
+# Application configuration
+compileSdk = "android-33"
+buildTools = "30.0.3"
+minSdk = "26"
+targetSdk = "33"
+
 # AndroidX
 android-gradle = "7.4.2"
 androidxAnnotation = "1.5.0"

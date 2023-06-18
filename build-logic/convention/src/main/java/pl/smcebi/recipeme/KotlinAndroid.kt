@@ -1,6 +1,7 @@
 package pl.smcebi.recipeme
 
 import com.android.build.api.dsl.CommonExtension
+import com.android.build.gradle.AbstractAppExtension
 import com.android.build.gradle.AppExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -17,26 +18,22 @@ internal fun Project.configureKotlinAndroid(
     commonExtension: CommonExtension<*, *, *, *>,
 ) {
     commonExtension.apply {
-        compileSdk = Versions.targetSdk
-
-        defaultConfig {
-            minSdk = Versions.minSdk
-        }
-
         buildFeatures {
             buildConfig = commonExtension is AppExtension
             aidl = false
             renderScript = false
+            shaders = false
+            resValues = false
         }
 
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
         }
 
         kotlinOptions {
             // Set JVM target to 1.8
-            jvmTarget = JavaVersion.VERSION_1_8.toString()
+            jvmTarget = JavaVersion.VERSION_11.toString()
         }
     }
 }
