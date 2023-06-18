@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ExtendedIngredientResponse(
-    val aisle: String,
+    val aisle: String?,
     val amount: Double,
     val consistency: Consistency,
     val id: Long,

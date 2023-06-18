@@ -1,6 +1,7 @@
 package pl.smcebi.recipeme
 
 import android.app.Application
+import androidx.emoji2.text.EmojiCompat
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import javax.inject.Inject
@@ -17,5 +18,6 @@ class App : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+        EmojiCompat.init(this)
     }
 }

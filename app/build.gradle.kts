@@ -1,10 +1,12 @@
 @file:Suppress("UnstableApiUsage", "DSL_SCOPE_VIOLATION")
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.navigation.safeargs)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.ktlint)
@@ -79,6 +81,9 @@ dependencies {
     }
     implementation(libs.glide.transformation)
     implementation(libs.lottie)
+    implementation(libs.androidx.emoji2)
+    implementation(libs.androidx.emoji2.views)
+    implementation(libs.androidx.emoji2.views.helper)
 
     // Networking
     implementation(libs.kotlin.serialization.serializationJson)

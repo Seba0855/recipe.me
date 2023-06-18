@@ -9,5 +9,22 @@
         android:id="@+id/homeFragment"
         android:name="pl.smcebi.recipeme.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/navigateDetails"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="pl.smcebi.recipeme.ui.details.RecipeDetailsFragment"
+        android:label="RecipeDetailsFragment"
+        tools:layout="@layout/fragment_recipe_details">
+
+        <argument
+            android:name="recipe"
+            app:argType="pl.smcebi.recipeme.domain.recipes.model.RecipesUI" />
+    </fragment>
+
 </navigation>
