@@ -27,4 +27,6 @@
     <string name="fragment_details_fats">Tłuszcze</string>
     <string name="fragment_details_carbohydrates">Węglowodany</string>
     <string name="fragment_details_ingredients">Składniki</string>
+    <string name="fragment_details_show_more">Pokaż więcej…</string>
+    <string name="fragment_details_show_less">Pokaż mniej…</string>
 </resources>

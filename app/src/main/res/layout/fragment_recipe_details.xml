@@ -125,6 +125,19 @@
             tools:text="Pasta with Garlic, Scallions, Cauliflower Breadcrumbs might be a good recipe to expand your main course repertoire. One portion of this dish contains approximately 19g of protein and a total of 584 calories. Decided więcej..." />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/showMoreButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/fragment_details_show_more"
+            android:textAppearance="?attr/textAppearanceLabelSmall"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/nutritionDataHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -132,7 +145,7 @@
             android:text="@string/fragment_details_nutrients"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
+            app:layout_constraintTop_toBottomOf="@id/showMoreButton" />
 
         <LinearLayout
             android:id="@+id/caloriesContainer"

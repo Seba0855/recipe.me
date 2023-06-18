@@ -1,6 +1,7 @@
 package pl.smcebi.recipeme.ui.details
 
 import android.os.Bundle
+import android.text.Html
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
     private val args: RecipeDetailsFragmentArgs by navArgs()
     private val viewModel: RecipeDetailsViewModel by viewModels()
     private var adapter: IngredientsAdapter? = null
+    private var descriptionExpanded: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,6 +46,21 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
             saveButton.setSafeOnClickListener {
                 notImplemented()
             }
+            showMoreButton.setSafeOnClickListener {
+                if (!descriptionExpanded) {
+                    descriptionTextView.maxLines = Int.MAX_VALUE
+                } else {
+                    descriptionTextView.maxLines = DESCRIPTION_COLLAPSED_LINES
+                }
+
+                descriptionExpanded = !descriptionExpanded
+
+                showMoreButton.text = if (descriptionExpanded) {
+                    getString(R.string.fragment_details_show_less)
+                } else {
+                    getString(R.string.fragment_details_show_more)
+                }
+            }
 
             imageContainer.transitionName = recipe.imageUrl
             recipeNameTextView.text = recipe.title
@@ -52,7 +69,8 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
             durationTextView.text =
                 getString(R.string.fragment_details_duration, recipe.readyInMinutes.toString())
 
-            descriptionTextView.text = recipe.description
+            descriptionTextView.text =
+                Html.fromHtml(recipe.description, Html.FROM_HTML_OPTION_USE_CSS_COLORS)
             servingsTextView.text =
                 getString(R.string.fragment_details_meal_servings, recipe.servings.toString())
 
@@ -73,5 +91,9 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
     override fun onDestroyView() {
         adapter = null
         super.onDestroyView()
+    }
+
+    private companion object {
+        const val DESCRIPTION_COLLAPSED_LINES = 4
     }
 }
