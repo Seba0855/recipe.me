@@ -26,6 +26,12 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
+            <option value="$PROJECT_DIR$/datasource-recipes" />
+            <option value="$PROJECT_DIR$/datasource-recipes-network" />
+            <option value="$PROJECT_DIR$/domain-common" />
+            <option value="$PROJECT_DIR$/model-recipes" />
+            <option value="$PROJECT_DIR$/retrofit-base" />
+            <option value="$PROJECT_DIR$/ui-common" />
           </set>
         </option>
       </GradleProjectSettings>

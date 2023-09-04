@@ -16,9 +16,17 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        create("androidApplication") {
+        create("application") {
             id = "pl.smcebi.recipeme.application"
             implementationClass = "pl.smcebi.recipeme.plugins.AndroidApplicationPlugin"
+        }
+        create("library") {
+            id = "pl.smcebi.recipeme.library"
+            implementationClass = "pl.smcebi.recipeme.plugins.AndroidLibraryPlugin"
+        }
+        create("model") {
+            id = "pl.smcebi.recipeme.model"
+            implementationClass = "pl.smcebi.recipeme.plugins.KotlinLibraryPlugin"
         }
     }
 }

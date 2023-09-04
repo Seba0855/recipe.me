@@ -24,6 +24,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":retrofit-base"))
+    implementation(project(":datasource-recipes"))
+    implementation(project(":ui-common"))
 
     // Core
     implementation(libs.androidx.core.ktx)
