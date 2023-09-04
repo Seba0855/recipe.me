@@ -13,3 +13,9 @@ plugins {
 
 rootProject.name = "recipe.me"
 include(":app")
+include(":datasource-recipes")
+include(":ui-common")
+include(":domain-common")
+include(":retrofit-base")
+include(":datasource-recipes-network")
+include(":model-recipes")
