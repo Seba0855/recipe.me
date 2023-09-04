@@ -17,8 +17,8 @@ dependencies {
 gradlePlugin {
     plugins {
         create("androidApplication") {
-            id = "pl.smcebi.recipeme.configuration"
-            implementationClass = "pl.smcebi.recipeme.plugins.AndroidApplicationConventionPlugin"
+            id = "pl.smcebi.recipeme.application"
+            implementationClass = "pl.smcebi.recipeme.plugins.AndroidApplicationPlugin"
         }
     }
 }

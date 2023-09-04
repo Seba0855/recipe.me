@@ -12,52 +12,12 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.secrets.plugin)
     alias(libs.plugins.kotlin.serialization)
-    id("pl.smcebi.recipeme.configuration")
+    id("pl.smcebi.recipeme.application")
 }
 
 android {
     namespace = "pl.smcebi.recipeme"
-    compileSdk = 33
-    buildToolsVersion = "30.0.3"
 
-    defaultConfig {
-        applicationId = "pl.smcebi.recipeme"
-        minSdk = 26
-        targetSdk = 33
-
-        versionCode = System.getenv("VERSION_CODE")?.toInt() ?: 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        debug {
-            isDebuggable = true
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-DEBUG"
-        }
-
-        release {
-            isDebuggable = false
-            isMinifyEnabled = true
-            isShrinkResources = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        viewBinding = true
-    }
     hilt {
         enableAggregatingTask = true
     }
@@ -104,7 +64,6 @@ dependencies {
 
     testImplementation(libs.junit.core)
     androidTestImplementation(libs.junit.testExt)
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
 // Allow references to generated code

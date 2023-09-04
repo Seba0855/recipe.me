@@ -1,4 +1,15 @@
 [versions]
+# Application version code (it will be used to compute version name, eg. 1.2.0)
+versionMajor = "1"
+versionMinor = "0"
+versionPatch = "1"
+
+# Application configuration
+compileSdk = "android-33"
+buildTools = "30.0.3"
+minSdk = "26"
+targetSdk = "33"
+
 # AndroidX
 android-gradle = "7.4.2"
 androidxAnnotation = "1.5.0"
