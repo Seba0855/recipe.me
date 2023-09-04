@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.infrastructure.model.recipes
+package pl.smcebi.recipeme.recipes
 
 import kotlinx.serialization.Serializable
 
