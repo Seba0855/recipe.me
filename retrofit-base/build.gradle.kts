@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.library)
@@ -9,6 +11,11 @@ plugins {
 
 android {
     namespace = "pl.smcebi.recipeme.retrofit.base"
+
+    defaultConfig {
+        buildConfigField("String", "BASE_URL", getLocalProperty("BASE_URL"))
+        buildConfigField("String", "API_KEY", getLocalProperty("API_KEY"))
+    }
 
     buildFeatures {
         buildConfig = true
@@ -41,3 +48,5 @@ dependencies {
 kapt {
     correctErrorTypes = true
 }
+
+fun getLocalProperty(name: String) = gradleLocalProperties(rootDir).getProperty(name)

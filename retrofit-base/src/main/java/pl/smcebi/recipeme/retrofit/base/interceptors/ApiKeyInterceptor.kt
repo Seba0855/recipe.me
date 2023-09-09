@@ -8,12 +8,12 @@ import javax.inject.Inject
 internal class ApiKeyInterceptor @Inject constructor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val currentUrl = chain.request().url
-//        val newUrl =
-//            currentUrl.newBuilder().addQueryParameter(API_QUERY_PARAMETER, BuildConfig.API_KEY)
-//                .build()
+        val newUrl =
+            currentUrl.newBuilder().addQueryParameter(API_QUERY_PARAMETER, BuildConfig.API_KEY)
+                .build()
         val currentRequest = chain.request().newBuilder()
-//        val newRequest = currentRequest.url(newUrl).build()
-        return chain.proceed(currentRequest.build())
+        val newRequest = currentRequest.url(newUrl).build()
+        return chain.proceed(newRequest)
     }
 
     private companion object {

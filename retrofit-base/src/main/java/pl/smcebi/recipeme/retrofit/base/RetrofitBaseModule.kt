@@ -45,12 +45,11 @@ internal object RetrofitBaseModule {
     @Provides
     @Reusable
     fun provideRetrofit(
-        baseUrlStore: BaseUrlStore,
         client: OkHttpClient,
         json: Json
     ): Retrofit =
         Retrofit.Builder()
-            .baseUrl(baseUrlStore.baseUrl)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(client)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
