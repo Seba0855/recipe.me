@@ -3,26 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="pl.smcebi.recipeme.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/homeFragment"
+        android:name="pl.smcebi.recipeme.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/navigateDetails"
+            app:destination="@id/recipeDetailsFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="pl.smcebi.recipeme.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/recipeDetailsFragment"
+        android:name="pl.smcebi.recipeme.ui.details.RecipeDetailsFragment"
+        android:label="RecipeDetailsFragment"
+        tools:layout="@layout/fragment_recipe_details">
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+        <argument
+            android:name="recipe"
+            app:argType="pl.smcebi.recipeme.domain.recipes.model.RecipesUI" />
     </fragment>
+
 </navigation>
