@@ -18,7 +18,8 @@ internal class IngredientsViewHolder(
                 fallback = ic_no_photo
             )
             ingredientNameTextView.text = ingredient.name
-            amountTextView.text = buildString { append(ingredient.amount.roundUI(), " ", ingredient.unit) }
+            amountTextView.text =
+                buildString { append(ingredient.amount.roundUI(), " ", ingredient.unit) }
         }
     }
 

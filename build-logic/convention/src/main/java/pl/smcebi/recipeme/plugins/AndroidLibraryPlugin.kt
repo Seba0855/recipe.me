@@ -1,12 +1,11 @@
 package pl.smcebi.recipeme.plugins
 
 import com.android.build.gradle.LibraryExtension
-import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.getByType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import pl.smcebi.recipeme.utils.getVersionByName
 
 class AndroidLibraryPlugin : Plugin<Project> {
@@ -40,23 +39,10 @@ class AndroidLibraryPlugin : Plugin<Project> {
                         )
                     }
                 }
-
-                with(compileOptions) {
-                    sourceCompatibility = JavaVersion.VERSION_11
-                    targetCompatibility = JavaVersion.VERSION_11
-                }
-
-                with(buildFeatures) {
-                    buildConfig = false
-                    aidl = false
-                    renderScript = false
-                    shaders = false
-                    resValues = false
-                }
             }
 
-            tasks.withType(KotlinCompile::class.java) {
-                kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
+            with(kotlinExtension) {
+                jvmToolchain(17)
             }
         }
     }

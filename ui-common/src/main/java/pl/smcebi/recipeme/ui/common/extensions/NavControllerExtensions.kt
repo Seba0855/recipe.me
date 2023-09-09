@@ -5,7 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 
 fun NavController.cleanBackStack() {
-    backQueue.firstOrNull()?.let { entry ->
+    currentBackStack.value.firstOrNull()?.let { entry ->
         popBackStack(entry.destination.id, inclusive = true)
     }
 }

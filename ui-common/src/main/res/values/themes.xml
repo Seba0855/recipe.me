@@ -36,11 +36,15 @@
 
         <!--    Text appearance    -->
         <item name="textAppearanceDisplayLarge">@style/TextAppearance.RecipeMe.Display.Large</item>
-        <item name="textAppearanceDisplayMedium">@style/TextAppearance.RecipeMe.Display.Medium</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.RecipeMe.Display.Medium
+        </item>
         <item name="textAppearanceDisplaySmall">@style/TextAppearance.RecipeMe.Display.Small</item>
-        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.RecipeMe.Headline.Large</item>
-        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.RecipeMe.Headline.Medium</item>
-        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.RecipeMe.Headline.Small</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.RecipeMe.Headline.Large
+        </item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.RecipeMe.Headline.Medium
+        </item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.RecipeMe.Headline.Small
+        </item>
         <item name="textAppearanceTitleLarge">@style/TextAppearance.RecipeMe.Title.Large</item>
         <item name="textAppearanceTitleMedium">@style/TextAppearance.RecipeMe.Title.Medium</item>
         <item name="textAppearanceTitleSmall">@style/TextAppearance.RecipeMe.Title.Small</item>
