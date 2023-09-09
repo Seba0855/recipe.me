@@ -26,6 +26,7 @@ android {
 dependencies {
     implementation(project(":retrofit-base"))
     implementation(project(":datasource-recipes"))
+    implementation(project(":datasource-recipes-network"))
     implementation(project(":ui-common"))
 
     // Core

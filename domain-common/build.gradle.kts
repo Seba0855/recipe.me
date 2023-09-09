@@ -3,18 +3,23 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.navigation.safeargs)
     id("pl.smcebi.recipeme.library")
 }
 
 android {
-    namespace = "pl.smcebi.recipeme"
+    namespace = "pl.smcebi.recipeme.domain.common"
 }
 
 dependencies {
+    implementation(project(":datasource-common"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.google.material)
+    implementation(libs.kotlin.coroutines.core)
+    implementation(libs.kotlin.serialization.serializationJson)
+    implementation(libs.libphonenumber)
+    implementation(libs.timber)
 
     implementation(libs.dagger.hiltLib)
     kapt(libs.dagger.hiltProc)
@@ -24,5 +29,9 @@ dependencies {
 
     testImplementation(libs.junit.core)
     androidTestImplementation(libs.junit.testExt)
-    androidTestImplementation(libs.espresso.core)
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

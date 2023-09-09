@@ -1,0 +1,61 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Recipeme" parent="Theme.Material3.Light.NoActionBar">
+        <!--    Color primary    -->
+        <item name="colorPrimary">@color/primary60</item>
+        <item name="colorOnPrimary">@color/primary100</item>
+        <item name="colorPrimaryContainer">@color/primary30</item>
+        <item name="colorOnPrimaryContainer">@color/primary60</item>
+
+        <!--    Color secondary    -->
+        <item name="colorSecondary">@color/secondary100</item>
+        <item name="colorOnSecondary">@color/secondary0</item>
+        <item name="colorSecondaryContainer">@color/secondary10</item>
+        <item name="colorOnSecondaryContainer">@color/secondary70</item>
+
+        <!--    Color tertiary    -->F
+        <item name="colorTertiary">@color/tertiary40</item>
+        <item name="colorOnTertiary">@color/tertiary100</item>
+        <item name="colorTertiaryContainer">@color/tertiary90</item>
+        <item name="colorOnTertiaryContainer">@color/tertiary10</item>
+
+        <!--    Color error    -->
+        <item name="colorError">@color/error40</item>
+        <item name="colorOnError">@color/error100</item>
+        <item name="colorErrorContainer">@color/error90</item>
+        <item name="colorOnErrorContainer">@color/error10</item>
+
+        <!--    Color surface/background/support    -->
+        <item name="android:colorBackground">@color/secondary0</item>
+        <item name="colorOnBackground">@color/secondary100</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorOnSurface">@color/secondary100</item>
+        <item name="colorSurfaceVariant">@color/neutral_variant50</item>
+        <item name="colorOnSurfaceVariant">@color/neutral_variant90</item>
+        <item name="colorOutline">@color/neutral_variant50</item>
+
+        <!--    Text appearance    -->
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.RecipeMe.Display.Large</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.RecipeMe.Display.Medium</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.RecipeMe.Display.Small</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.RecipeMe.Headline.Large</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.RecipeMe.Headline.Medium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.RecipeMe.Headline.Small</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.RecipeMe.Title.Large</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.RecipeMe.Title.Medium</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.RecipeMe.Title.Small</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.RecipeMe.Label.Large</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.RecipeMe.Label.Medium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.RecipeMe.Label.Small</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.RecipeMe.Body.Large</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.RecipeMe.Body.Medium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.RecipeMe.Body.Small</item>
+
+        <!--    Other    -->
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="android:statusBarColor">@android:color/black</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+    </style>
+
+    <style name="Theme.Recipeme" parent="Base.Theme.Recipeme" />
+</resources>

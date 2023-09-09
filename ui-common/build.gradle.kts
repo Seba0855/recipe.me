@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.navigation.safeargs)
+    alias(libs.plugins.kotlin.parcelize)
     id("pl.smcebi.recipeme.library")
 }
 
@@ -15,15 +18,20 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.google.material)
+    implementation(project(":domain-common"))
+    implementation(project(":domain-recipes"))
+
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.lifecycle.runtime)
+    implementation(libs.androidx.recyclerview)
 
     // UI
     implementation(libs.google.material)
     implementation(libs.androidx.constraintlayout)
+
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+
     implementation(libs.glide)
     implementation(libs.glide.recyclerView) {
         // Excludes the support library because it's already included by Glide.
