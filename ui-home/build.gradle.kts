@@ -1,44 +1,38 @@
-@file:Suppress("UnstableApiUsage", "DSL_SCOPE_VIOLATION")
-
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.navigation.safeargs)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.dagger.hilt)
-    alias(libs.plugins.ktlint)
-    alias(libs.plugins.secrets.plugin)
-    alias(libs.plugins.kotlin.serialization)
-    id("pl.smcebi.recipeme.application")
+    alias(libs.plugins.navigation.safeargs)
+    alias(libs.plugins.kotlin.parcelize)
+    id("pl.smcebi.recipeme.library")
 }
 
 android {
-    namespace = "pl.smcebi.recipeme"
+    namespace = "pl.smcebi.recipeme.ui.home"
 
-    hilt {
-        enableAggregatingTask = true
+    buildFeatures {
+        viewBinding = true
     }
 }
 
 dependencies {
-    implementation(project(":retrofit-base"))
-    implementation(project(":datasource-recipes"))
-    implementation(project(":datasource-recipes-network"))
+    implementation(project(":domain-common"))
+    implementation(project(":domain-recipes"))
     implementation(project(":ui-common"))
-    implementation(project(":ui-home"))
 
-    // Core
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.lifecycle.runtime)
+    implementation(libs.androidx.recyclerview)
 
     // UI
     implementation(libs.google.material)
     implementation(libs.androidx.constraintlayout)
+
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+
     implementation(libs.glide)
     implementation(libs.glide.recyclerView) {
         // Excludes the support library because it's already included by Glide.
@@ -49,14 +43,6 @@ dependencies {
     implementation(libs.androidx.emoji2)
     implementation(libs.androidx.emoji2.views)
     implementation(libs.androidx.emoji2.views.helper)
-
-    // Networking
-    implementation(libs.kotlin.serialization.serializationJson)
-    implementation(libs.kotlin.serialization.retrofitConverter)
-    implementation(libs.kotlin.coroutines.core)
-    implementation(libs.networking.retrofit)
-    implementation(libs.networking.okhttp)
-    implementation(libs.networking.okhttpLogging)
 
     // Dagger
     implementation(libs.dagger.hiltLib)
@@ -69,6 +55,7 @@ dependencies {
 
     testImplementation(libs.junit.core)
     androidTestImplementation(libs.junit.testExt)
+    androidTestImplementation(libs.espresso.core)
 }
 
 // Allow references to generated code

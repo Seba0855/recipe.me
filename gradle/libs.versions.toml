@@ -68,6 +68,7 @@ shimmer = "0.5.0"
 libPhoneNumber = "8.12.57"
 ktlint = "11.3.1"
 lottie = "6.0.0"
+dependencyAnalysis = "1.21.0"
 
 # JUnit
 junit4 = "4.13.2"
@@ -222,6 +223,7 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
+gradle-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref="dependencyAnalysis" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 google-services = { id = "com.google.gms.google-services", version.ref = "gmsPlugin" }

@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.ui.common.details
+package pl.smcebi.recipeme.ui.home.details
 
 internal data class RecipeDetailsState(
     val calories: String = "",

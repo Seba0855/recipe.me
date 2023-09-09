@@ -1,10 +1,10 @@
-package pl.smcebi.recipeme.ui.common.details
+package pl.smcebi.recipeme.ui.home.details
 
 import androidx.recyclerview.widget.RecyclerView
 import pl.smcebi.recipeme.domain.recipes.model.IngredientUI
 import pl.smcebi.recipeme.ui.common.extensions.load
-import pl.smcebi.recipeme.uicommon.R
-import pl.smcebi.recipeme.uicommon.databinding.ItemIngredientBinding
+import pl.smcebi.recipeme.ui.home.databinding.ItemIngredientBinding
+import pl.smcebi.recipeme.uicommon.R.drawable.ic_no_photo
 import kotlin.math.roundToInt
 
 internal class IngredientsViewHolder(
@@ -15,7 +15,7 @@ internal class IngredientsViewHolder(
         with(binding) {
             imageContainer.load(
                 data = ingredient.imageUrl,
-                fallback = R.drawable.ic_no_photo
+                fallback = ic_no_photo
             )
             ingredientNameTextView.text = ingredient.name
             amountTextView.text = buildString { append(ingredient.amount.roundUI(), " ", ingredient.unit) }

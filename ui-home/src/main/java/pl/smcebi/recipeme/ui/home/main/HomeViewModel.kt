@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.ui.common.home
+package pl.smcebi.recipeme.ui.home.main
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

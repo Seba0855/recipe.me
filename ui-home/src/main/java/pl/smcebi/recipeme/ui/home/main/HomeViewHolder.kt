@@ -1,12 +1,12 @@
-package pl.smcebi.recipeme.ui.common.home
+package pl.smcebi.recipeme.ui.home.main
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import pl.smcebi.recipeme.domain.recipes.model.RecipesUI
 import pl.smcebi.recipeme.ui.common.extensions.load
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
-import pl.smcebi.recipeme.uicommon.R
-import pl.smcebi.recipeme.uicommon.databinding.ItemRecipeCardBinding
+import pl.smcebi.recipeme.ui.home.databinding.ItemRecipeCardBinding
+import pl.smcebi.recipeme.uicommon.R.drawable.recipe_placeholder
 
 internal typealias OnItemViewClick = (View, Int) -> Unit
 internal typealias OnItemClick = (Int) -> Unit
@@ -19,7 +19,7 @@ internal class HomeViewHolder(
         with(binding) {
             recipeImage.load(
                 data = recipe.imageUrl,
-                fallback = R.drawable.recipe_placeholder
+                fallback = recipe_placeholder
             )
             recipeTitleTextView.text = recipe.title
             durationTextView.text = recipe.durationAndServings

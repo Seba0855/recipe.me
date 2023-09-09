@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.ui.common.home
+package pl.smcebi.recipeme.ui.home.main
 
 import pl.smcebi.recipeme.domain.recipes.model.RecipesUI
 

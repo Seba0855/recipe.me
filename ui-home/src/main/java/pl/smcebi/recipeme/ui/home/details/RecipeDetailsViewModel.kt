@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.ui.common.details
+package pl.smcebi.recipeme.ui.home.details
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

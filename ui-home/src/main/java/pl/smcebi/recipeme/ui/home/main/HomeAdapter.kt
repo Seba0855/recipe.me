@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.ui.common.home
+package pl.smcebi.recipeme.ui.home.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import pl.smcebi.recipeme.domain.recipes.model.RecipesUI
-import pl.smcebi.recipeme.uicommon.databinding.ItemRecipeCardBinding
+import pl.smcebi.recipeme.ui.home.databinding.ItemRecipeCardBinding
 
 internal class HomeAdapter(
     onRecipeClick: OnItemViewClick,

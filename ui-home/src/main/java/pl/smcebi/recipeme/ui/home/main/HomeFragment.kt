@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.ui.common.home
+package pl.smcebi.recipeme.ui.home.main
 
 import android.os.Bundle
 import android.view.View
@@ -15,8 +15,8 @@ import pl.smcebi.recipeme.ui.common.extensions.notImplemented
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
 import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
-import pl.smcebi.recipeme.uicommon.R
-import pl.smcebi.recipeme.uicommon.databinding.FragmentHomeBinding
+import pl.smcebi.recipeme.ui.home.R
+import pl.smcebi.recipeme.ui.home.databinding.FragmentHomeBinding
 
 @AndroidEntryPoint
 internal class HomeFragment : Fragment(R.layout.fragment_home) {

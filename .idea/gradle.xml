@@ -35,6 +35,7 @@
             <option value="$PROJECT_DIR$/retrofit-base" />
             <option value="$PROJECT_DIR$/retrofit-recipes" />
             <option value="$PROJECT_DIR$/ui-common" />
+            <option value="$PROJECT_DIR$/ui-home" />
           </set>
         </option>
       </GradleProjectSettings>

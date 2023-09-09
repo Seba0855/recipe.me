@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.ui.common.details
+package pl.smcebi.recipeme.ui.home.details
 
 import android.os.Bundle
 import android.text.Html
@@ -15,8 +15,9 @@ import pl.smcebi.recipeme.ui.common.extensions.load
 import pl.smcebi.recipeme.ui.common.extensions.notImplemented
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
-import pl.smcebi.recipeme.uicommon.R
-import pl.smcebi.recipeme.uicommon.databinding.FragmentRecipeDetailsBinding
+import pl.smcebi.recipeme.ui.home.R
+import pl.smcebi.recipeme.ui.home.databinding.FragmentRecipeDetailsBinding
+import pl.smcebi.recipeme.uicommon.R.drawable.recipe_placeholder
 
 @AndroidEntryPoint
 internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details) {
@@ -38,7 +39,7 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
         with(binding) {
             adapter = IngredientsAdapter()
             val recipe = args.recipe
-            recipeImage.load(data = recipe.imageUrl, fallback = R.drawable.recipe_placeholder)
+            recipeImage.load(data = recipe.imageUrl, fallback = recipe_placeholder)
             backButton.setSafeOnClickListener {
                 findNavController().navigateUp()
             }
@@ -49,8 +50,7 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
                 if (!descriptionExpanded) {
                     descriptionTextView.maxLines = Int.MAX_VALUE
                 } else {
-                    descriptionTextView.maxLines =
-                        DESCRIPTION_COLLAPSED_LINES
+                    descriptionTextView.maxLines = DESCRIPTION_COLLAPSED_LINES
                 }
 
                 descriptionExpanded = !descriptionExpanded

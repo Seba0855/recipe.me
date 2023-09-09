@@ -1,11 +1,11 @@
-package pl.smcebi.recipeme.ui.common.details
+package pl.smcebi.recipeme.ui.home.details
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import pl.smcebi.recipeme.domain.recipes.model.IngredientUI
-import pl.smcebi.recipeme.uicommon.databinding.ItemIngredientBinding
+import pl.smcebi.recipeme.ui.home.databinding.ItemIngredientBinding
 
 internal class IngredientsAdapter : ListAdapter<IngredientUI, IngredientsViewHolder>(DIFF_UTIL) {
 
