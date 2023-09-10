@@ -41,7 +41,7 @@ internal object BarcodeProductsModule {
     @Reusable
     @OpenFoodFacts
     fun provideBarcodeProductsRetrofit(
-        client: OkHttpClient,
+        @OpenFoodFacts client: OkHttpClient,
         json: Json
     ): Retrofit =
         Retrofit.Builder()
@@ -54,5 +54,6 @@ internal object BarcodeProductsModule {
 
     @Provides
     @Reusable
+    @OpenFoodFacts
     fun provideBarcodeProductsApi(@OpenFoodFacts retrofit: Retrofit): BarcodeProductsApi = retrofit.create()
 }

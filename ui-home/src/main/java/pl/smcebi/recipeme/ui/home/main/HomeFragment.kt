@@ -47,7 +47,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 notImplemented()
             }
             randomButton.setSafeOnClickListener {
-                notImplemented()
+                viewModel.onRandomClicked()
             }
             connectionError.tryAgainButton.setSafeOnClickListener {
                 viewModel.tryAgain()

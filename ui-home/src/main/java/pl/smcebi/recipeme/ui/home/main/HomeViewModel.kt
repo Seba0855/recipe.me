@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import pl.smcebi.recipeme.domain.common.products.GetProductByBarcodeUseCase
 import pl.smcebi.recipeme.domain.common.translation.TranslateTextUseCase
 import pl.smcebi.recipeme.domain.recipes.GetRandomRecipesUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
@@ -21,6 +22,7 @@ import javax.inject.Inject
 internal class HomeViewModel @Inject constructor(
     private val getRandomRecipesUseCase: GetRandomRecipesUseCase,
     private val translateTextUseCase: TranslateTextUseCase,
+    private val getProductByBarcodeUseCase: GetProductByBarcodeUseCase,
 ) : ViewModel() {
 
     private val mutableState = MutableStateFlow(HomeViewState())
@@ -41,6 +43,14 @@ internal class HomeViewModel @Inject constructor(
     fun onBookmarkClick(position: Int) {
         viewModelScope.launch {
             translateTextUseCase("Chrząszcz brzmi w trzcinie").onSuccess {
+                mutableEvent.send(HomeViewEvent.ShowError(it))
+            }
+        }
+    }
+
+    fun onRandomClicked() {
+        viewModelScope.launch {
+            getProductByBarcodeUseCase("5900397016590").onSuccess {
                 mutableEvent.send(HomeViewEvent.ShowError(it))
             }
         }

@@ -23,6 +23,7 @@ android {
 
 dependencies {
     implementation(project(":retrofit-base"))
+    implementation(project(":model-products"))
 
     // Core
     implementation(libs.androidx.core.ktx)
