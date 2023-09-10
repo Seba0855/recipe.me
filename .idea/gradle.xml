@@ -33,6 +33,8 @@
             <option value="$PROJECT_DIR$/domain-recipes" />
             <option value="$PROJECT_DIR$/model-recipes" />
             <option value="$PROJECT_DIR$/retrofit-base" />
+            <option value="$PROJECT_DIR$/retrofit-deepl" />
+            <option value="$PROJECT_DIR$/retrofit-openfoodfacts" />
             <option value="$PROJECT_DIR$/retrofit-recipes" />
             <option value="$PROJECT_DIR$/ui-common" />
             <option value="$PROJECT_DIR$/ui-home" />
