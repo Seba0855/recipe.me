@@ -15,6 +15,8 @@ android {
 
 dependencies {
     implementation(project(":datasource-common"))
+    implementation(project(":datasource-translation"))
+    implementation(project(":model-deepl"))
 
     implementation(libs.kotlin.coroutines.core)
     implementation(libs.kotlin.serialization.serializationJson)

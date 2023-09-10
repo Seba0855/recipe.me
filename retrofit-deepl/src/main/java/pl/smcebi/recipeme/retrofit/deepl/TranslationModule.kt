@@ -45,7 +45,7 @@ internal object TranslationModule {
     @Reusable
     @DeepL
     fun provideTranslationsRetrofit(
-        client: OkHttpClient,
+        @DeepL client: OkHttpClient,
         json: Json
     ): Retrofit =
         Retrofit.Builder()
@@ -57,5 +57,6 @@ internal object TranslationModule {
     private const val CALL_TIMEOUT = 10L
     @Provides
     @Reusable
+    @DeepL
     fun provideTranslationApi(@DeepL retrofit: Retrofit): TranslationApi = retrofit.create()
 }

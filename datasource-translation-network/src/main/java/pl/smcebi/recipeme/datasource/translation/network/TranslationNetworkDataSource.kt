@@ -8,11 +8,12 @@ import pl.smcebi.recipeme.datasource.common.apiCall
 import pl.smcebi.recipeme.datasource.translation.TranslationDataSource
 import pl.smcebi.recipeme.model.deepl.TranslateBody
 import pl.smcebi.recipeme.model.deepl.TranslateResponse
+import pl.smcebi.recipeme.retrofit.deepl.DeepL
 import pl.smcebi.recipeme.retrofit.deepl.TranslationApi
 import javax.inject.Inject
 
 internal class TranslationNetworkDataSource @Inject constructor(
-    private val api: TranslationApi,
+    @DeepL private val api: TranslationApi,
     @NetworkCoroutineDispatcher private val dispatcher: CoroutineDispatcher,
     private val json: Json
 ) : TranslationDataSource {
