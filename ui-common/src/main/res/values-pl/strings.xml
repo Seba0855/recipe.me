@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_close_snackbar">Zamknij</string>
+    <string name="common_something_went_wrong">Wystąpił błąd. \nSpróbuj ponownie później</string>
+
+    <string name="common_copy_confirmation">Skopiowano</string>
+
+    <string name="common_connection_error">Wystąpił problem przy pobieraniu danych.</string>
+    <string name="common_connection_error_try_again">Spróbuj ponownie</string>
+</resources>

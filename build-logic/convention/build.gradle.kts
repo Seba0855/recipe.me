@@ -5,8 +5,8 @@ plugins {
 group = "pl.smcebi.recipeme.buildlogic"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
@@ -16,9 +16,17 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        create("androidApplication") {
-            id = "pl.smcebi.recipeme.configuration"
-            implementationClass = "pl.smcebi.recipeme.plugins.AndroidApplicationConventionPlugin"
+        create("application") {
+            id = "pl.smcebi.recipeme.application"
+            implementationClass = "pl.smcebi.recipeme.plugins.AndroidApplicationPlugin"
+        }
+        create("library") {
+            id = "pl.smcebi.recipeme.library"
+            implementationClass = "pl.smcebi.recipeme.plugins.AndroidLibraryPlugin"
+        }
+        create("model") {
+            id = "pl.smcebi.recipeme.model"
+            implementationClass = "pl.smcebi.recipeme.plugins.KotlinLibraryPlugin"
         }
     }
 }

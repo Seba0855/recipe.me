@@ -1,0 +1,9 @@
+<resources>
+    <string name="common_close_snackbar">Close</string>
+    <string name="common_something_went_wrong">Something went wrong. \nTry again later</string>
+
+    <string name="common_copy_confirmation">Copied to clipboard</string>
+
+    <string name="common_connection_error">Connection error.</string>
+    <string name="common_connection_error_try_again">Try again</string>
+</resources>

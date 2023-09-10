@@ -1,32 +1,3 @@
 <resources>
     <string name="app_name">recipe.me</string>
-
-    <string name="common_close_snackbar">Zamknij</string>
-    <string name="common_something_went_wrong">Wystąpił błąd. \nSpróbuj ponownie później</string>
-
-    <string name="common_copy_confirmation">Skopiowano</string>
-
-    <string name="common_connection_error">Wystąpił problem przy pobieraniu danych.</string>
-    <string name="common_connection_error_try_again">Spróbuj ponownie</string>
-
-    <string name="fragment_home_logged_in_placeholder">Cześć, Sebastian</string>
-
-    <string name="fragment_home_log_in">Zaloguj się</string>
-    <string name="fragment_home_headline">Co dziś <b>upichcimy?</b></string>
-    <string name="fragment_home_search">Szukaj…</string>
-    <string name="fragment_home_label">Przepisy</string>
-    <string name="fragment_home_random">Losowe</string>
-
-    <string name="fragment_details_dish_type">🍽 %1$s</string>
-    <string name="fragment_details_duration">⏱ %1$s minut</string>
-    <string name="fragment_details_meal_servings">🍲 danie na %1$s porcje</string>
-    <string name="fragment_details_description">Opis</string>
-    <string name="fragment_details_nutrients">Wartości odżywcze</string>
-    <string name="fragment_details_calories">Kalorie</string>
-    <string name="fragment_details_proteins">Białka</string>
-    <string name="fragment_details_fats">Tłuszcze</string>
-    <string name="fragment_details_carbohydrates">Węglowodany</string>
-    <string name="fragment_details_ingredients">Składniki</string>
-    <string name="fragment_details_show_more">Pokaż więcej…</string>
-    <string name="fragment_details_show_less">Pokaż mniej…</string>
 </resources>

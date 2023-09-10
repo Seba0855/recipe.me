@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance" />
+
+    <!--     Base for all appearances     -->
+    <style name="TextAppearance.RecipeMe">
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+
+    <!--     Display     -->
+    <style name="TextAppearance.RecipeMe.Display">
+        <item name="android:fontFamily">@font/biotif_regular</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Display.Large">
+        <item name="android:textSize">57sp</item>
+        <item name="android:lineSpacingExtra">7sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Display.Medium">
+        <item name="android:textSize">45sp</item>
+        <item name="android:lineSpacingExtra">7sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Display.Small">
+        <item name="android:textSize">36sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <!--     Headline     -->
+    <style name="TextAppearance.RecipeMe.Headline">
+        <item name="android:fontFamily">@font/biotif_regular</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Headline.Large">
+        <item name="android:textSize">32sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Headline.Medium">
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Headline.Small">
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <!--     Title     -->
+    <style name="TextAppearance.RecipeMe.Title">
+        <item name="android:fontFamily">@font/biotif_medium</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Title.Large">
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Title.Medium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Title.Small">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <!--     Label     -->
+    <style name="TextAppearance.RecipeMe.Label">
+        <item name="android:fontFamily">@font/biotif_medium</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Label.Large">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Label.Medium">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Label.Small">
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+
+    <!--     Body     -->
+    <style name="TextAppearance.RecipeMe.Body">
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:fontFamily">@font/biotif_regular</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Body.Large">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Body.Medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="TextAppearance.RecipeMe.Body.Small">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+</resources>

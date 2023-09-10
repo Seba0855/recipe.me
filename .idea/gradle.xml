@@ -19,13 +19,23 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="Embedded JDK" />
+        <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
+            <option value="$PROJECT_DIR$/datasource-common" />
+            <option value="$PROJECT_DIR$/datasource-recipes" />
+            <option value="$PROJECT_DIR$/datasource-recipes-network" />
+            <option value="$PROJECT_DIR$/domain-common" />
+            <option value="$PROJECT_DIR$/domain-recipes" />
+            <option value="$PROJECT_DIR$/model-recipes" />
+            <option value="$PROJECT_DIR$/retrofit-base" />
+            <option value="$PROJECT_DIR$/retrofit-recipes" />
+            <option value="$PROJECT_DIR$/ui-common" />
+            <option value="$PROJECT_DIR$/ui-home" />
           </set>
         </option>
       </GradleProjectSettings>
