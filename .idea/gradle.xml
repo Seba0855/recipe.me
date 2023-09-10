@@ -27,11 +27,16 @@
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
             <option value="$PROJECT_DIR$/datasource-common" />
+            <option value="$PROJECT_DIR$/datasource-products" />
+            <option value="$PROJECT_DIR$/datasource-products-network" />
             <option value="$PROJECT_DIR$/datasource-recipes" />
             <option value="$PROJECT_DIR$/datasource-recipes-network" />
+            <option value="$PROJECT_DIR$/datasource-translation" />
+            <option value="$PROJECT_DIR$/datasource-translation-network" />
             <option value="$PROJECT_DIR$/domain-common" />
             <option value="$PROJECT_DIR$/domain-recipes" />
             <option value="$PROJECT_DIR$/model-deepl" />
+            <option value="$PROJECT_DIR$/model-products" />
             <option value="$PROJECT_DIR$/model-recipes" />
             <option value="$PROJECT_DIR$/retrofit-base" />
             <option value="$PROJECT_DIR$/retrofit-deepl" />

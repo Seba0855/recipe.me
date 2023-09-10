@@ -8,7 +8,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -19,7 +18,7 @@ import java.time.Duration
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object TranslateModule {
+internal object TranslationModule {
 
     @Provides
     @Reusable
@@ -58,5 +57,5 @@ internal object TranslateModule {
     private const val CALL_TIMEOUT = 10L
     @Provides
     @Reusable
-    fun provideTranslationApi(@DeepL retrofit: Retrofit): TranslateApi = retrofit.create()
+    fun provideTranslationApi(@DeepL retrofit: Retrofit): TranslationApi = retrofit.create()
 }
