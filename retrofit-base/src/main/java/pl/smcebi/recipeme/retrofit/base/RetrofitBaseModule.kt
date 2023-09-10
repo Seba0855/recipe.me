@@ -13,6 +13,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
+import pl.smcebi.recipeme.retrofit.base.interceptors.ApiKeyInterceptor
 import retrofit2.Retrofit
 import java.time.Duration
 
@@ -23,13 +24,11 @@ internal object RetrofitBaseModule {
     @Provides
     @Reusable
     fun provideOkHttpClient(
-        interceptors: Set<@JvmSuppressWildcards Interceptor>
+        apiKeyInterceptor: ApiKeyInterceptor,
     ): OkHttpClient =
         OkHttpClient.Builder()
             .apply {
-                interceptors.forEach {
-                    addInterceptor(it)
-                }
+                addInterceptor(apiKeyInterceptor)
                 if (BuildConfig.DEBUG) {
                     addInterceptor(
                         HttpLoggingInterceptor().apply {

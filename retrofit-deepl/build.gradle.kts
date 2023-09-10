@@ -13,8 +13,8 @@ android {
     namespace = "pl.smcebi.recipeme.retrofit.deepl"
 
     defaultConfig {
-        buildConfigField("String", "BASE_URL", getLocalProperty("DEEPL_BASE_URL"))
-        buildConfigField("String", "API_KEY", getLocalProperty("DEEPL_API_KEY"))
+        buildConfigField("String", "DEEPL_BASE_URL", getLocalProperty("DEEPL_BASE_URL"))
+        buildConfigField("String", "DEEPL_API_KEY", getLocalProperty("DEEPL_API_KEY"))
     }
 
     buildFeatures {
@@ -23,6 +23,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":retrofit-base"))
     implementation(project(":model-deepl"))
 
     // Core

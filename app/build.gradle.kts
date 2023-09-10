@@ -25,6 +25,8 @@ android {
 
 dependencies {
     implementation(project(":retrofit-base"))
+    implementation(project(":retrofit-deepl"))
+    implementation(project(":retrofit-openfoodfacts"))
     implementation(project(":datasource-recipes"))
     implementation(project(":datasource-recipes-network"))
     implementation(project(":ui-common"))

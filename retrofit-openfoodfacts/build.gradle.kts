@@ -13,7 +13,7 @@ android {
     namespace = "pl.smcebi.recipeme.retrofit.openfoodfacts"
 
     defaultConfig {
-        buildConfigField("String", "BASE_URL", getLocalProperty("OFF_BASE_URL"))
+        buildConfigField("String", "OFF_BASE_URL", getLocalProperty("OFF_BASE_URL"))
     }
 
     buildFeatures {
@@ -22,6 +22,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":retrofit-base"))
 
     // Core
     implementation(libs.androidx.core.ktx)
