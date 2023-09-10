@@ -31,6 +31,7 @@
             <option value="$PROJECT_DIR$/datasource-recipes-network" />
             <option value="$PROJECT_DIR$/domain-common" />
             <option value="$PROJECT_DIR$/domain-recipes" />
+            <option value="$PROJECT_DIR$/model-deepl" />
             <option value="$PROJECT_DIR$/model-recipes" />
             <option value="$PROJECT_DIR$/retrofit-base" />
             <option value="$PROJECT_DIR$/retrofit-deepl" />
