@@ -44,6 +44,7 @@
             <option value="$PROJECT_DIR$/retrofit-recipes" />
             <option value="$PROJECT_DIR$/ui-common" />
             <option value="$PROJECT_DIR$/ui-home" />
+            <option value="$PROJECT_DIR$/ui-scanner" />
           </set>
         </option>
       </GradleProjectSettings>
