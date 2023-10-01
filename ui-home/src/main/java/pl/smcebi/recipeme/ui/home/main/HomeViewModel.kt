@@ -1,12 +1,16 @@
 package pl.smcebi.recipeme.ui.home.main
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
+import pl.smcebi.recipeme.domain.common.products.GetProductByBarcodeUseCase
+import pl.smcebi.recipeme.domain.common.translation.TranslateTextUseCase
 import pl.smcebi.recipeme.domain.recipes.GetRandomRecipesUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
@@ -16,7 +20,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class HomeViewModel @Inject constructor(
-    private val getRandomRecipesUseCase: GetRandomRecipesUseCase
+    private val getRandomRecipesUseCase: GetRandomRecipesUseCase,
+    private val translateTextUseCase: TranslateTextUseCase,
+    private val getProductByBarcodeUseCase: GetProductByBarcodeUseCase,
 ) : ViewModel() {
 
     private val mutableState = MutableStateFlow(HomeViewState())
@@ -35,7 +41,19 @@ internal class HomeViewModel @Inject constructor(
     }
 
     fun onBookmarkClick(position: Int) {
-        TODO("Not implemented")
+        viewModelScope.launch {
+            translateTextUseCase("Chrząszcz brzmi w trzcinie").onSuccess {
+                mutableEvent.send(HomeViewEvent.ShowError(it))
+            }
+        }
+    }
+
+    fun onRandomClicked() {
+        viewModelScope.launch {
+            getProductByBarcodeUseCase("5900397016590").onSuccess {
+                mutableEvent.send(HomeViewEvent.ShowError(it))
+            }
+        }
     }
 
     private fun fetchRecipes() {

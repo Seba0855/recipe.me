@@ -41,13 +41,13 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         with(binding) {
             adapter = HomeAdapter(
                 onRecipeClick = ::navigateDetails,
-                onBookmarkClick = { notImplemented() }
+                onBookmarkClick = viewModel::onBookmarkClick
             )
             menuButton.setSafeOnClickListener {
                 notImplemented()
             }
             randomButton.setSafeOnClickListener {
-                notImplemented()
+                viewModel.onRandomClicked()
             }
             connectionError.tryAgainButton.setSafeOnClickListener {
                 viewModel.tryAgain()
