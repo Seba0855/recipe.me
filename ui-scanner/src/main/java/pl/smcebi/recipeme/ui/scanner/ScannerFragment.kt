@@ -5,4 +5,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
+
+
 }
