@@ -2,6 +2,7 @@ package pl.smcebi.recipeme.ui.home.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.net.toUri
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
 import pl.smcebi.recipeme.ui.home.R
 import pl.smcebi.recipeme.ui.home.databinding.FragmentHomeBinding
+import pl.smcebi.recipeme.uicommon.R.string.deep_link_barcode_scanner
 
 @AndroidEntryPoint
 internal class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -44,7 +46,9 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 onBookmarkClick = viewModel::onBookmarkClick
             )
             menuButton.setSafeOnClickListener {
-                notImplemented()
+                findNavController().navigate(
+                    getString(deep_link_barcode_scanner).toUri()
+                )
             }
             randomButton.setSafeOnClickListener {
                 viewModel.onRandomClicked()

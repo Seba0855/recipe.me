@@ -35,6 +35,7 @@ dependencies {
     implementation(project(":datasource-recipes-network"))
     implementation(project(":ui-common"))
     implementation(project(":ui-home"))
+    implementation(project(":ui-scanner"))
 
     // Core
     implementation(libs.androidx.core.ktx)

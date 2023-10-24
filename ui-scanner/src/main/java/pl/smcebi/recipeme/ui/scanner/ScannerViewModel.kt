@@ -6,14 +6,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import pl.smcebi.recipeme.barcode.scanner.BarcodeData
-import pl.smcebi.recipeme.barcode.scanner.BarcodeScanner
 import pl.smcebi.recipeme.barcode.scanner.CameraConfigProvider
+import pl.smcebi.recipeme.barcode.scanner.local.BarcodeScannerMlKit
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 internal class ScannerViewModel @Inject constructor(
-    private val barcodeScanner: BarcodeScanner
+    private val barcodeScanner: BarcodeScannerMlKit
 ) : ViewModel(), CameraConfigProvider by barcodeScanner {
 
     init {
@@ -23,6 +23,7 @@ internal class ScannerViewModel @Inject constructor(
     }
 
     private fun handleBarcodeData(data: BarcodeData) {
+
         Timber.d("New data: ${data.value}")
     }
 }

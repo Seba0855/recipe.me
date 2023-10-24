@@ -43,6 +43,7 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
         super.onViewCreated(view, savedInstanceState)
 
         preview = createPreview()
+        startImageAnalysis()
     }
 
     override fun onStart() {
@@ -53,6 +54,7 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
 
     override fun onDestroyView() {
         preview = null
+        stopImageAnalysis()
         super.onDestroyView()
     }
 

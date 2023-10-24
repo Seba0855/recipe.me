@@ -2,8 +2,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.dagger.hilt)
     id("pl.smcebi.recipeme.library")
 }
 
@@ -24,4 +24,8 @@ dependencies {
     kapt(libs.dagger.daggerProc)
 
     implementation(libs.timber)
+}
+
+kapt {
+    correctErrorTypes = true
 }
