@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/barcodes_nav_graph"
-    app:startDestination="@id/scannerFragment">
+    app:startDestination="@id/resolverFragment">
 
     <fragment
-        android:id="@+id/scannerFragment"
-        android:name="pl.smcebi.recipeme.ui.scanner.camera.ScannerFragment"
+        android:id="@+id/resolverFragment"
+        android:name="pl.smcebi.recipeme.ui.scanner.resolver.ProductResolverFragment"
         android:label="ScannerFragment"
-        tools:layout="@layout/fragment_scanner">
+        tools:layout="@layout/fragment_product_resolver">
 
         <deepLink app:uri="@string/deep_link_barcode_scanner" />
     </fragment>

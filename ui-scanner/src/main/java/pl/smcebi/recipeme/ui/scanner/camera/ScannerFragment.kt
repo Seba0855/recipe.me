@@ -46,8 +46,6 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
         super.onViewCreated(view, savedInstanceState)
 
         preview = createPreview()
-        startImageAnalysis()
-        collectOnViewLifecycle(viewModel.event, ::onNewEvent)
     }
 
     override fun onStart() {
@@ -58,7 +56,6 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
 
     override fun onDestroyView() {
         preview = null
-        stopImageAnalysis()
         super.onDestroyView()
     }
 
@@ -73,12 +70,6 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
     fun stopImageAnalysis() {
         if (hasCameraPermission()) detachCameraAnalysis()
         shouldAttachAnalysis = false
-    }
-
-    private fun onNewEvent(event: ScannerEvent) {
-        when (event) {
-            is ScannerEvent.ShowScannedEan -> showSnackbar("Scanned ean: ${event.ean}")
-        }
     }
 
     private fun checkCameraPermission() {

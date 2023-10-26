@@ -71,9 +71,11 @@ internal class ProductResolverViewModel @Inject constructor(
         getProductByBarcodeUseCase(barcode.value)
             .onSuccess { productName ->
                 // handle resolved product info
+                mutableEvent.send(ProductResolverEvent.ShowProductName(productName))
             }
             .onFailure { message ->
                 // show error
+                mutableEvent.send(ProductResolverEvent.ShowError(message))
             }
     }
 
