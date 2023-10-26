@@ -22,7 +22,6 @@ import javax.inject.Inject
 internal class HomeViewModel @Inject constructor(
     private val getRandomRecipesUseCase: GetRandomRecipesUseCase,
     private val translateTextUseCase: TranslateTextUseCase,
-    private val getProductByBarcodeUseCase: GetProductByBarcodeUseCase,
 ) : ViewModel() {
 
     private val mutableState = MutableStateFlow(HomeViewState())
@@ -49,11 +48,7 @@ internal class HomeViewModel @Inject constructor(
     }
 
     fun onRandomClicked() {
-        viewModelScope.launch {
-            getProductByBarcodeUseCase("5900397016590").onSuccess {
-                mutableEvent.send(HomeViewEvent.ShowError(it))
-            }
-        }
+        mutableEvent.trySend(HomeViewEvent.ShowError("not implemented"))
     }
 
     private fun fetchRecipes() {
