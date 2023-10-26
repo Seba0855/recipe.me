@@ -1,6 +1,9 @@
 package pl.smcebi.recipeme.ui.common.extensions
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
@@ -21,6 +24,7 @@ import kotlinx.coroutines.launch
 import pl.smcebi.recipeme.ui.common.model.DialogArgs
 import pl.smcebi.recipeme.ui.common.model.DialogType
 import pl.smcebi.recipeme.uicommon.R
+import timber.log.Timber
 
 typealias OnClick = () -> Unit
 
@@ -119,5 +123,28 @@ fun Fragment.setParentFragmentResultListener(
         ) { key, bundle ->
             listener(key, bundle)
         }
+    }
+}
+
+fun Fragment.openApplicationSettings() {
+    runCatching {
+        startActivity(
+            Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                requireContext().getAppPackageUri(),
+            ),
+        )
+    }
+}
+
+/**
+ * Preventing unexpected [ActivityNotFoundException] when running `startActivity()`
+ */
+private inline fun Fragment.runCatching(intentBlock: () -> Unit) {
+    try {
+        intentBlock()
+    } catch (e: ActivityNotFoundException) {
+        Timber.e(e, "Failed to start new activity")
+        showSomethingWentWrong()
     }
 }

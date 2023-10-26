@@ -80,7 +80,7 @@ turbine = "0.12.1"
 
 
 # Dagger
-hilt = "2.45"
+hilt = "2.48.1"
 hiltExt = "1.0.0"
 
 # Kotlin
