@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.ui.scanner
+package pl.smcebi.recipeme.ui.scanner.camera
 
 import android.content.Context
 import androidx.camera.core.*

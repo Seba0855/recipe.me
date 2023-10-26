@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.ui.scanner
+package pl.smcebi.recipeme.ui.scanner.camera
 
 import android.Manifest
 import android.content.ActivityNotFoundException
@@ -12,10 +12,13 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.ui.common.extensions.afterMeasured
 import pl.smcebi.recipeme.ui.common.extensions.checkPermissionCompat
+import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.openApplicationSettings
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
+import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.extensions.showSomethingWentWrong
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
+import pl.smcebi.recipeme.ui.scanner.R
 import pl.smcebi.recipeme.ui.scanner.databinding.FragmentScannerBinding
 import timber.log.Timber
 
@@ -44,6 +47,7 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
 
         preview = createPreview()
         startImageAnalysis()
+        collectOnViewLifecycle(viewModel.event, ::onNewEvent)
     }
 
     override fun onStart() {
@@ -69,6 +73,12 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
     fun stopImageAnalysis() {
         if (hasCameraPermission()) detachCameraAnalysis()
         shouldAttachAnalysis = false
+    }
+
+    private fun onNewEvent(event: ScannerEvent) {
+        when (event) {
+            is ScannerEvent.ShowScannedEan -> showSnackbar("Scanned ean: ${event.ean}")
+        }
     }
 
     private fun checkCameraPermission() {
