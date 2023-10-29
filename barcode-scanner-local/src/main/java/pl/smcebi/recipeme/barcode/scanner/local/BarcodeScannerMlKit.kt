@@ -1,8 +1,9 @@
 package pl.smcebi.recipeme.barcode.scanner.local
 
-import android.util.Size
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.resolutionselector.ResolutionSelector
+import androidx.camera.core.resolutionselector.ResolutionStrategy
 import kotlinx.coroutines.flow.Flow
 import pl.smcebi.recipeme.barcode.scanner.BarcodeData
 import pl.smcebi.recipeme.barcode.scanner.InternalBarcodeScanner
@@ -16,7 +17,12 @@ class BarcodeScannerMlKit @Inject constructor(
 ) : InternalBarcodeScanner {
 
     private val imageAnalysis = ImageAnalysis.Builder()
-        .setTargetResolution(Size(IMAGE_WIDTH, IMAGE_HEIGHT))
+        .setResolutionSelector(
+            ResolutionSelector.Builder()
+                .setResolutionStrategy(
+                    ResolutionStrategy.HIGHEST_AVAILABLE_STRATEGY
+                ).build()
+        )
         .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
         .build()
         .apply {
@@ -28,9 +34,4 @@ class BarcodeScannerMlKit @Inject constructor(
     override fun getCameraSelector(): CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
     override fun getImageAnalysis(): ImageAnalysis = imageAnalysis
-
-    private companion object {
-        private const val IMAGE_WIDTH = 1280
-        private const val IMAGE_HEIGHT = 720
-    }
 }
