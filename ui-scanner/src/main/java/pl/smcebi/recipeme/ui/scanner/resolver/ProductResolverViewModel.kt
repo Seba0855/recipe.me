@@ -20,6 +20,7 @@ import pl.smcebi.recipeme.domain.common.products.GetProductByBarcodeUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
 import pl.smcebi.recipeme.ui.common.vibration.VibrationProvider
+import timber.log.Timber
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -76,6 +77,10 @@ internal class ProductResolverViewModel @Inject constructor(
             .onFailure { message ->
                 // show error
                 mutableEvent.send(ProductResolverEvent.ShowError(message))
+            }
+            .also {
+            Timber.d("Resuming image analysis")
+                mutableEvent.send(ProductResolverEvent.ResumeImageAnalysis)
             }
     }
 
