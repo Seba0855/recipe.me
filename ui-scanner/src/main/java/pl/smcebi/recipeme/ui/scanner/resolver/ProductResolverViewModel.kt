@@ -78,10 +78,6 @@ internal class ProductResolverViewModel @Inject constructor(
                 // show error
                 mutableEvent.send(ProductResolverEvent.ShowError(message))
             }
-            .also {
-            Timber.d("Resuming image analysis")
-                mutableEvent.send(ProductResolverEvent.ResumeImageAnalysis)
-            }
     }
 
     private companion object {
