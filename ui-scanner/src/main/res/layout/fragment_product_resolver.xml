@@ -13,6 +13,10 @@
         tools:layout="@layout/fragment_scanner"
         tools:visibility="gone" />
 
+    <pl.smcebi.recipeme.ui.scanner.overlay.ScannerOverlayView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
@@ -29,7 +33,7 @@
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Skanowanie..."
+        android:text="@string/fragment_resolver_scanning"
         android:textAppearance="?attr/textAppearanceBodyMedium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +52,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
-
-    <!-- tu pewnie przydałby sie też jakiś kwadrat jako placeholder do skanera -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

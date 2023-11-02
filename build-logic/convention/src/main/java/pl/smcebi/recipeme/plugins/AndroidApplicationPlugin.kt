@@ -24,7 +24,6 @@ class AndroidApplicationPlugin : Plugin<Project> {
 
             with(extensions.getByType<AppExtension>()) {
                 compileSdkVersion = libs.getVersionByName("compileSdk")
-                buildToolsVersion = libs.getVersionByName("buildTools")
 
                 with(defaultConfig) {
                     applicationId = "pl.smcebi.recipeme"

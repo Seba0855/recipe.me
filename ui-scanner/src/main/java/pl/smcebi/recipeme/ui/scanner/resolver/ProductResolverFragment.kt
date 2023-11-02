@@ -52,8 +52,15 @@ internal class ProductResolverFragment : Fragment(R.layout.fragment_product_reso
         when (event) {
             ProductResolverEvent.ResumeImageAnalysis -> startBarcodeCollection()
             ProductResolverEvent.StopImageAnalysis -> stopBarcodeCollection()
-            is ProductResolverEvent.ShowProductName -> showSnackbar(event.name, ::startBarcodeCollection)
-            is ProductResolverEvent.ShowError -> showSnackbar(event.message, ::startBarcodeCollection)
+            is ProductResolverEvent.ShowProductName -> showSnackbar(
+                event.name,
+                ::startBarcodeCollection
+            )
+
+            is ProductResolverEvent.ShowError -> showSnackbar(
+                event.message,
+                ::startBarcodeCollection
+            )
         }
     }
 

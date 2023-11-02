@@ -12,10 +12,8 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.ui.common.extensions.afterMeasured
 import pl.smcebi.recipeme.ui.common.extensions.checkPermissionCompat
-import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.openApplicationSettings
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
-import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.extensions.showSomethingWentWrong
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
 import pl.smcebi.recipeme.ui.scanner.R
@@ -151,7 +149,7 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
 
     private fun onShowCameraPermissionRationale() {
         with(binding) {
-            permissionDeniedButton.setText(R.string.fragment_qr_code_scanner_permission_rationale)
+            permissionDeniedButton.setText(R.string.fragment_barcode_scanner_permission_rationale)
             permissionDeniedButton.setSafeOnClickListener {
                 requestCameraPermission()
             }
@@ -161,7 +159,7 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
 
     private fun onCameraPermissionDenied() {
         with(binding) {
-            permissionDeniedButton.setText(R.string.fragment_qr_code_scanner_permission_denied)
+            permissionDeniedButton.setText(R.string.fragment_barcode_scanner_permission_denied)
             permissionDeniedButton.setSafeOnClickListener {
                 try {
                     openApplicationSettings()

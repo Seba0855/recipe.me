@@ -35,7 +35,7 @@
         android:layout_marginHorizontal="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_medium"
         android:gravity="center"
-        android:text="@string/fragment_qr_code_scanner_permission_info_label"
+        android:text="@string/fragment_barcode_scanner_permission_info_label"
         android:textAppearance="?attr/textAppearanceBodyMedium"
         app:layout_constraintBottom_toTopOf="@id/permissionDeniedButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/scannerInfoLabel"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:text="@string/fragment_qr_code_scanner_permission_rationale" />
+        tools:text="@string/fragment_barcode_scanner_permission_rationale" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/permissionDeniedView"
