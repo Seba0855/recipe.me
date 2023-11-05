@@ -23,7 +23,7 @@ internal interface BarcodeScannerModule {
         fun provideBarcodeScanning(): BarcodeScanner =
             BarcodeScanning.getClient(
                 BarcodeScannerOptions.Builder()
-                    .setBarcodeFormats(Barcode.FORMAT_EAN_13)
+                    .setBarcodeFormats(Barcode.FORMAT_EAN_13, Barcode.FORMAT_EAN_8)
                     .build()
             )
     }

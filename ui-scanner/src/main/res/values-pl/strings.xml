@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="fragment_qr_code_scanner_permission_info_label">Aby móc skanować kody kreskowe produktów, zezwól na dostęp do Aparatu</string>
-    <string name="fragment_qr_code_scanner_permission_rationale">Wyrażam zgodę</string>
-    <string name="fragment_qr_code_scanner_permission_denied">Przejdź do ustawień</string>
+    <string name="fragment_barcode_scanner_permission_info_label">Aby móc skanować kody kreskowe produktów, zezwól na dostęp do Aparatu</string>
+    <string name="fragment_barcode_scanner_permission_rationale">Wyrażam zgodę</string>
+    <string name="fragment_barcode_scanner_permission_denied">Przejdź do ustawień</string>
+    <string name="fragment_resolver_scanning">Scanning…</string>
 </resources>

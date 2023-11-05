@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="fragment_qr_code_scanner_permission_info_label">To scan product barcodes, allow access to the Camera</string>
-    <string name="fragment_qr_code_scanner_permission_rationale">I consent</string>
-    <string name="fragment_qr_code_scanner_permission_denied">Go to settings</string>
+    <string name="fragment_barcode_scanner_permission_info_label">To scan product barcodes, allow access to the Camera</string>
+    <string name="fragment_barcode_scanner_permission_rationale">I consent</string>
+    <string name="fragment_barcode_scanner_permission_denied">Go to settings</string>
+    <string name="fragment_resolver_scanning">Scanning…</string>
 </resources>

@@ -34,10 +34,9 @@ class BarcodeImageAnalyzer @Inject constructor(
             .addOnSuccessListener { barcodes ->
                 barcodes.firstNotNullOfOrNull {
                     it.rawValue
+                }?.let { data ->
+                    sharedBarcodesFlow.tryEmit(BarcodeData(data))
                 }
-                    ?.let { data ->
-                        sharedBarcodesFlow.tryEmit(BarcodeData(data))
-                    }
             }
             .addOnFailureListener { exception ->
                 Timber.e(exception, "Failed to recognize barcode")

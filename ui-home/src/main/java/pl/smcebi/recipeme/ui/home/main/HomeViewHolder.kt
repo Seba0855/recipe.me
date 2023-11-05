@@ -29,13 +29,13 @@ internal class HomeViewHolder(
 
     fun setOnRecipeClickListener(listener: OnItemViewClick) {
         binding.root.setSafeOnClickListener {
-            listener(binding.root, adapterPosition)
+            listener(binding.root, bindingAdapterPosition)
         }
     }
 
     fun setOnBookmarkClickListener(listener: OnItemClick) {
         binding.bookmarkButton.setSafeOnClickListener {
-            listener(adapterPosition)
+            listener(bindingAdapterPosition)
         }
     }
 }

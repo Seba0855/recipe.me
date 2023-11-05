@@ -19,9 +19,6 @@ internal class ScannerViewModel @Inject constructor(
     private val barcodeScanner: BarcodeScannerMlKit
 ) : ViewModel(), CameraConfigProvider by barcodeScanner {
 
-    private val mutableEvent = EventsChannel<ScannerEvent>()
-    val event: Flow<ScannerEvent> = mutableEvent.receiveAsFlow()
-
     init {
         barcodeScanner.barcodesFlow
             .onEach(::handleBarcodeData)
@@ -30,6 +27,5 @@ internal class ScannerViewModel @Inject constructor(
 
     private fun handleBarcodeData(data: BarcodeData) {
         Timber.d("New data: ${data.value}")
-        mutableEvent.trySend(ScannerEvent.ShowScannedEan(data.value))
     }
 }

@@ -15,7 +15,13 @@ class GetProductByBarcodeUseCase @Inject internal constructor(
     suspend operator fun invoke(ean: String): DomainResult<String, String?> = withContext(dispatcher) {
         barcodeProductsDataSource.getProduct(ean).map(
             onSuccess = { productResponse ->
-                DomainResult.Success(productResponse.product.productName)
+                val product = productResponse.product
+
+                if (product == null) {
+                    DomainResult.Success(productResponse.productStatus.toString())
+                } else {
+                    DomainResult.Success(product.productName)
+                }
             },
             onError = { _, errorBody ->
                 DomainResult.Failure(errorBody.getErrorMessage())
