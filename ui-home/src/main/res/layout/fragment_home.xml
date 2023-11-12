@@ -16,39 +16,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/menuButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/margin_big"
-                android:src="@drawable/menu_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/logInTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/margin_big"
-                android:text="@string/fragment_home_logged_in_placeholder"
-                android:textAppearance="?attr/textAppearanceLabelMedium"
-                app:layout_constraintBottom_toBottomOf="@id/menuButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/menuButton"
-                tools:text="@string/fragment_home_log_in" />
-
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/recipeTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_big"
-                android:layout_marginTop="@dimen/margin_xbig"
+                android:layout_marginTop="@dimen/margin_xxxbig"
                 android:text="@string/fragment_home_headline"
                 android:textAppearance="?attr/textAppearanceHeadlineSmall"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/menuButton" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/searchBarPlaceholder"
