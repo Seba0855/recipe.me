@@ -6,4 +6,8 @@
 
     <string name="common_connection_error">Connection error.</string>
     <string name="common_connection_error_try_again">Try again</string>
+
+    <string name="common_navigation_home">Recipes</string>
+    <string name="common_navigation_saved">Saved</string>
+    <string name="common_navigation_products">My products</string>
 </resources>

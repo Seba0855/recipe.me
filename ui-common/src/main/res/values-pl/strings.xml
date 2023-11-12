@@ -7,4 +7,8 @@
 
     <string name="common_connection_error">Wystąpił problem przy pobieraniu danych.</string>
     <string name="common_connection_error_try_again">Spróbuj ponownie</string>
+
+    <string name="common_navigation_home">Przepisy</string>
+    <string name="common_navigation_saved">Zapisane</string>
+    <string name="common_navigation_products">Moje produkty</string>
 </resources>
