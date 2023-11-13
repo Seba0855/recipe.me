@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="deep_link_home" translatable="false">app://pl.smcebi.recipeme/home</string>
+    <string name="deep_link_saved_recipes" translatable="false">app://pl.smcebi.recipeme/saved</string>
     <string name="deep_link_barcode_scanner" translatable="false">app://pl.smcebi.recipeme/scanner</string>
 </resources>

@@ -36,6 +36,7 @@ dependencies {
     implementation(project(":ui-common"))
     implementation(project(":ui-home"))
     implementation(project(":ui-scanner"))
+    implementation(project(":ui-saved"))
 
     // Core
     implementation(libs.androidx.core.ktx)

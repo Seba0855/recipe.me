@@ -11,6 +11,8 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
+        <deepLink app:uri="@string/deep_link_home" />
+
         <action
             android:id="@+id/navigateDetails"
             app:destination="@id/recipeDetailsFragment" />
