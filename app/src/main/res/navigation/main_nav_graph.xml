@@ -6,4 +6,5 @@
 
     <include app:graph="@navigation/home_nav_graph" />
     <include app:graph="@navigation/barcodes_nav_graph" />
+    <include app:graph="@navigation/saved_nav_graph" />
 </navigation>
