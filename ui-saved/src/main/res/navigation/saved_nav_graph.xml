@@ -9,5 +9,8 @@
         android:id="@+id/savedRecipesFragment"
         android:name="pl.smcebi.recipeme.ui.saved.SavedRecipesFragment"
         android:label="SavedRecipesFragment"
-        tools:layout="@layout/fragment_saved_recipes" />
+        tools:layout="@layout/fragment_saved_recipes">
+
+        <deepLink app:uri="@string/deep_link_saved_recipes" />
+    </fragment>
 </navigation>
