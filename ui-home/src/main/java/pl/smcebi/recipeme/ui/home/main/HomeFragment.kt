@@ -38,8 +38,6 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun initViews() {
         with(binding) {
-//            bottomNavigationBar.disableTooltipText()
-
             adapter = HomeAdapter(
                 onRecipeClick = ::navigateDetails,
                 onBookmarkClick = viewModel::onBookmarkClick
@@ -77,11 +75,6 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 transitioningView to transitioningView.transitionName
             )
         )
-    }
-
-    override fun onResume() {
-//        binding.bottomNavigationBar.selectedItemId = home
-        super.onResume()
     }
 
     override fun onDestroyView() {

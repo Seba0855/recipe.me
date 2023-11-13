@@ -7,10 +7,10 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import pl.smcebi.recipeme.ui.common.extensions.disableTooltipText
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,8 +18,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavigationBar() {
-        with(findViewById<BottomNavigationView>(R.id.bottomNavigationBar)) {
+        findViewById<BottomNavigationView>(R.id.bottomNavigationBar).apply {
             setupWithNavController(getNavController())
+            disableTooltipText()
         }
     }
 

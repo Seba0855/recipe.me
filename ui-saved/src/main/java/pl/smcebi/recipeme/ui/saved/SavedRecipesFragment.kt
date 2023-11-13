@@ -14,24 +14,5 @@ internal class SavedRecipesFragment : Fragment(R.layout.fragment_saved_recipes) 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        binding.bottomNavigationBar.setOnItemSelectedListener {
-//            when (it.itemId) {
-//                home ->  {
-//                    findNavController().navigate(
-//                        getString(deep_link_home).toUri()
-//                    )
-//                    true
-//                }
-//                products -> {
-//                    findNavController().navigate(
-//                        getString(deep_link_barcode_scanner).toUri()
-//                    )
-//                    false
-//                }
-//
-//                else -> false
-//            }
-//        }
     }
 }
