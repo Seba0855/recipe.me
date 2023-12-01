@@ -27,6 +27,21 @@
         <argument
             android:name="recipe"
             app:argType="pl.smcebi.recipeme.domain.recipes.model.RecipesUI" />
+
+        <action
+            android:id="@+id/navigateRecipeInstructions"
+            app:destination="@id/recipeInstructionsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recipeInstructionsFragment"
+        android:name="pl.smcebi.recipeme.ui.home.details.instructions.RecipeInstructionsFragment"
+        android:label="RecipeInstructionsFragment"
+        tools:layout="@layout/fragment_recipe_instructions">
+
+        <argument
+            android:name="recipe"
+            app:argType="pl.smcebi.recipeme.domain.recipes.model.RecipesUI" />
     </fragment>
 
 </navigation>

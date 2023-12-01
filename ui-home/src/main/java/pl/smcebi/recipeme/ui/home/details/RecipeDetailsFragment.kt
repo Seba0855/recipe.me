@@ -61,6 +61,11 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
                     getString(R.string.fragment_details_show_more)
                 }
             }
+            checkInstructionsButton.setSafeOnClickListener {
+                findNavController().navigate(
+                    RecipeDetailsFragmentDirections.navigateRecipeInstructions(args.recipe)
+                )
+            }
 
             imageContainer.transitionName = recipe.imageUrl
             recipeNameTextView.text = recipe.title
