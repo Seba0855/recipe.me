@@ -3,8 +3,10 @@ package pl.smcebi.recipeme.domain.recipes
 import dagger.Reusable
 import pl.smcebi.recipeme.domain.common.images.ImageMapper
 import pl.smcebi.recipeme.domain.recipes.model.IngredientUI
+import pl.smcebi.recipeme.domain.recipes.model.InstructionUI
 import pl.smcebi.recipeme.domain.recipes.model.RecipesUI
 import pl.smcebi.recipeme.recipes.ExtendedIngredientResponse
+import pl.smcebi.recipeme.recipes.InstructionStepResponse
 import pl.smcebi.recipeme.recipes.RecipeResponse
 import javax.inject.Inject
 
@@ -30,7 +32,8 @@ internal class RecipesMapper @Inject internal constructor(
             },
             dishType = recipeResponse.dishTypes?.firstOrNull()?.replaceFirstChar(Char::uppercase),
             description = recipeResponse.summary,
-            ingredientsList = recipeResponse.extendedIngredients?.map(::mapIngredients).orEmpty()
+            ingredientsList = recipeResponse.extendedIngredients?.map(::mapIngredients).orEmpty(),
+            instructions = recipeResponse.analyzedInstructions.first().steps.toInstructionUI()
         )
 
     private fun mapIngredients(ingredientResponse: ExtendedIngredientResponse): IngredientUI =
@@ -41,4 +44,13 @@ internal class RecipesMapper @Inject internal constructor(
             amount = ingredientResponse.measures.metric.amount,
             unit = ingredientResponse.measures.metric.unitShort,
         )
+
+
+    private fun List<InstructionStepResponse>.toInstructionUI(): List<InstructionUI> =
+        map { instruction ->
+            InstructionUI(
+                number = instruction.number.toString(),
+                instruction = instruction.step,
+            )
+        }
 }

@@ -47,7 +47,8 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
                     whole30 = null,
                     dishTypes = listOf(),
                     extendedIngredients = listOf(),
-                    summary = "definitiones"
+                    summary = "definitiones",
+                    analyzedInstructions = listOf()
                 ),
                 RecipeResponse(
                     id = 8681,
@@ -80,7 +81,8 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
                     whole30 = null,
                     dishTypes = listOf(),
                     extendedIngredients = listOf(),
-                    summary = "perpetua"
+                    summary = "perpetua",
+                    analyzedInstructions = listOf()
                 ),
                 RecipeResponse(
                     id = 6602,
@@ -113,7 +115,8 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
                     whole30 = null,
                     dishTypes = listOf(),
                     extendedIngredients = listOf(),
-                    summary = "recteque"
+                    summary = "recteque",
+                    analyzedInstructions = listOf()
                 ),
                 RecipeResponse(
                     id = 9760,
@@ -146,7 +149,8 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
                     whole30 = null,
                     dishTypes = listOf(),
                     extendedIngredients = listOf(),
-                    summary = "luptatum"
+                    summary = "luptatum",
+                    analyzedInstructions = listOf()
                 )
             )
         )
