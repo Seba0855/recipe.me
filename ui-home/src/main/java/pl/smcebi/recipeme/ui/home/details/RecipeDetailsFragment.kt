@@ -3,12 +3,16 @@ package pl.smcebi.recipeme.ui.home.details
 import android.os.Bundle
 import android.text.Html
 import android.view.View
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialElevationScale
+import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.load
@@ -30,7 +34,9 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        reenterTransition = MaterialElevationScale(true)
         sharedElementEnterTransition = MaterialContainerTransform()
+
         initViews()
         collectOnViewLifecycle(viewModel.state, ::onNewState)
     }
@@ -38,36 +44,33 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
     private fun initViews() {
         with(binding) {
             adapter = IngredientsAdapter()
+
             val recipe = args.recipe
             recipeImage.load(data = recipe.imageUrl, fallback = recipe_placeholder)
-            backButton.setSafeOnClickListener {
-                findNavController().navigateUp()
+            backButton.apply {
+                setSafeOnClickListener {
+                    findNavController().navigateUp()
+                }
+                clipToOutline = true
             }
-            saveButton.setSafeOnClickListener {
-                notImplemented()
+            saveButton.apply {
+                setSafeOnClickListener {
+                    notImplemented()
+                }
+                clipToOutline = true
             }
             showMoreButton.setSafeOnClickListener {
-                if (!descriptionExpanded) {
-                    descriptionTextView.maxLines = Int.MAX_VALUE
-                } else {
-                    descriptionTextView.maxLines = DESCRIPTION_COLLAPSED_LINES
-                }
-
-                descriptionExpanded = !descriptionExpanded
-
-                showMoreButton.text = if (descriptionExpanded) {
-                    getString(R.string.fragment_details_show_less)
-                } else {
-                    getString(R.string.fragment_details_show_more)
-                }
+                onShowMoreButtonClicked()
             }
-            checkInstructionsButton.setSafeOnClickListener {
-                findNavController().navigate(
-                    RecipeDetailsFragmentDirections.navigateRecipeInstructions(args.recipe)
-                )
+            checkInstructionsButton.apply {
+                isGone = recipe.instructions.isEmpty()
+                setSafeOnClickListener {
+                    navigateInstructions()
+                }
             }
 
             imageContainer.transitionName = recipe.imageUrl
+            descriptionHeader.transitionName = recipe.title
             recipeNameTextView.text = recipe.title
             dishTypeTextView.isVisible = recipe.dishType != null
             dishTypeTextView.text = getString(R.string.fragment_details_dish_type, recipe.dishType)
@@ -91,6 +94,33 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
             fatsTextView.text = state.fat
             carbohydratesTextView.text = state.carbs
         }
+    }
+
+    private fun onShowMoreButtonClicked() {
+        with(binding) {
+            if (!descriptionExpanded) {
+                descriptionTextView.maxLines = Int.MAX_VALUE
+            } else {
+                descriptionTextView.maxLines = DESCRIPTION_COLLAPSED_LINES
+            }
+
+            descriptionExpanded = !descriptionExpanded
+
+            showMoreButton.text = if (descriptionExpanded) {
+                getString(R.string.fragment_details_show_less)
+            } else {
+                getString(R.string.fragment_details_show_more)
+            }
+        }
+    }
+
+    private fun navigateInstructions() {
+        findNavController().navigate(
+            directions = RecipeDetailsFragmentDirections.navigateRecipeInstructions(args.recipe),
+            navigatorExtras = FragmentNavigatorExtras(
+                binding.descriptionHeader to binding.descriptionHeader.transitionName
+            )
+        )
     }
 
     override fun onDestroyView() {

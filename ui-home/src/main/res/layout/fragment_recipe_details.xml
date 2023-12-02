@@ -39,7 +39,7 @@
             android:id="@+id/recipeNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_big"
+            android:layout_marginTop="@dimen/margin_xxsmall"
             android:gravity="center"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             app:layout_constraintEnd_toEndOf="parent"

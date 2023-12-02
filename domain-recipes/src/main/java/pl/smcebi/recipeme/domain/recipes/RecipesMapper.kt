@@ -33,7 +33,8 @@ internal class RecipesMapper @Inject internal constructor(
             dishType = recipeResponse.dishTypes?.firstOrNull()?.replaceFirstChar(Char::uppercase),
             description = recipeResponse.summary,
             ingredientsList = recipeResponse.extendedIngredients?.map(::mapIngredients).orEmpty(),
-            instructions = recipeResponse.analyzedInstructions.first().steps.toInstructionUI()
+            instructions = recipeResponse.analyzedInstructions
+                .firstOrNull()?.steps?.toInstructionUI().orEmpty()
         )
 
     private fun mapIngredients(ingredientResponse: ExtendedIngredientResponse): IngredientUI =
