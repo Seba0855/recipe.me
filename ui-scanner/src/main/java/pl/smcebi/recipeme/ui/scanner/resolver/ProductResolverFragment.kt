@@ -36,8 +36,11 @@ internal class ProductResolverFragment : Fragment(R.layout.fragment_product_reso
     private fun initViews() {
         with(binding) {
             startBarcodeCollection()
-            backButton.setSafeOnClickListener {
-                findNavController().navigateUp()
+            backButton.apply {
+                clipToOutline = true
+                setSafeOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
         }
     }
