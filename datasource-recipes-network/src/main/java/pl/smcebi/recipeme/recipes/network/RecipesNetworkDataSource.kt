@@ -5,6 +5,7 @@ import kotlinx.serialization.json.Json
 import pl.smcebi.recipeme.datasource.common.NetworkCoroutineDispatcher
 import pl.smcebi.recipeme.datasource.common.NetworkResult
 import pl.smcebi.recipeme.datasource.common.apiCall
+import pl.smcebi.recipeme.recipes.AutocompleteResponse
 import pl.smcebi.recipeme.recipes.NutritionResponse
 import pl.smcebi.recipeme.recipes.QuickAnswerResponse
 import pl.smcebi.recipeme.recipes.RecipesDataSource
@@ -39,4 +40,11 @@ internal class RecipesNetworkDataSource @Inject constructor(
         apiCall(dispatcher, json) {
             api.getRecipeNutrition(recipeId)
         }
+
+    override suspend fun autocompleteRecipeSearch(
+        query: String,
+        number: Int
+    ): NetworkResult<List<AutocompleteResponse>> {
+        TODO("Not yet implemented")
+    }
 }

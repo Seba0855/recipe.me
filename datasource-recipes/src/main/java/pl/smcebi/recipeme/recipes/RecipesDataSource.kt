@@ -13,4 +13,6 @@ interface RecipesDataSource {
     suspend fun getQuickAnswer(query: String): NetworkResult<QuickAnswerResponse>
 
     suspend fun getRecipeNutrition(recipeId: String): NetworkResult<NutritionResponse>
+
+    suspend fun autocompleteRecipeSearch(query: String, number: Int): NetworkResult<List<AutocompleteResponse>>
 }

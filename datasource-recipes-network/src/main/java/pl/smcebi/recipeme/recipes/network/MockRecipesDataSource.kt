@@ -1,6 +1,7 @@
 package pl.smcebi.recipeme.recipes.network
 
 import pl.smcebi.recipeme.datasource.common.NetworkResult
+import pl.smcebi.recipeme.recipes.AutocompleteResponse
 import pl.smcebi.recipeme.recipes.NutritionResponse
 import pl.smcebi.recipeme.recipes.QuickAnswerResponse
 import pl.smcebi.recipeme.recipes.RecipeListResponse
@@ -171,6 +172,40 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
                 carbs = "12g",
                 fat = "14g",
                 protein = "16g"
+            )
+        )
+
+    override suspend fun autocompleteRecipeSearch(
+        query: String,
+        number: Int
+    ): NetworkResult<List<AutocompleteResponse>> =
+        NetworkResult.Success(
+            listOf(
+                AutocompleteResponse(
+                    id = 362230,
+                    title = "burger",
+                    imageType = "jpeg"
+                ),
+                AutocompleteResponse(
+                    id = 119909,
+                    title = "burgerpizza",
+                    imageType = "jpeg"
+                ),
+                AutocompleteResponse(
+                    id = 528118,
+                    title = "burger buns",
+                    imageType = "jpeg"
+                ),
+                AutocompleteResponse(
+                    id = 1812031,
+                    title = "burger bowl",
+                    imageType = "jpeg"
+                ),
+                AutocompleteResponse(
+                    id = 506528,
+                    title = "burger cake",
+                    imageType = "jpeg"
+                ),
             )
         )
 }
