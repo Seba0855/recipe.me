@@ -20,5 +20,8 @@
     <string name="fragment_details_ingredients">Ingredients</string>
     <string name="fragment_details_show_more">Show more…</string>
     <string name="fragment_details_show_less">Show less…</string>
+    <string name="fragment_details_see_instructions">Check out the steps to prepare this recipe</string>
+
+    <string name="fragment_instructions_headline">Recipe instructions</string>
 </resources>
 

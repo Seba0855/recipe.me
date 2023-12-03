@@ -24,6 +24,7 @@ data class RecipeResponse(
     val gaps: String,
     val glutenFree: Boolean,
     val instructions: String,
+    val analyzedInstructions: List<AnalyzedInstructionResponse>,
     val ketogenic: Boolean? = null,
     val lowFodmap: Boolean,
     val sustainable: Boolean,

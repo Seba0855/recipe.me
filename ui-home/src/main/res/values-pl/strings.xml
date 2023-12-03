@@ -20,4 +20,7 @@
     <string name="fragment_details_ingredients">Składniki</string>
     <string name="fragment_details_show_more">Pokaż więcej…</string>
     <string name="fragment_details_show_less">Pokaż mniej…</string>
+    <string name="fragment_details_see_instructions">Sprawdź kroki przygotowania tego przepisu</string>
+
+    <string name="fragment_instructions_headline">Instrukcje przygotowania</string>
 </resources>
