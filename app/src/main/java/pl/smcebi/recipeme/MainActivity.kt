@@ -2,13 +2,17 @@ package pl.smcebi.recipeme
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.search.SearchView
+import com.google.android.material.search.SearchView.TransitionState.SHOWING
 import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.ui.common.extensions.disableTooltipText
+import pl.smcebi.recipeme.ui.common.extensions.setKeyboardVisibilityListener
 import pl.smcebi.recipeme.ui.home.R.id.homeFragment
 import pl.smcebi.recipeme.ui.saved.R.id.savedRecipesFragment
 
@@ -34,6 +38,10 @@ class MainActivity : AppCompatActivity() {
         getNavController().addOnDestinationChangedListener { _, destination, _ ->
             bottomNavigationView.isVisible =
                 destination.id == homeFragment || destination.id == savedRecipesFragment
+        }
+
+        setKeyboardVisibilityListener { isKeyboardVisible ->
+            bottomNavigationView.isGone = isKeyboardVisible
         }
     }
 

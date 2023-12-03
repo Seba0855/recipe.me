@@ -48,6 +48,14 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
             connectionError.tryAgainButton.setSafeOnClickListener {
                 viewModel.tryAgain()
             }
+
+            searchView.editText.setOnEditorActionListener { v, actionId, event ->
+                // Temporary
+                searchBar.text = searchView.text
+                searchView.hide()
+                false
+            }
+
             recipesRecyclerView.adapter = adapter
         }
     }

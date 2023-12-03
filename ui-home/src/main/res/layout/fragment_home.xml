@@ -27,41 +27,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/searchBarPlaceholder2"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_marginHorizontal="@dimen/margin_big"-->
-<!--                android:layout_marginTop="@dimen/margin_medium"-->
-<!--                android:background="@drawable/bg_search_bar"-->
-<!--                android:clickable="true"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/recipeTitleTextView">-->
-
-<!--                <ImageView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginStart="@dimen/margin_medium"-->
-<!--                    android:src="@drawable/ic_search"-->
-<!--                    tools:ignore="ContentDescription" />-->
-
-<!--                <com.google.android.material.textview.MaterialTextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginStart="@dimen/margin_xsmall"-->
-<!--                    android:text="@string/fragment_home_search"-->
-<!--                    android:textAppearance="?attr/textAppearanceBodySmall"-->
-<!--                    android:textColor="?attr/colorOnSecondaryContainer" />-->
-
-<!--            </LinearLayout>-->
-
             <com.google.android.material.search.SearchBar
                 android:id="@+id/searchBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorSurfaceVariant"
                 android:hint="@string/fragment_home_search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -136,6 +106,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.search.SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="@string/fragment_home_search"
@@ -145,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="tu powinny być sugestie :)"/>
+            android:text="tu powinny być sugestie :)" />
 
         <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
     </com.google.android.material.search.SearchView>
