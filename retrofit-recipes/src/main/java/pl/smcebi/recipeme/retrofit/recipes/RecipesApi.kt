@@ -1,5 +1,6 @@
 package pl.smcebi.recipeme.retrofit.recipes
 
+import pl.smcebi.recipeme.recipes.AutocompleteResponse
 import pl.smcebi.recipeme.recipes.NutritionResponse
 import pl.smcebi.recipeme.recipes.QuickAnswerResponse
 import pl.smcebi.recipeme.recipes.RecipeListResponse
@@ -21,4 +22,10 @@ interface RecipesApi {
 
     @GET("recipes/{id}/nutritionWidget.json")
     suspend fun getRecipeNutrition(@Path("id") recipeId: String): NutritionResponse
+
+    @GET("recipes/autocomplete")
+    suspend fun autocompleteRecipes(
+        @Query("query") query: String,
+        @Query("number") number: Int
+    ): List<AutocompleteResponse>
 }

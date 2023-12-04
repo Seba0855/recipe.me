@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 class GetAutocompletedRecipesUseCase @Inject internal constructor(
     private val imageMapper: ImageMapper,
-    @Mock private val recipesDataSource: RecipesDataSource,
+    private val recipesDataSource: RecipesDataSource,
     @DispatcherIO private val dispatcher: CoroutineDispatcher,
 ) {
 

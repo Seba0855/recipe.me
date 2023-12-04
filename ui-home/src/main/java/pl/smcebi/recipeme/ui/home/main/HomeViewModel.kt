@@ -59,6 +59,7 @@ internal class HomeViewModel @Inject constructor(
                 copy(searchInProgress = inProgress)
             }
         }) {
+            clearSuggestions()
             getAutocompletedRecipesUseCase.get()(query)
                 .onSuccess { suggestions ->
                     mutableState.mutate {

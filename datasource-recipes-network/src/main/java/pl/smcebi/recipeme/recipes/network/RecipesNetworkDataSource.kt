@@ -44,7 +44,8 @@ internal class RecipesNetworkDataSource @Inject constructor(
     override suspend fun autocompleteRecipeSearch(
         query: String,
         number: Int
-    ): NetworkResult<List<AutocompleteResponse>> {
-        TODO("Not yet implemented")
-    }
+    ): NetworkResult<List<AutocompleteResponse>> =
+        apiCall(dispatcher, json) {
+            api.autocompleteRecipes(query, number)
+        }
 }
