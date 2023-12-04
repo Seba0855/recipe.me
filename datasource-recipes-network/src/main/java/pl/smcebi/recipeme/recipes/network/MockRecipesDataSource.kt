@@ -189,22 +189,22 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
                 AutocompleteResponse(
                     id = 119909,
                     title = "burgerpizza",
-                    imageType = "jpeg"
+                    imageType = "jpg"
                 ),
                 AutocompleteResponse(
                     id = 528118,
                     title = "burger buns",
-                    imageType = "jpeg"
+                    imageType = "jpg"
                 ),
                 AutocompleteResponse(
                     id = 1812031,
                     title = "burger bowl",
-                    imageType = "jpeg"
+                    imageType = "jpg"
                 ),
                 AutocompleteResponse(
                     id = 506528,
                     title = "burger cake",
-                    imageType = "jpeg"
+                    imageType = "jpg"
                 ),
             )
         )

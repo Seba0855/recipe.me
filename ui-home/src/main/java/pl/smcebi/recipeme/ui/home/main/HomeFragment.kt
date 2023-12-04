@@ -8,23 +8,37 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.search.SearchView
+import com.google.android.material.search.SearchView.TransitionState.HIDING
+import com.google.android.material.search.SearchView.TransitionState.SHOWN
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
+import pl.smcebi.recipeme.ui.common.extensions.notImplemented
+import pl.smcebi.recipeme.ui.common.extensions.onBackPressed
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
 import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
 import pl.smcebi.recipeme.ui.home.R
 import pl.smcebi.recipeme.ui.home.databinding.FragmentHomeBinding
+import pl.smcebi.recipeme.ui.home.main.suggestions.SuggestionsAdapter
 
 @AndroidEntryPoint
 internal class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private val viewModel: HomeViewModel by viewModels()
     private var adapter: HomeAdapter? = null
+    private var searchAdapter: SuggestionsAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onBackPressed {
+            if (binding.searchView.currentTransitionState == SHOWN) {
+                binding.searchView.hide()
+            } else {
+                requireActivity().moveTaskToBack(true)
+            }
+        }
 
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
@@ -42,6 +56,9 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 onRecipeClick = ::navigateDetails,
                 onBookmarkClick = viewModel::onBookmarkClick
             )
+            searchAdapter = SuggestionsAdapter(
+                onSuggestionClick = { notImplemented() }
+            )
             randomButton.setSafeOnClickListener {
                 viewModel.onRandomClicked()
             }
@@ -49,20 +66,27 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 viewModel.tryAgain()
             }
 
-            searchView.editText.setOnEditorActionListener { v, actionId, event ->
-                // Temporary
-                searchBar.text = searchView.text
-                searchView.hide()
+            searchView.editText.setOnEditorActionListener { _, _, _ ->
+                viewModel.onSearchRequested(searchView.text.toString())
                 false
             }
 
+            searchView.addTransitionListener { _, previousState, newState ->
+                if (previousState == SHOWN && newState == HIDING) {
+                    viewModel.clearSuggestions()
+                }
+            }
+
             recipesRecyclerView.adapter = adapter
+            suggestionsRecyclerView.adapter = searchAdapter
         }
     }
 
     private fun onNewState(state: HomeViewState) {
         with(binding) {
             adapter?.submitList(state.recipes)
+            searchAdapter?.submitList(state.searchSuggestions)
+            suggestionsPlaceholder.isVisible = state.searchSuggestions.isEmpty()
             connectionError.root.isVisible = state.isError
             broccoliLoading.isVisible = state.inProgress
         }
@@ -87,6 +111,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onDestroyView() {
         adapter = null
+        searchAdapter = null
         super.onDestroyView()
     }
 }

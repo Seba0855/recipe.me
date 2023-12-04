@@ -34,7 +34,7 @@ class GetAutocompletedRecipesUseCase @Inject internal constructor(
         map { response ->
             SuggestionUI(
                 id = response.id.toString(),
-                title = response.title,
+                title = response.title.replaceFirstChar { it.uppercaseChar() },
                 imageUrl = imageMapper.mapRecipes(
                     recipeID = response.id.toString(),
                     imageSize = ImageMapper.ImageSize.SMALL,
