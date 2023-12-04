@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import pl.smcebi.recipeme.domain.common.translation.TranslateTextUseCase
 import pl.smcebi.recipeme.domain.recipes.GetAutocompletedRecipesUseCase
 import pl.smcebi.recipeme.domain.recipes.GetRandomRecipesUseCase
+import pl.smcebi.recipeme.ui.common.BottomNavCommunicationBridge
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
 import pl.smcebi.recipeme.ui.common.extensions.withProgressBar
@@ -23,7 +24,8 @@ import javax.inject.Inject
 internal class HomeViewModel @Inject constructor(
     private val getRandomRecipesUseCase: GetRandomRecipesUseCase,
     private val translateTextUseCase: TranslateTextUseCase,
-    private val getAutocompletedRecipesUseCase: Lazy<GetAutocompletedRecipesUseCase>
+    private val getAutocompletedRecipesUseCase: Lazy<GetAutocompletedRecipesUseCase>,
+    private val bottomNavCommunicationBridge: Lazy<BottomNavCommunicationBridge>,
 ) : ViewModel() {
 
     private val mutableState = MutableStateFlow(HomeViewState())
@@ -74,6 +76,10 @@ internal class HomeViewModel @Inject constructor(
         mutableState.mutate {
             copy(searchSuggestions = emptyList())
         }
+    }
+
+    fun manageBottomNavVisibility(isVisible: Boolean) {
+        bottomNavCommunicationBridge.get().mutateState(isVisible)
     }
 
     private fun fetchRecipes() {

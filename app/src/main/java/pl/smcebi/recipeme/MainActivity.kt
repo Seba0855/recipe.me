@@ -11,13 +11,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.search.SearchView
 import com.google.android.material.search.SearchView.TransitionState.SHOWING
 import dagger.hilt.android.AndroidEntryPoint
+import pl.smcebi.recipeme.ui.common.BottomNavCommunicationBridge
+import pl.smcebi.recipeme.ui.common.extensions.collectOnLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.disableTooltipText
 import pl.smcebi.recipeme.ui.common.extensions.setKeyboardVisibilityListener
 import pl.smcebi.recipeme.ui.home.R.id.homeFragment
 import pl.smcebi.recipeme.ui.saved.R.id.savedRecipesFragment
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var bottomNavCommunicationBridge: BottomNavCommunicationBridge
 
     private val bottomNavigationView by lazy {
         findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
@@ -27,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupNavigationBar()
+        collectOnLifecycle(bottomNavCommunicationBridge.state, ::onNavVisibilityChanged)
     }
 
     private fun setupNavigationBar() {
@@ -39,10 +46,10 @@ class MainActivity : AppCompatActivity() {
             bottomNavigationView.isVisible =
                 destination.id == homeFragment || destination.id == savedRecipesFragment
         }
+    }
 
-        setKeyboardVisibilityListener { isKeyboardVisible ->
-            bottomNavigationView.isGone = isKeyboardVisible
-        }
+    private fun onNavVisibilityChanged(isVisible: Boolean) {
+        bottomNavigationView.isVisible = isVisible
     }
 
     private fun getNavController(): NavController {

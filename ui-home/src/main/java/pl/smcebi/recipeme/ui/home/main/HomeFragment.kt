@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.search.SearchView.TransitionState.HIDDEN
 import com.google.android.material.search.SearchView.TransitionState.HIDING
 import com.google.android.material.search.SearchView.TransitionState.SHOWN
 import com.google.android.material.transition.MaterialElevationScale
@@ -64,17 +66,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
             connectionError.tryAgainButton.setSafeOnClickListener {
                 viewModel.tryAgain()
             }
-
-            searchView.editText.setOnEditorActionListener { _, _, _ ->
-                viewModel.onSearchRequested(searchView.text.toString())
-                false
-            }
-
-            searchView.addTransitionListener { _, previousState, newState ->
-                if (previousState == SHOWN && newState == HIDING) {
-                    viewModel.clearSuggestions()
-                }
-            }
+            setupSearchView()
 
             recipesRecyclerView.adapter = adapter
             suggestionsRecyclerView.adapter = searchAdapter
@@ -106,6 +98,29 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 transitioningView to transitioningView.transitionName
             )
         )
+    }
+
+    private fun setupSearchView() {
+        with(binding) {
+            searchView.editText.setOnEditorActionListener { _, _, _ ->
+                viewModel.onSearchRequested(searchView.text.toString())
+                false
+            }
+
+            searchView.editText.addTextChangedListener { text ->
+                if (text.isNullOrBlank()) {
+                    viewModel.clearSuggestions()
+                }
+            }
+
+            searchView.addTransitionListener { _, previousState, newState ->
+                when {
+                    previousState == SHOWN && newState == HIDING -> viewModel.clearSuggestions()
+                    newState == SHOWN -> viewModel.manageBottomNavVisibility(isVisible = false)
+                    newState == HIDDEN -> viewModel.manageBottomNavVisibility(isVisible = true)
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
