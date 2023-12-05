@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="search_item_imageview_size">60dp</dimen>
+    <dimen name="search_not_found_screen_ratio">0.42</dimen>
 </resources>

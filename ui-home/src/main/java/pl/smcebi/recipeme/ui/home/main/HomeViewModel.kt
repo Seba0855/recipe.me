@@ -65,7 +65,11 @@ internal class HomeViewModel @Inject constructor(
             getAutocompletedRecipesUseCase.get()(query)
                 .onSuccess { suggestions ->
                     mutableState.mutate {
-                        copy(searchSuggestions = suggestions)
+                        copy(
+                            showInitialMessage = false,
+                            noSearchResult = suggestions.isEmpty(),
+                            searchSuggestions = suggestions
+                        )
                     }
                     Timber.d("Suggestions: $suggestions")
                 }
@@ -74,7 +78,11 @@ internal class HomeViewModel @Inject constructor(
 
     fun clearSuggestions() {
         mutableState.mutate {
-            copy(searchSuggestions = emptyList())
+            copy(
+                showInitialMessage = true,
+                noSearchResult = false,
+                searchSuggestions = emptyList()
+            )
         }
     }
 

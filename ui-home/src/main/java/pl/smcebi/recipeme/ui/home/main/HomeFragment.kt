@@ -77,9 +77,10 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         with(binding) {
             adapter?.submitList(state.recipes)
             searchAdapter?.submitList(state.searchSuggestions)
-            suggestionsPlaceholder.isVisible = state.searchSuggestions.isEmpty()
+            initialSearchGroup.isVisible = state.showInitialMessage
             connectionError.root.isVisible = state.isError
             broccoliLoading.isVisible = state.inProgress
+            notFoundGroup.isVisible = state.noSearchResult
         }
     }
 

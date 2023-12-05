@@ -5,6 +5,8 @@
     <string name="fragment_home_log_in">Zaloguj się</string>
     <string name="fragment_home_headline">Co dziś <b>upichcimy?</b></string>
     <string name="fragment_home_search">Szukaj…</string>
+    <string name="fragment_home_search_search_recipes">Wpisz nazwę dania by wyszukać</string>
+    <string name="fragment_home_search_not_found">Nie znaleziono pasujących przepisów</string>
     <string name="fragment_home_label">Przepisy</string>
     <string name="fragment_home_random">Losowe</string>
 

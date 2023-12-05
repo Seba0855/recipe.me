@@ -128,16 +128,70 @@
                 tools:itemCount="5"
                 tools:listitem="@layout/item_search_item" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/suggestionsPlaceholder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="tu powinny być sugestie :)"
+            <ImageView
+                android:id="@+id/startSearchIcon"
+                android:layout_width="@dimen/search_item_imageview_size"
+                android:layout_height="@dimen/search_item_imageview_size"
+                android:src="@drawable/ic_frying_pan"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="@dimen/search_not_found_screen_ratio"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/suggestionsPlaceholder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xbig"
+                android:layout_marginTop="@dimen/margin_small"
+                android:gravity="center"
+                android:textColor="?attr/colorOnPrimarySurface"
+                android:text="@string/fragment_home_search_search_recipes"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/startSearchIcon" />
+
+            <ImageView
+                android:id="@+id/notFoundIcon"
+                android:layout_width="@dimen/search_item_imageview_size"
+                android:layout_height="@dimen/search_item_imageview_size"
+                android:src="@drawable/ic_search_not_found"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="@dimen/search_not_found_screen_ratio"
+                app:tint="?attr/colorOnBackground"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/notFoundTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xbig"
+                android:layout_marginTop="@dimen/margin_small"
+                android:gravity="center"
+                android:text="@string/fragment_home_search_not_found"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notFoundIcon" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/initialSearchGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="startSearchIcon, suggestionsPlaceholder" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/notFoundGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="notFoundIcon, notFoundTextView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.search.SearchView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
