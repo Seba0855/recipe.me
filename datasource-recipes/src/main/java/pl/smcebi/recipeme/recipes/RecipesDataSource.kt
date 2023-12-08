@@ -10,9 +10,17 @@ interface RecipesDataSource {
         number: Int
     ): NetworkResult<RecipeListResponse>
 
+    suspend fun getRecipeById(
+        recipeId: String,
+        includeNutrition: Boolean
+    ): NetworkResult<RecipeResponse>
+
     suspend fun getQuickAnswer(query: String): NetworkResult<QuickAnswerResponse>
 
     suspend fun getRecipeNutrition(recipeId: String): NetworkResult<NutritionResponse>
 
-    suspend fun autocompleteRecipeSearch(query: String, number: Int): NetworkResult<List<AutocompleteResponse>>
+    suspend fun autocompleteRecipeSearch(
+        query: String,
+        number: Int
+    ): NetworkResult<List<AutocompleteResponse>>
 }

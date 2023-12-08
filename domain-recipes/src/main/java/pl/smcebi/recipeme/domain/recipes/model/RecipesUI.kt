@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 @Keep
 @Parcelize
 data class RecipesUI(
-    val id: Long,
+    val id: String,
     val title: String,
     val description: String,
     val imageUrl: String,

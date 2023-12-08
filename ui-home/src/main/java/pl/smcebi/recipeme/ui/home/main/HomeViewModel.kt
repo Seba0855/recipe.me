@@ -76,6 +76,11 @@ internal class HomeViewModel @Inject constructor(
         }
     }
 
+    fun onSuggestionClick(position: Int) {
+        val suggestionId = state.value.searchSuggestions[position].id
+        mutableEvent.trySend(HomeViewEvent.NavigateDetails(suggestionId))
+    }
+
     fun clearSuggestions() {
         mutableState.mutate {
             copy(

@@ -157,6 +157,46 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
         )
     )
 
+    override suspend fun getRecipeById(
+        recipeId: String,
+        includeNutrition: Boolean
+    ): NetworkResult<RecipeResponse> = NetworkResult.Success(
+        RecipeResponse(
+            id = 9760,
+            title = "Creamy tomato ",
+            image = "https://spoonacular.com/recipeImages/640713-556x370.jpg",
+            imageType = "justo",
+            servings = 9622,
+            readyInMinutes = 3302,
+            license = null,
+            sourceName = "Adrienne Walls",
+            sourceUrl = "https://duckduckgo.com/?q=ea",
+            spoonacularSourceUrl = "https://www.google.com/#q=dignissim",
+            aggregateLikes = 9811,
+            healthScore = 16.17,
+            spoonacularScore = null,
+            pricePerServing = 18.19,
+            cheap = false,
+            creditsText = "molestie",
+            dairyFree = false,
+            gaps = "doctus",
+            glutenFree = false,
+            instructions = "eruditi",
+            ketogenic = null,
+            lowFodmap = false,
+            sustainable = false,
+            vegan = false,
+            vegetarian = false,
+            veryHealthy = false,
+            veryPopular = false,
+            whole30 = null,
+            dishTypes = listOf(),
+            extendedIngredients = listOf(),
+            summary = "luptatum",
+            analyzedInstructions = listOf()
+        )
+    )
+
     override suspend fun getQuickAnswer(query: String): NetworkResult<QuickAnswerResponse> =
         NetworkResult.Success(
             QuickAnswerResponse(

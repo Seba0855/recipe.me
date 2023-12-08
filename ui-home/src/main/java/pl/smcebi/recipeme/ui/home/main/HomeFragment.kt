@@ -58,7 +58,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
                 onBookmarkClick = viewModel::onBookmarkClick
             )
             searchAdapter = SuggestionsAdapter(
-                onSuggestionClick = { notImplemented() }
+                onSuggestionClick = viewModel::onSuggestionClick
             )
             randomButton.setSafeOnClickListener {
                 viewModel.onRandomClicked()
@@ -86,15 +86,25 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun onNewEvent(event: HomeViewEvent) {
         when (event) {
+            is HomeViewEvent.NavigateDetails -> navigateDetailsById(event.recipeId)
             is HomeViewEvent.ShowError -> showSnackbar(event.message)
         }
+    }
+
+    private fun navigateDetailsById(recipeId: String) {
+        findNavController().navigate(
+            HomeFragmentDirections.navigateDetails(
+                recipeId = recipeId,
+                recipe = null
+            )
+        )
     }
 
     private fun navigateDetails(transitioningView: View, position: Int) {
         val recipe = viewModel.state.value.recipes[position]
 
         findNavController().navigate(
-            directions = HomeFragmentDirections.navigateDetails(recipe),
+            directions = HomeFragmentDirections.navigateDetails(recipe, ""),
             navigatorExtras = FragmentNavigatorExtras(
                 transitioningView to transitioningView.transitionName
             )

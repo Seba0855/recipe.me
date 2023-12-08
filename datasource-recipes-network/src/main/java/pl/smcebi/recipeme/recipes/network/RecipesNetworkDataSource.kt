@@ -8,6 +8,7 @@ import pl.smcebi.recipeme.datasource.common.apiCall
 import pl.smcebi.recipeme.recipes.AutocompleteResponse
 import pl.smcebi.recipeme.recipes.NutritionResponse
 import pl.smcebi.recipeme.recipes.QuickAnswerResponse
+import pl.smcebi.recipeme.recipes.RecipeResponse
 import pl.smcebi.recipeme.recipes.RecipesDataSource
 import pl.smcebi.recipeme.retrofit.recipes.RecipesApi
 import javax.inject.Inject
@@ -29,6 +30,14 @@ internal class RecipesNetworkDataSource @Inject constructor(
                 tags = tags,
                 number = number
             )
+        }
+
+    override suspend fun getRecipeById(
+        recipeId: String,
+        includeNutrition: Boolean
+    ): NetworkResult<RecipeResponse> =
+        apiCall(dispatcher, json) {
+            api.getRecipeById(recipeId, includeNutrition)
         }
 
     override suspend fun getQuickAnswer(query: String): NetworkResult<QuickAnswerResponse> =

@@ -13,7 +13,7 @@ data class RecipeResponse(
     val license: String? = null,
     val sourceName: String,
     val sourceUrl: String,
-    val spoonacularSourceUrl: String,
+    val spoonacularSourceUrl: String? = null,
     val aggregateLikes: Long,
     val healthScore: Double,
     val spoonacularScore: Double? = null,
