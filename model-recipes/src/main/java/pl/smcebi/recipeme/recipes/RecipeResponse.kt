@@ -23,7 +23,7 @@ data class RecipeResponse(
     val dairyFree: Boolean,
     val gaps: String,
     val glutenFree: Boolean,
-    val instructions: String,
+    val instructions: String? = null,
     val analyzedInstructions: List<AnalyzedInstructionResponse>,
     val ketogenic: Boolean? = null,
     val lowFodmap: Boolean,

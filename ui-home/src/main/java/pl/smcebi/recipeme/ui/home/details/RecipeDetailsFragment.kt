@@ -71,6 +71,8 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
 
     private fun onNewState(state: RecipeDetailsState) {
         with(binding) {
+            broccoliLoading.isVisible = state.inProgress && !state.isError
+            connectionError.root.isVisible = state.isError
             caloriesTextView.text = state.calories
             proteinsTextView.text = state.protein
             fatsTextView.text = state.fat

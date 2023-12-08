@@ -14,7 +14,7 @@ data class RecipesUI(
     val readyInMinutes: Int,
     val servings: Int,
     val durationAndServings: String,
-    val dishType: String? = null,
+    val dishType: String? = "",
     val ingredientsList: List<IngredientUI>,
     val instructions: List<InstructionUI>,
 ) : Parcelable
