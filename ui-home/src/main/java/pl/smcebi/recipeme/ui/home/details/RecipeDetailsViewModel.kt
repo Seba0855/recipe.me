@@ -55,6 +55,8 @@ internal class RecipeDetailsViewModel @Inject constructor(
             }
             args.recipe?.id?.let(::fetchRecipeNutrition)
         } else {
+            // TODO: Nutrition data can be fetched from one endpoint, there is no need to call both of them
+            //  it requires some ifology but it is a quota optimization. For now every search recipe details consumes 2 points.
             fetchRecipe()
             args.recipeId.let(::fetchRecipeNutrition)
         }
