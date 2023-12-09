@@ -10,4 +10,9 @@ internal sealed interface RecipeDetailsEvent : Parcelable {
     @Keep
     @Parcelize
     data class NavigateInstructions(val recipe: RecipesUI) : RecipeDetailsEvent
+
+    @Keep
+    @Parcelize
+    @JvmInline
+    value class ShowError(val message: String?) : RecipeDetailsEvent
 }

@@ -35,32 +35,6 @@
             app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
             tools:ignore="ContentDescription" />
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/broccoliLoading"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="@dimen/margin_xxxxbig"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backButton"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/broccoli_loading" />
-
-        <include
-            android:id="@+id/connectionError"
-            layout="@layout/item_connection_error"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_xxxxbig"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backButton" />
-
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/recipeNameTextView"
             android:layout_width="wrap_content"
@@ -115,7 +89,27 @@
                 android:scaleType="centerCrop"
                 tools:ignore="ContentDescription"
                 tools:src="@drawable/recipe_placeholder" />
+
+            <include
+                android:id="@+id/imageLoading"
+                layout="@layout/item_shimmer_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/margin_xsmall"
+                android:visibility="gone" />
         </com.google.android.material.card.MaterialCardView>
+
+        <include
+            android:id="@+id/connectionError"
+            layout="@layout/item_connection_error"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/imageContainer"
+            app:layout_constraintEnd_toEndOf="@id/imageContainer"
+            app:layout_constraintStart_toStartOf="@id/imageContainer"
+            app:layout_constraintTop_toTopOf="@id/imageContainer" />
 
         <androidx.emoji2.widget.EmojiTextView
             android:id="@+id/servingsTextView"
@@ -150,6 +144,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/descriptionHeader"
             tools:text="Pasta with Garlic, Scallions, Cauliflower Breadcrumbs might be a good recipe to expand your main course repertoire. One portion of this dish contains approximately 19g of protein and a total of 584 calories. Decided więcej..." />
+
+        <include
+            android:id="@+id/descriptionLoading"
+            layout="@layout/item_shimmer_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionHeader" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/showMoreButton"
@@ -277,6 +281,22 @@
                 tools:text="🫙 41g" />
         </LinearLayout>
 
+        <include
+            android:id="@+id/nutritionLoading"
+            layout="@layout/item_shimmer_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_big"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nutritionDataHeader" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/nutritionGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="carbohydratesContainer, fatsContainer, proteinsContainer, caloriesContainer" />
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/checkInstructionsButton"
             android:layout_width="0dp"
@@ -332,6 +352,16 @@
             android:textAppearance="?attr/textAppearanceTitleMedium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/checkInstructionsButton" />
+
+        <include
+            android:id="@+id/ingredientsLoading"
+            layout="@layout/item_shimmer_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_big"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredientsLabel" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ingredientsRecyclerView"

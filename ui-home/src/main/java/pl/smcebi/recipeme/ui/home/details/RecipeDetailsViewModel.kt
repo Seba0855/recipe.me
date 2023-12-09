@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 import pl.smcebi.recipeme.domain.recipes.GetRecipeByIdUseCase
 import pl.smcebi.recipeme.domain.recipes.GetRecipeNutritionUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
@@ -33,6 +34,21 @@ internal class RecipeDetailsViewModel @Inject constructor(
     private val args = RecipeDetailsFragmentArgs.fromSavedStateHandle(savedStateHandle)
 
     init {
+        initializeFetch()
+    }
+
+    fun navigateRecipeInstructions() {
+        state.value.recipe?.let { recipe ->
+            mutableEvent.trySend(RecipeDetailsEvent.NavigateInstructions(recipe))
+        }
+    }
+
+    fun onTryAgainClicked() {
+        mutableState.mutate { copy(isError = false) }
+        initializeFetch()
+    }
+
+    private fun initializeFetch() {
         if (args.recipe != null) {
             mutableState.mutate {
                 copy(recipe = args.recipe)
@@ -69,20 +85,19 @@ internal class RecipeDetailsViewModel @Inject constructor(
                 copy(inProgress = inProgress)
             }
         }) {
+            delay(TRANSITION_DELAY)
             getRecipeByIdUseCase(args.recipeId)
                 .onSuccess { recipe ->
                     mutableState.mutate { copy(recipe = recipe) }
                 }
                 .onFailure { errorMessage ->
-                    Timber.e("Error: $errorMessage")
                     mutableState.mutate { copy(isError = true) }
+                    mutableEvent.send(RecipeDetailsEvent.ShowError(errorMessage))
                 }
         }
     }
 
-    fun navigateRecipeInstructions() {
-        state.value.recipe?.let { recipe ->
-            mutableEvent.trySend(RecipeDetailsEvent.NavigateInstructions(recipe))
-        }
+    companion object {
+        const val TRANSITION_DELAY = 500L
     }
 }

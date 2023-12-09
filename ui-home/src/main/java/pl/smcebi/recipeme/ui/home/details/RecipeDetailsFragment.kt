@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Html
 import android.view.View
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,9 +20,11 @@ import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.load
 import pl.smcebi.recipeme.ui.common.extensions.notImplemented
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
+import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
 import pl.smcebi.recipeme.ui.home.R
 import pl.smcebi.recipeme.ui.home.databinding.FragmentRecipeDetailsBinding
+import pl.smcebi.recipeme.ui.home.main.HomeViewEvent
 import pl.smcebi.recipeme.uicommon.R.drawable.recipe_placeholder
 
 @AndroidEntryPoint
@@ -64,6 +67,9 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
             checkInstructionsButton.setSafeOnClickListener {
                 viewModel.navigateRecipeInstructions()
             }
+            connectionError.tryAgainButton.setSafeOnClickListener {
+                viewModel.onTryAgainClicked()
+            }
 
             ingredientsRecyclerView.adapter = adapter
         }
@@ -71,13 +77,23 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
 
     private fun onNewState(state: RecipeDetailsState) {
         with(binding) {
-            broccoliLoading.isVisible = state.inProgress && !state.isError
             connectionError.root.isVisible = state.isError
             caloriesTextView.text = state.calories
             proteinsTextView.text = state.protein
             fatsTextView.text = state.fat
             carbohydratesTextView.text = state.carbs
-            checkInstructionsButton.isGone = state.recipe?.instructions?.isEmpty() == true
+            checkInstructionsButton.isGone =
+                state.recipe?.instructions?.isEmpty() == true || state.inProgress || state.isError
+
+            recipeImage.isGone = state.inProgress
+            imageLoading.root.isVisible = state.inProgress
+            descriptionLoading.root.isVisible = state.inProgress
+            descriptionTextView.isInvisible = state.inProgress
+            showMoreButton.isInvisible = state.inProgress
+            nutritionLoading.root.isVisible = state.nutritionInProgress || state.inProgress
+            nutritionGroup.isInvisible = state.nutritionInProgress || state.inProgress
+            ingredientsLoading.root.isVisible = state.inProgress
+            ingredientsRecyclerView.isGone = state.inProgress
 
             state.recipe?.let { recipe ->
                 recipeImage.load(data = recipe.imageUrl, fallback = recipe_placeholder)
@@ -95,7 +111,7 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
                 servingsTextView.text =
                     getString(R.string.fragment_details_meal_servings, recipe.servings.toString())
 
-                adapter?.submitList(state.recipe.ingredientsList)
+                adapter?.submitList(recipe.ingredientsList)
             }
         }
     }
@@ -103,6 +119,7 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
     private fun onNewEvent(event: RecipeDetailsEvent) {
         when (event) {
             is RecipeDetailsEvent.NavigateInstructions -> navigateInstructions(event.recipe)
+            is RecipeDetailsEvent.ShowError -> showSnackbar(event.message)
         }
     }
 
