@@ -2,7 +2,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.navigation.safeargs)
     alias(libs.plugins.kotlin.parcelize)
@@ -36,9 +36,9 @@ dependencies {
 
     // Dagger
     implementation(libs.dagger.hiltLib)
-    kapt(libs.dagger.hiltProc)
+    ksp(libs.dagger.hiltProc)
     implementation(libs.dagger.daggerLib)
-    kapt(libs.dagger.daggerProc)
+    ksp(libs.dagger.daggerProc)
 
     // Utils
     implementation(libs.timber)
@@ -46,9 +46,4 @@ dependencies {
     testImplementation(libs.junit.core)
     androidTestImplementation(libs.junit.testExt)
     androidTestImplementation(libs.espresso.core)
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }

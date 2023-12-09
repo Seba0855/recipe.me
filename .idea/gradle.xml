@@ -28,6 +28,7 @@
             <option value="$PROJECT_DIR$/barcode-scanner-local" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
+            <option value="$PROJECT_DIR$/database" />
             <option value="$PROJECT_DIR$/datasource-common" />
             <option value="$PROJECT_DIR$/datasource-products" />
             <option value="$PROJECT_DIR$/datasource-products-network" />
