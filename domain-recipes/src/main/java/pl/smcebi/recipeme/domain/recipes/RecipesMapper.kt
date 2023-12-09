@@ -17,7 +17,7 @@ internal class RecipesMapper @Inject internal constructor(
 
     fun map(recipeResponse: RecipeResponse): RecipesUI =
         RecipesUI(
-            id = recipeResponse.id,
+            id = recipeResponse.id.toString(),
             title = recipeResponse.title,
             imageUrl = recipeResponse.image.orEmpty(),
             readyInMinutes = recipeResponse.readyInMinutes,

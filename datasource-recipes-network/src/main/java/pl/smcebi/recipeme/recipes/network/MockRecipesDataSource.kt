@@ -1,6 +1,7 @@
 package pl.smcebi.recipeme.recipes.network
 
 import pl.smcebi.recipeme.datasource.common.NetworkResult
+import pl.smcebi.recipeme.recipes.AutocompleteResponse
 import pl.smcebi.recipeme.recipes.NutritionResponse
 import pl.smcebi.recipeme.recipes.QuickAnswerResponse
 import pl.smcebi.recipeme.recipes.RecipeListResponse
@@ -156,6 +157,46 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
         )
     )
 
+    override suspend fun getRecipeById(
+        recipeId: String,
+        includeNutrition: Boolean
+    ): NetworkResult<RecipeResponse> = NetworkResult.Success(
+        RecipeResponse(
+            id = 9760,
+            title = "Creamy tomato ",
+            image = "https://spoonacular.com/recipeImages/640713-556x370.jpg",
+            imageType = "justo",
+            servings = 9622,
+            readyInMinutes = 3302,
+            license = null,
+            sourceName = "Adrienne Walls",
+            sourceUrl = "https://duckduckgo.com/?q=ea",
+            spoonacularSourceUrl = "https://www.google.com/#q=dignissim",
+            aggregateLikes = 9811,
+            healthScore = 16.17,
+            spoonacularScore = null,
+            pricePerServing = 18.19,
+            cheap = false,
+            creditsText = "molestie",
+            dairyFree = false,
+            gaps = "doctus",
+            glutenFree = false,
+            instructions = "eruditi",
+            ketogenic = null,
+            lowFodmap = false,
+            sustainable = false,
+            vegan = false,
+            vegetarian = false,
+            veryHealthy = false,
+            veryPopular = false,
+            whole30 = null,
+            dishTypes = listOf(),
+            extendedIngredients = listOf(),
+            summary = "luptatum",
+            analyzedInstructions = listOf()
+        )
+    )
+
     override suspend fun getQuickAnswer(query: String): NetworkResult<QuickAnswerResponse> =
         NetworkResult.Success(
             QuickAnswerResponse(
@@ -171,6 +212,40 @@ internal class MockRecipesDataSource @Inject constructor() : RecipesDataSource {
                 carbs = "12g",
                 fat = "14g",
                 protein = "16g"
+            )
+        )
+
+    override suspend fun autocompleteRecipeSearch(
+        query: String,
+        number: Int
+    ): NetworkResult<List<AutocompleteResponse>> =
+        NetworkResult.Success(
+            listOf(
+                AutocompleteResponse(
+                    id = 362230,
+                    title = "burger",
+                    imageType = "jpeg"
+                ),
+                AutocompleteResponse(
+                    id = 119909,
+                    title = "burgerpizza",
+                    imageType = "jpg"
+                ),
+                AutocompleteResponse(
+                    id = 528118,
+                    title = "burger buns",
+                    imageType = "jpg"
+                ),
+                AutocompleteResponse(
+                    id = 1812031,
+                    title = "burger bowl",
+                    imageType = "jpg"
+                ),
+                AutocompleteResponse(
+                    id = 506528,
+                    title = "burger cake",
+                    imageType = "jpg"
+                ),
             )
         )
 }

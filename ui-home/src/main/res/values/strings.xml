@@ -5,6 +5,8 @@
     <string name="fragment_home_log_in">Log in</string>
     <string name="fragment_home_headline">What we\'ll cook <b>today?</b></string>
     <string name="fragment_home_search">Search…</string>
+    <string name="fragment_home_search_search_recipes">Find your recipe</string>
+    <string name="fragment_home_search_not_found">No matching recipes found</string>
     <string name="fragment_home_label">Recipes</string>
     <string name="fragment_home_random">Random</string>
 

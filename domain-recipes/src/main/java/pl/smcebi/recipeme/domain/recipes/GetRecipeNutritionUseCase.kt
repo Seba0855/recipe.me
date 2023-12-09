@@ -25,11 +25,4 @@ class GetRecipeNutritionUseCase @Inject internal constructor(
                 }
             )
         }
-
-    private fun NutritionResponse.mapUI(): NutritionUI = NutritionUI(
-        calories = buildString { append("\uD83D\uDD25 ", calories, " kcal") },
-        carbs = buildString { append("\uD83E\uDED9 ", carbs) },
-        fat = buildString { append("\uD83C\uDF56 ", fat) },
-        protein = buildString { append("\uD83C\uDF57 ", protein) },
-    )
 }

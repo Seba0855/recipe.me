@@ -26,7 +26,12 @@
 
         <argument
             android:name="recipe"
-            app:argType="pl.smcebi.recipeme.domain.recipes.model.RecipesUI" />
+            app:argType="pl.smcebi.recipeme.domain.recipes.model.RecipesUI"
+            app:nullable="true" />
+
+        <argument
+            android:name="recipeId"
+            app:argType="string" />
 
         <action
             android:id="@+id/navigateRecipeInstructions"

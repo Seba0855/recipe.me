@@ -33,6 +33,8 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
 
+    implementation(libs.shimmer)
+
     implementation(libs.glide)
     implementation(libs.glide.recyclerView) {
         // Excludes the support library because it's already included by Glide.

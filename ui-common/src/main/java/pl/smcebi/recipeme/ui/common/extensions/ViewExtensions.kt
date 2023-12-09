@@ -7,6 +7,7 @@ import android.view.ViewPropertyAnimator
 import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.DimenRes
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.doOnAttach
 import androidx.core.view.doOnDetach
 
@@ -133,3 +134,5 @@ fun View.getRelativePositionTo(view: View): Pair<Int, Int> {
     val y = firstViewLocation[1] - secondViewLocation[1]
     return x to y
 }
+
+fun WindowInsetsCompat.isKeyboardVisible(): Boolean = isVisible(WindowInsetsCompat.Type.ime())

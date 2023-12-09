@@ -49,6 +49,6 @@ class ImageMapper @Inject constructor() {
         const val BASE_URL = "https://spoonacular.com/"
         const val INGREDIENTS_PATH = "cdn/ingredients_"
         const val EQUIPMENT_PATH = "cdn/equipment_"
-        const val RECIPE_PATH = "/recipeimages/"
+        const val RECIPE_PATH = "recipeImages/"
     }
 }
