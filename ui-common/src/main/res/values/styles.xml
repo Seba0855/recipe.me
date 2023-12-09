@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget" />
+
+    <style name="Widget.RecipeMe" />
+
+    <style name="Widget.RecipeMe.Shimmer">
+        <item name="shimmer_auto_start">true</item>
+        <item name="shimmer_base_alpha">1.0</item>
+        <item name="shimmer_base_color">?attr/colorSurfaceVariant</item>
+        <item name="shimmer_highlight_color">?attr/colorSurface</item>
+        <item name="shimmer_colored">true</item>
+        <item name="shimmer_duration">1000</item>
+        <item name="shimmer_repeat_delay">500</item>
+        <item name="shimmer_repeat_mode">restart</item>
+        <item name="shimmer_shape">linear</item>
+    </style>
+
+</resources>
