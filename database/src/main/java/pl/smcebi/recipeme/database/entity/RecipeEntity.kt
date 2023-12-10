@@ -11,11 +11,9 @@ import pl.smcebi.recipeme.database.DatabaseConstants.TABLE_RECIPE
 
 @Entity(tableName = TABLE_RECIPE)
 data class RecipeEntity(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = COLUMN_RECIPE_ENTITY_ID)
-    val id: Int = 0,
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = COLUMN_RECIPE_ID)
-    val recipeId: Long,
+    val recipeId: String,
     @ColumnInfo(name = COLUMN_RECIPE_IMAGE_URL)
     val imageUrl: String,
     @ColumnInfo(name = COLUMN_RECIPE_DURATION_AND_SERVINGS)

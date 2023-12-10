@@ -18,6 +18,7 @@ dependencies {
     implementation(project(":datasource-recipes"))
     implementation(project(":model-recipes"))
     implementation(project(":domain-common"))
+    implementation(project(":database"))
 
     implementation(libs.kotlin.coroutines.core)
     implementation(libs.kotlin.serialization.serializationJson)

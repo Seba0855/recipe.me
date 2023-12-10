@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.domain.recipes
+package pl.smcebi.recipeme.domain.recipes.mapper
 
 import dagger.Reusable
 import pl.smcebi.recipeme.domain.common.images.ImageMapper

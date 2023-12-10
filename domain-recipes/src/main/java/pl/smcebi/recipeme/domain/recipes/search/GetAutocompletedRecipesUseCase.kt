@@ -1,8 +1,7 @@
-package pl.smcebi.recipeme.domain.recipes
+package pl.smcebi.recipeme.domain.recipes.search
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import pl.smcebi.recipeme.datasource.common.Mock
 import pl.smcebi.recipeme.domain.common.dispatchers.DispatcherIO
 import pl.smcebi.recipeme.domain.common.images.ImageMapper
 import pl.smcebi.recipeme.domain.common.utils.DomainResult
