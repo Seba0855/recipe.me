@@ -104,7 +104,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         val recipe = viewModel.state.value.recipes[position]
 
         findNavController().navigate(
-            directions = HomeFragmentDirections.navigateDetails(recipe, ""),
+            directions = HomeFragmentDirections.navigateDetails(recipe = recipe),
             navigatorExtras = FragmentNavigatorExtras(
                 transitioningView to transitioningView.transitionName
             )

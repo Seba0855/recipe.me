@@ -32,17 +32,20 @@ internal class SavedRecipesViewModel @Inject constructor(
 
     init {
         collectStoredRecipesUseCase().onEach { recipes ->
-            Timber.d("Saved recipes: $recipes")
             mutableState.mutate {
                 copy(recipes = recipes)
             }
         }.launchIn(viewModelScope)
     }
 
+    fun navigateDetails(position: Int) {
+        mutableEvent.trySend(SavedRecipesEvent.NavigateDetails(state.value.recipes[position].id))
+    }
+
     fun removeStoredRecipe(position: Int) {
         viewModelScope.launch {
             removeStoredRecipeUseCase(state.value.recipes[position]).onSuccess {
-                mutableEvent.send(SavedRecipesEvent.ShowMessage)
+                mutableEvent.send(SavedRecipesEvent.ShowRecipeRemovedMessage)
             }
         }
     }

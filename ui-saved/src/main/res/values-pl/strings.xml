@@ -2,4 +2,5 @@
 <resources>
     <string name="fragment_saved_header">Zapisane przepisy</string>
     <string name="fragment_saved_no_recipes">Brak zapisanych przepisów</string>
+    <string name="fragment_saved_recipe_removed">Usunięto przepis z listy zapisanych</string>
 </resources>

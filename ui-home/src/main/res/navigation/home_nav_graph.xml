@@ -24,13 +24,17 @@
         android:label="RecipeDetailsFragment"
         tools:layout="@layout/fragment_recipe_details">
 
+        <deepLink app:uri="app://pl.smcebi.recipeme/details/{recipeId}" />
+
         <argument
             android:name="recipe"
+            android:defaultValue="@null"
             app:argType="pl.smcebi.recipeme.domain.recipes.model.RecipesUI"
             app:nullable="true" />
 
         <argument
             android:name="recipeId"
+            android:defaultValue=""
             app:argType="string" />
 
         <action
