@@ -1,5 +1,6 @@
 package pl.smcebi.recipeme.ui.home.details
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.view.View
@@ -11,12 +12,16 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.R.attr.colorSurface
+import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
+import com.google.android.material.transition.MaterialFade
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.domain.recipes.model.RecipesUI
 import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
+import pl.smcebi.recipeme.ui.common.extensions.getThemedColor
 import pl.smcebi.recipeme.ui.common.extensions.load
 import pl.smcebi.recipeme.ui.common.extensions.notImplemented
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
@@ -37,8 +42,11 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        enterTransition = MaterialFade()
         reenterTransition = MaterialElevationScale(true)
-        sharedElementEnterTransition = MaterialContainerTransform()
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            scrimColor = Color.TRANSPARENT
+        }
 
         initViews()
         collectOnViewLifecycle(viewModel.state, ::onNewState)

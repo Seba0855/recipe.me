@@ -12,7 +12,10 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.search.SearchView.TransitionState.HIDDEN
 import com.google.android.material.search.SearchView.TransitionState.HIDING
 import com.google.android.material.search.SearchView.TransitionState.SHOWN
+import com.google.android.material.transition.Hold
+import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
+import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.notImplemented
@@ -41,9 +44,17 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
 
+        /**
+         * The RecyclerView will be redrawn during transition because AAC navigation component
+         * will invoke onDestoryView and onCreateView of screen A at each transition.
+         * So we need to postpone the shared element transition until our RecylcerView is redrawn with Adapter.
+         */
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-        exitTransition = MaterialElevationScale(false)
+
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = 200L
+        }
         reenterTransition = MaterialElevationScale(true)
 
         initViews()

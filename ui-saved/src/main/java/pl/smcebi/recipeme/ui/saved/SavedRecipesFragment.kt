@@ -3,10 +3,12 @@ package pl.smcebi.recipeme.ui.saved
 import android.os.Bundle
 import android.view.View
 import androidx.core.net.toUri
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFade
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +28,19 @@ internal class SavedRecipesFragment : Fragment(R.layout.fragment_saved_recipes) 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exitTransition = MaterialFadeThrough()
+
+        /**
+         * The RecyclerView will be redrawn during transition because AAC navigation component
+         * will invoke onDestoryView and onCreateView of screen A at each transition.
+         * So we need to postpone the shared element transition until our RecylcerView is redrawn with Adapter.
+         */
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
+
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = 200L
+        }
+        reenterTransition = MaterialElevationScale(true)
 
         initViews()
         collectOnViewLifecycle(viewModel.state, ::onNewState)
