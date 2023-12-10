@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
     id("pl.smcebi.recipeme.library")
 }
 
@@ -10,11 +12,12 @@ android {
 }
 
 dependencies {
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.google.material)
-    testImplementation(libs.junit.core)
-    androidTestImplementation(libs.junit.testExt)
-    androidTestImplementation(libs.espresso.core)
+    implementation(libs.dagger.hiltLib)
+    ksp(libs.dagger.hiltProc)
+    implementation(libs.dagger.daggerLib)
+    ksp(libs.dagger.daggerProc)
 }
