@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.Preview
+import androidx.core.view.doOnLayout
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -84,7 +86,9 @@ internal class ScannerFragment : Fragment(R.layout.fragment_scanner) {
 
     private fun onCameraPermissionGranted() {
         binding.permissionDeniedView.isVisible = false
-        attachCameraPreview()
+        view?.doOnLayout {
+            attachCameraPreview()
+        }
     }
 
     private fun attachCameraPreview() {
