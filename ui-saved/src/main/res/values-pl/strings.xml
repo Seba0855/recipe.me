@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="fragment_saved_header">Zapisane przepisy</string>
     <string name="fragment_saved_no_recipes">Brak zapisanych przepisów</string>
 </resources>

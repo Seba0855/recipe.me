@@ -39,6 +39,7 @@ internal class SavedRecipesAdapter(
             }
             setOnBookmarkClickListener { position ->
                 onBookmarkClickListener?.invoke(position)
+                notifyItemChanged(position)
             }
         }
     }
