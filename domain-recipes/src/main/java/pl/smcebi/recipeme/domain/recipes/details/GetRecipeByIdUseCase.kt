@@ -2,7 +2,6 @@ package pl.smcebi.recipeme.domain.recipes.details
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import pl.smcebi.recipeme.datasource.common.Mock
 import pl.smcebi.recipeme.domain.common.dispatchers.DispatcherIO
 import pl.smcebi.recipeme.domain.common.utils.DomainResult
 import pl.smcebi.recipeme.domain.common.utils.getErrorMessage
@@ -12,7 +11,7 @@ import pl.smcebi.recipeme.recipes.RecipesDataSource
 import javax.inject.Inject
 
 class GetRecipeByIdUseCase @Inject internal constructor(
-    @Mock private val recipesDataSource: RecipesDataSource,
+    private val recipesDataSource: RecipesDataSource,
     private val recipesMapper: RecipesMapper,
     @DispatcherIO private val dispatcher: CoroutineDispatcher,
 ) {
