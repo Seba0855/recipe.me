@@ -10,6 +10,7 @@ import pl.smcebi.recipeme.recipes.QuickAnswerResponse
 import pl.smcebi.recipeme.recipes.RecipesDataSource
 import javax.inject.Inject
 
+@Deprecated("No longer in use, should be deleted")
 class GetQuickAnswerUseCase @Inject internal constructor(
     private val dataSource: RecipesDataSource,
     @DispatcherIO private val dispatcher: CoroutineDispatcher

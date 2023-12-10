@@ -8,6 +8,7 @@ import pl.smcebi.recipeme.datasource.common.apiCall
 import pl.smcebi.recipeme.recipes.AutocompleteResponse
 import pl.smcebi.recipeme.recipes.NutritionResponse
 import pl.smcebi.recipeme.recipes.QuickAnswerResponse
+import pl.smcebi.recipeme.recipes.RecipeListResponse
 import pl.smcebi.recipeme.recipes.RecipeResponse
 import pl.smcebi.recipeme.recipes.RecipesDataSource
 import pl.smcebi.recipeme.retrofit.recipes.RecipesApi
@@ -23,7 +24,7 @@ internal class RecipesNetworkDataSource @Inject constructor(
         limitLicense: Boolean,
         tags: String?,
         number: Int
-    ): NetworkResult<pl.smcebi.recipeme.recipes.RecipeListResponse> =
+    ): NetworkResult<RecipeListResponse> =
         apiCall(dispatcher, json) {
             api.getRandomRecipes(
                 limitLicense = true,
