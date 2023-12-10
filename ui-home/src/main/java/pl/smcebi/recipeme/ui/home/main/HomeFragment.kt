@@ -86,6 +86,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun onNewEvent(event: HomeViewEvent) {
         when (event) {
+            HomeViewEvent.ShowSavedRecipeMessage -> showSnackbar(getString(R.string.fragment_home_recipe_saved))
             is HomeViewEvent.NavigateDetails -> navigateDetailsById(event.recipeId)
             is HomeViewEvent.ShowError -> showSnackbar(event.message)
         }
@@ -104,7 +105,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         val recipe = viewModel.state.value.recipes[position]
 
         findNavController().navigate(
-            directions = HomeFragmentDirections.navigateDetails(recipe, ""),
+            directions = HomeFragmentDirections.navigateDetails(recipe = recipe),
             navigatorExtras = FragmentNavigatorExtras(
                 transitioningView to transitioningView.transitionName
             )

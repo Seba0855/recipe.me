@@ -9,13 +9,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.launch
-import pl.smcebi.recipeme.domain.recipes.GetRecipeByIdUseCase
-import pl.smcebi.recipeme.domain.recipes.GetRecipeNutritionUseCase
+import pl.smcebi.recipeme.domain.recipes.details.GetRecipeByIdUseCase
+import pl.smcebi.recipeme.domain.recipes.details.GetRecipeNutritionUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
 import pl.smcebi.recipeme.ui.common.extensions.withProgressBar
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel

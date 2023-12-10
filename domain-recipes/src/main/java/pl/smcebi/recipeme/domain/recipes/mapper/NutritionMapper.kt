@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.domain.recipes
+package pl.smcebi.recipeme.domain.recipes.mapper
 
 import pl.smcebi.recipeme.domain.recipes.model.NutritionUI
 import pl.smcebi.recipeme.recipes.NutritionResponse

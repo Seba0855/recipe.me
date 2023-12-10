@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fragment_saved_header">Saved recipes</string>
+    <string name="fragment_saved_no_recipes">No saved recipes</string>
+    <string name="fragment_saved_recipe_removed">Removed recipe from saved</string>
+</resources>

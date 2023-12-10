@@ -2,13 +2,13 @@
 <resources>
     <string name="fragment_home_logged_in_placeholder">Cześć, Sebastian</string>
 
-    <string name="fragment_home_log_in">Zaloguj się</string>
     <string name="fragment_home_headline">Co dziś <b>upichcimy?</b></string>
     <string name="fragment_home_search">Szukaj…</string>
     <string name="fragment_home_search_search_recipes">Wpisz nazwę dania by wyszukać</string>
     <string name="fragment_home_search_not_found">Nie znaleziono pasujących przepisów</string>
     <string name="fragment_home_label">Przepisy</string>
     <string name="fragment_home_random">Losowe</string>
+    <string name="fragment_home_recipe_saved">Przepis został dodany do listy zapisanych</string>
 
     <string name="fragment_details_dish_type">🍽 %1$s</string>
     <string name="fragment_details_duration">⏱ %1$s minut</string>
