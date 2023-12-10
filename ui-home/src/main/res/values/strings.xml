@@ -2,13 +2,13 @@
 <resources>
     <string name="fragment_home_logged_in_placeholder">Hi, Sebastian</string>
 
-    <string name="fragment_home_log_in">Log in</string>
     <string name="fragment_home_headline">What we\'ll cook <b>today?</b></string>
     <string name="fragment_home_search">Search…</string>
     <string name="fragment_home_search_search_recipes">Find your recipe</string>
     <string name="fragment_home_search_not_found">No matching recipes found</string>
     <string name="fragment_home_label">Recipes</string>
     <string name="fragment_home_random">Random</string>
+    <string name="fragment_home_recipe_saved">Recipe has been added to the saved list</string>
 
     <string name="fragment_details_dish_type">🍽 %1$s</string>
     <string name="fragment_details_duration">⏱ %1$s minutes</string>

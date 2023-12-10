@@ -47,11 +47,8 @@ internal class HomeViewModel @Inject constructor(
 
     fun onBookmarkClick(position: Int) {
         viewModelScope.launch {
-//            translateTextUseCase("Chrząszcz brzmi w trzcinie").onSuccess {
-//                mutableEvent.send(HomeViewEvent.ShowError(it))
-//            }
             saveRecipeUseCase(state.value.recipes[position]).onSuccess {
-                mutableEvent.send(HomeViewEvent.ShowError("Dodano do bazy danych"))
+                mutableEvent.send(HomeViewEvent.ShowSavedRecipeMessage)
             }
         }
     }
