@@ -18,6 +18,7 @@ android {
 
 dependencies {
     implementation(project(":domain-common"))
+    implementation(project(":domain-recipes"))
     implementation(project(":ui-common"))
 
     implementation(libs.androidx.fragment)

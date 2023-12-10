@@ -11,6 +11,7 @@ internal class RecipeToEntityMapper @Inject internal constructor() {
     fun mapToEntity(recipesUI: RecipesUI): RecipeEntity =
         RecipeEntity(
             recipeId = recipesUI.id,
+            title = recipesUI.title,
             imageUrl = recipesUI.imageUrl,
             durationAndServings = recipesUI.durationAndServings
         )

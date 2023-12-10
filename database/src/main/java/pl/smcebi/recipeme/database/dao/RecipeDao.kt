@@ -14,7 +14,7 @@ import pl.smcebi.recipeme.database.entity.RecipeEntity
 interface RecipeDao {
 
     @Query("SELECT * FROM $TABLE_RECIPE")
-    suspend fun getRecipesStream(): Flow<List<RecipeEntity>>
+    fun getRecipesStream(): Flow<List<RecipeEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRecipe(recipe: RecipeEntity)
