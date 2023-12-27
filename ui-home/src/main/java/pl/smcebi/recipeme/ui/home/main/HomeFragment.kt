@@ -22,7 +22,7 @@ import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
 import pl.smcebi.recipeme.ui.home.R
 import pl.smcebi.recipeme.ui.home.databinding.FragmentHomeBinding
-import pl.smcebi.recipeme.ui.home.main.mealtype.MealtypeAdapter
+import pl.smcebi.recipeme.ui.home.main.mealtype.MealTypeAdapter
 import pl.smcebi.recipeme.ui.home.main.suggestions.SuggestionsAdapter
 
 @AndroidEntryPoint
@@ -31,7 +31,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels()
     private var adapter: HomeAdapter? = null
     private var searchAdapter: SuggestionsAdapter? = null
-    private var mealtypeAdapter: MealtypeAdapter? = null
+    private var mealtypeAdapter: MealTypeAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,8 +70,8 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
             searchAdapter = SuggestionsAdapter(
                 onSuggestionClick = viewModel::onSuggestionClick
             )
-            mealtypeAdapter = MealtypeAdapter(
-                onMealtypeClick = viewModel::onNewMealtypeSelected
+            mealtypeAdapter = MealTypeAdapter(
+                onMealTypeClick = viewModel::onNewMealTypeSelected
             )
             connectionError.tryAgainButton.setSafeOnClickListener {
                 viewModel.tryAgain()

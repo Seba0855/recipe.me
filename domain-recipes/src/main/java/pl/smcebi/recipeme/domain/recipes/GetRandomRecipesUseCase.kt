@@ -13,7 +13,7 @@ import pl.smcebi.recipeme.recipes.RecipesDataSource
 import javax.inject.Inject
 
 class GetRandomRecipesUseCase @Inject internal constructor(
-    @Mock private val dataSource: RecipesDataSource,
+    private val dataSource: RecipesDataSource,
     private val recipesMapper: RecipesMapper,
     @DispatcherIO private val dispatcher: CoroutineDispatcher
 ) {

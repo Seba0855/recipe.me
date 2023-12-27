@@ -9,14 +9,14 @@ import pl.smcebi.recipeme.domain.recipes.model.MealType
 import pl.smcebi.recipeme.ui.home.databinding.ItemMealtypeButtonBinding
 import pl.smcebi.recipeme.ui.home.main.suggestions.OnItemClick
 
-internal class MealtypeAdapter(
-    onMealtypeClick: OnItemClick
-) : ListAdapter<MealType, MealtypeViewHolder>(DIFF_UTIL) {
+internal class MealTypeAdapter(
+    onMealTypeClick: OnItemClick
+) : ListAdapter<MealType, MealTypeViewHolder>(DIFF_UTIL) {
 
-    private var onMealtypeclick: OnItemClick? = onMealtypeClick
+    private var onMealTypeClick: OnItemClick? = onMealTypeClick
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealtypeViewHolder =
-        MealtypeViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealTypeViewHolder =
+        MealTypeViewHolder(
             ItemMealtypeButtonBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -24,19 +24,19 @@ internal class MealtypeAdapter(
             )
         )
 
-    override fun onBindViewHolder(holder: MealtypeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MealTypeViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    override fun onViewAttachedToWindow(holder: MealtypeViewHolder) {
+    override fun onViewAttachedToWindow(holder: MealTypeViewHolder) {
         super.onViewAttachedToWindow(holder)
-        holder.setOnMealtypeClickListener { position ->
-            onMealtypeclick?.invoke(position)
+        holder.setOnMealTypeClickListener { position ->
+            onMealTypeClick?.invoke(position)
         }
     }
 
     override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
-        onMealtypeclick = null
+        onMealTypeClick = null
         super.onDetachedFromRecyclerView(recyclerView)
     }
 

@@ -8,18 +8,18 @@ import pl.smcebi.recipeme.ui.home.R
 import pl.smcebi.recipeme.ui.home.databinding.ItemMealtypeButtonBinding
 import pl.smcebi.recipeme.ui.home.main.suggestions.OnItemClick
 
-internal class MealtypeViewHolder(
+internal class MealTypeViewHolder(
     private val binding: ItemMealtypeButtonBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(mealtype: MealType) {
+    fun bind(mealType: MealType) {
         with(binding) {
-            mealtypeButton.text = getStringArray(R.array.fragment_home_mealtypes)[mealtype.ordinal]
+            mealtypeButton.text = getStringArray(R.array.fragment_home_mealtypes)[mealType.ordinal]
         }
     }
 
-    fun setOnMealtypeClickListener(listener: OnItemClick) {
-        binding.root.setSafeOnClickListener {
+    fun setOnMealTypeClickListener(listener: OnItemClick) {
+        binding.mealtypeButton.setSafeOnClickListener {
             listener(bindingAdapterPosition)
         }
     }
