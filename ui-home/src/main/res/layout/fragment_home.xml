@@ -50,17 +50,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/searchBar" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/randomButton"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mealtypeRecyclerView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_big"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:backgroundTint="?attr/colorSecondary"
-                android:text="@string/fragment_home_random"
-                android:textColor="?attr/colorOnSecondary"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recipesLabelTextView" />
+                app:layout_constraintTop_toBottomOf="@id/recipesLabelTextView"
+                tools:listitem="@layout/item_mealtype_button" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/broccoliLoading"
@@ -70,7 +71,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/randomButton"
+                app:layout_constraintTop_toBottomOf="@id/mealtypeRecyclerView"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/broccoli_loading" />
@@ -85,7 +86,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/randomButton" />
+                app:layout_constraintTop_toBottomOf="@id/mealtypeRecyclerView" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recipesRecyclerView"
@@ -99,7 +100,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/randomButton"
+                app:layout_constraintTop_toBottomOf="@id/mealtypeRecyclerView"
                 tools:itemCount="5"
                 tools:listitem="@layout/item_recipe_card" />
         </androidx.constraintlayout.widget.ConstraintLayout>

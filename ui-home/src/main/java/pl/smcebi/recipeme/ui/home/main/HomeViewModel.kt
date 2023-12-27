@@ -53,8 +53,7 @@ internal class HomeViewModel @Inject constructor(
         }
     }
 
-    fun onRandomClicked() {
-        mutableEvent.trySend(HomeViewEvent.ShowError("not implemented"))
+    fun onNewMealtypeSelected(position: Int) {
     }
 
     fun onSearchRequested(query: String) {
