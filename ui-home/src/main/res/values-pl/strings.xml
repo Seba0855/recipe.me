@@ -10,6 +10,17 @@
     <string name="fragment_home_random">Losowe</string>
     <string name="fragment_home_recipe_saved">Przepis został dodany do listy zapisanych</string>
 
+    <string-array name="fragment_home_mealtypes">
+        <item>Losowe</item>
+        <item>Śniadanie</item>
+        <item>Obiad</item>
+        <item>Deser</item>
+        <item>Sałatki</item>
+        <item>Zupy</item>
+        <item>Przekąski</item>
+        <item>Drinki</item>
+    </string-array>
+
     <string name="fragment_details_dish_type">🍽 %1$s</string>
     <string name="fragment_details_duration">⏱ %1$s minut</string>
     <string name="fragment_details_meal_servings">🍲 danie na %1$s porcje</string>

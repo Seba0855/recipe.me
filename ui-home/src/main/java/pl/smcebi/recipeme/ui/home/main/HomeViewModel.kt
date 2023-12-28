@@ -11,8 +11,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import pl.smcebi.recipeme.domain.common.translation.TranslateTextUseCase
+import pl.smcebi.recipeme.domain.common.utils.Selectable.Companion.toSelectable
 import pl.smcebi.recipeme.domain.recipes.search.GetAutocompletedRecipesUseCase
 import pl.smcebi.recipeme.domain.recipes.GetRandomRecipesUseCase
+import pl.smcebi.recipeme.domain.recipes.model.MealType
 import pl.smcebi.recipeme.domain.recipes.store.SaveRecipeUseCase
 import pl.smcebi.recipeme.ui.common.BottomNavCommunicationBridge
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
@@ -53,8 +55,11 @@ internal class HomeViewModel @Inject constructor(
         }
     }
 
-    fun onRandomClicked() {
-        mutableEvent.trySend(HomeViewEvent.ShowError("not implemented"))
+    fun onNewMealTypeSelected(position: Int) {
+        mutableState.mutate {
+            copy(mealTypeEntries = MealType.entries.toSelectable(position))
+        }
+        fetchRecipes(MealType.entries[position])
     }
 
     fun onSearchRequested(query: String) {
@@ -97,13 +102,13 @@ internal class HomeViewModel @Inject constructor(
         bottomNavCommunicationBridge.get().mutateState(isVisible)
     }
 
-    private fun fetchRecipes() {
+    private fun fetchRecipes(mealType: MealType = MealType.RANDOM) {
         withProgressBar(indicator = { inProgress ->
             mutableState.mutate {
                 copy(inProgress = inProgress)
             }
         }) {
-            getRandomRecipesUseCase()
+            getRandomRecipesUseCase(mealType)
                 .onSuccess { recipes ->
                     mutableState.mutate {
                         copy(recipes = recipes)

@@ -12,19 +12,18 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.search.SearchView.TransitionState.HIDDEN
 import com.google.android.material.search.SearchView.TransitionState.HIDING
 import com.google.android.material.search.SearchView.TransitionState.SHOWN
-import com.google.android.material.transition.Hold
-import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
-import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
+import pl.smcebi.recipeme.domain.common.utils.Selectable.Companion.toSelectable
+import pl.smcebi.recipeme.domain.recipes.model.MealType
 import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
-import pl.smcebi.recipeme.ui.common.extensions.notImplemented
 import pl.smcebi.recipeme.ui.common.extensions.onBackPressed
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
 import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
 import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
 import pl.smcebi.recipeme.ui.home.R
 import pl.smcebi.recipeme.ui.home.databinding.FragmentHomeBinding
+import pl.smcebi.recipeme.ui.home.main.mealtype.MealTypeAdapter
 import pl.smcebi.recipeme.ui.home.main.suggestions.SuggestionsAdapter
 
 @AndroidEntryPoint
@@ -33,6 +32,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels()
     private var adapter: HomeAdapter? = null
     private var searchAdapter: SuggestionsAdapter? = null
+    private var mealtypeAdapter: MealTypeAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,9 +71,9 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
             searchAdapter = SuggestionsAdapter(
                 onSuggestionClick = viewModel::onSuggestionClick
             )
-            randomButton.setSafeOnClickListener {
-                viewModel.onRandomClicked()
-            }
+            mealtypeAdapter = MealTypeAdapter(
+                onMealTypeClick = viewModel::onNewMealTypeSelected
+            )
             connectionError.tryAgainButton.setSafeOnClickListener {
                 viewModel.tryAgain()
             }
@@ -81,6 +81,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
             recipesRecyclerView.adapter = adapter
             suggestionsRecyclerView.adapter = searchAdapter
+            mealtypeRecyclerView.adapter = mealtypeAdapter
         }
     }
 
@@ -88,6 +89,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         with(binding) {
             adapter?.submitList(state.recipes)
             searchAdapter?.submitList(state.searchSuggestions)
+            mealtypeAdapter?.submitList(state.mealTypeEntries)
             initialSearchGroup.isVisible = state.showInitialMessage
             connectionError.root.isVisible = state.isError
             broccoliLoading.isVisible = state.inProgress
