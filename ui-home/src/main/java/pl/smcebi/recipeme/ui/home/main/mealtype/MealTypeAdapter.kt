@@ -5,13 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import pl.smcebi.recipeme.domain.common.utils.Selectable
 import pl.smcebi.recipeme.domain.recipes.model.MealType
+import pl.smcebi.recipeme.ui.common.utils.SelectableDiffUtilWrapper
 import pl.smcebi.recipeme.ui.home.databinding.ItemMealtypeButtonBinding
 import pl.smcebi.recipeme.ui.home.main.suggestions.OnItemClick
 
 internal class MealTypeAdapter(
     onMealTypeClick: OnItemClick
-) : ListAdapter<MealType, MealTypeViewHolder>(DIFF_UTIL) {
+) : ListAdapter<Selectable<MealType>, MealTypeViewHolder>(SelectableDiffUtilWrapper(DIFF_UTIL)) {
 
     private var onMealTypeClick: OnItemClick? = onMealTypeClick
 
@@ -31,6 +33,7 @@ internal class MealTypeAdapter(
     override fun onViewAttachedToWindow(holder: MealTypeViewHolder) {
         super.onViewAttachedToWindow(holder)
         holder.setOnMealTypeClickListener { position ->
+            notifyItemChanged(position)
             onMealTypeClick?.invoke(position)
         }
     }

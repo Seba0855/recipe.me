@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import pl.smcebi.recipeme.domain.common.translation.TranslateTextUseCase
+import pl.smcebi.recipeme.domain.common.utils.Selectable.Companion.toSelectable
 import pl.smcebi.recipeme.domain.recipes.search.GetAutocompletedRecipesUseCase
 import pl.smcebi.recipeme.domain.recipes.GetRandomRecipesUseCase
 import pl.smcebi.recipeme.domain.recipes.model.MealType
@@ -55,8 +56,10 @@ internal class HomeViewModel @Inject constructor(
     }
 
     fun onNewMealTypeSelected(position: Int) {
+        mutableState.mutate {
+            copy(mealTypeEntries = MealType.entries.toSelectable(position))
+        }
         fetchRecipes(MealType.entries[position])
-        mutableEvent.trySend(HomeViewEvent.ShowError("Selected ${MealType.entries[position]}"))
     }
 
     fun onSearchRequested(query: String) {

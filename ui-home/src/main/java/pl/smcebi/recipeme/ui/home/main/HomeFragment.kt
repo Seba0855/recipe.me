@@ -14,6 +14,7 @@ import com.google.android.material.search.SearchView.TransitionState.HIDING
 import com.google.android.material.search.SearchView.TransitionState.SHOWN
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
+import pl.smcebi.recipeme.domain.common.utils.Selectable.Companion.toSelectable
 import pl.smcebi.recipeme.domain.recipes.model.MealType
 import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.onBackPressed
@@ -88,7 +89,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         with(binding) {
             adapter?.submitList(state.recipes)
             searchAdapter?.submitList(state.searchSuggestions)
-            mealtypeAdapter?.submitList(MealType.entries)
+            mealtypeAdapter?.submitList(state.mealTypeEntries)
             initialSearchGroup.isVisible = state.showInitialMessage
             connectionError.root.isVisible = state.isError
             broccoliLoading.isVisible = state.inProgress
