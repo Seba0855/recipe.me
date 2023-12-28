@@ -4,6 +4,7 @@
         <!--    Color primary    -->
         <item name="colorPrimary">@color/primary60</item>
         <item name="colorOnPrimary">@color/primary100</item>
+        <item name="colorOnPrimaryFixed">@color/md_theme_light_onPrimaryFixed</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
         <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
 
