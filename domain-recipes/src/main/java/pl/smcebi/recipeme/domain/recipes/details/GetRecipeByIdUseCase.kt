@@ -12,7 +12,7 @@ import pl.smcebi.recipeme.recipes.RecipesDataSource
 import javax.inject.Inject
 
 class GetRecipeByIdUseCase @Inject internal constructor(
-    @Mock private val recipesDataSource: RecipesDataSource,
+    private val recipesDataSource: RecipesDataSource,
     private val recipesMapper: RecipesMapper,
     @DispatcherIO private val dispatcher: CoroutineDispatcher,
 ) {

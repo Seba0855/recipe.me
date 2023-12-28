@@ -2,6 +2,8 @@ package pl.smcebi.recipeme.domain.common.products
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import pl.smcebi.recipeme.datasource.products.BarcodeProductsDataSource
 import pl.smcebi.recipeme.domain.common.dispatchers.DispatcherIO
 import pl.smcebi.recipeme.domain.common.utils.DomainResult
@@ -19,14 +21,13 @@ class GetProductByBarcodeUseCase @Inject internal constructor(
                     val product = productResponse.product
 
                     if (product == null) {
-//                    DomainResult.Success(productResponse.productStatus.toString())
                         DomainResult.Failure("Product not found")
                     } else {
                         DomainResult.Success(
                             ProductUI(
                                 brand = product.brands,
                                 name = product.productName,
-                                imageUrl = product.selectedImages?.front?.display?.pl.orEmpty()
+                                imageUrl = product.selectedImages?.front?.display?.imageUrl.orEmpty()
                             )
                         )
                     }

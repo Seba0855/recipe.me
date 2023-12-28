@@ -10,9 +10,9 @@ data class ProductImage(
     data class FrontImage(
         val display: Display
     ) {
-        @Serializable
+        @Serializable(with = ProductImageSerializer::class)
         data class Display(
-            val pl: String? = null,
+            val imageUrl: String? = null,
         )
     }
 }
