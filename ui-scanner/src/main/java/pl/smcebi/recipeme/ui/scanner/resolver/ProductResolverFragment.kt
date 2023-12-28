@@ -6,8 +6,11 @@ import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener
 import pl.smcebi.recipeme.ui.common.extensions.showSnackbar
@@ -15,6 +18,7 @@ import pl.smcebi.recipeme.ui.common.viewbinding.viewBinding
 import pl.smcebi.recipeme.ui.scanner.R
 import pl.smcebi.recipeme.ui.scanner.camera.ScannerFragment
 import pl.smcebi.recipeme.ui.scanner.databinding.FragmentProductResolverBinding
+import kotlin.time.Duration.Companion.seconds
 
 @AndroidEntryPoint
 internal class ProductResolverFragment : Fragment(R.layout.fragment_product_resolver) {
@@ -60,10 +64,15 @@ internal class ProductResolverFragment : Fragment(R.layout.fragment_product_reso
         when (event) {
             ProductResolverEvent.ResumeImageAnalysis -> startBarcodeCollection()
             ProductResolverEvent.StopImageAnalysis -> stopBarcodeCollection()
-            is ProductResolverEvent.ShowProductName -> showSnackbar(
-                event.name,
-                ::startBarcodeCollection
-            )
+            is ProductResolverEvent.ShowProduct -> with(binding) {
+                scannedProductCardView.bind(event.product)
+                scannedProductCardView.root.isVisible = true
+            }
+
+            is ProductResolverEvent.DismissProduct -> {
+                binding.scannedProductCardView.root.isVisible = false
+                startBarcodeCollection()
+            }
 
             is ProductResolverEvent.ShowError -> showSnackbar(
                 event.message,

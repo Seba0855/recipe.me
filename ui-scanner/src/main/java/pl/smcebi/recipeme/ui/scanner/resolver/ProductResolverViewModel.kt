@@ -3,6 +3,7 @@ package pl.smcebi.recipeme.ui.scanner.resolver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -20,9 +21,9 @@ import pl.smcebi.recipeme.domain.common.products.GetProductByBarcodeUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
 import pl.smcebi.recipeme.ui.common.vibration.VibrationProvider
-import timber.log.Timber
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 internal class ProductResolverViewModel @Inject constructor(
@@ -72,7 +73,11 @@ internal class ProductResolverViewModel @Inject constructor(
         getProductByBarcodeUseCase(barcode.value)
             .onSuccess { productName ->
                 // handle resolved product info
-                mutableEvent.send(ProductResolverEvent.ShowProductName(productName))
+                viewModelScope.launch {
+                    mutableEvent.send(ProductResolverEvent.ShowProduct(productName))
+                    delay(5.seconds)
+                    mutableEvent.send(ProductResolverEvent.DismissProduct)
+                }
             }
             .onFailure { message ->
                 // show error
