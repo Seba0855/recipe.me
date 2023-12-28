@@ -75,16 +75,19 @@
 
     <style name="TextAppearance.RecipeMe.Label.Large">
         <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20sp</item>
         <item name="android:lineSpacingExtra">6sp</item>
     </style>
 
     <style name="TextAppearance.RecipeMe.Label.Medium">
         <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
         <item name="android:lineSpacingExtra">4sp</item>
     </style>
 
     <style name="TextAppearance.RecipeMe.Label.Small">
         <item name="android:textSize">11sp</item>
+        <item name="lineHeight">16sp</item>
         <item name="android:lineSpacingExtra">5sp</item>
     </style>
 
