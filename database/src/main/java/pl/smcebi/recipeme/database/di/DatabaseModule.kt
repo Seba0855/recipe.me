@@ -10,6 +10,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import pl.smcebi.recipeme.database.Database
 import pl.smcebi.recipeme.database.DatabaseConstants.DB_NAME
+import pl.smcebi.recipeme.database.dao.ProductDao
 import pl.smcebi.recipeme.database.dao.RecipeDao
 import javax.inject.Singleton
 
@@ -30,4 +31,8 @@ internal object DatabaseModule {
     @Provides
     @Reusable
     fun provideRecipesDao(database: Database): RecipeDao = database.recipeDao
+
+    @Provides
+    @Reusable
+    fun provideProductsDao(database: Database): ProductDao = database.productDao
 }

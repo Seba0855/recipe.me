@@ -5,6 +5,7 @@ internal object DatabaseConstants {
 
     // Table names
     const val TABLE_RECIPE = "table_recipe"
+    const val TABLE_PRODUCTS = "table_products"
 
     // Recipe entity
     const val COLUMN_RECIPE_ENTITY_ID = "column_recipe_entity_id"
@@ -16,4 +17,10 @@ internal object DatabaseConstants {
     const val COLUMN_RECIPE_IMAGE_URL = "column_recipe_image_url"
     const val COLUMN_RECIPE_DISH_TYPE = "column_recipe_dish_type"
     const val COLUMN_RECIPE_DURATION_AND_SERVINGS = "column_recipe_duration_and_servings"
+
+    // Product entity
+    const val COLUMN_PRODUCT_ID = "column_product_id"
+    const val COLUMN_PRODUCT_BRAND = "column_product_brand"
+    const val COLUMN_PRODUCT_NAME = "column_product_name"
+    const val COLUMN_PRODUCT_IMAGE_URL = "column_product_image_url"
 }
