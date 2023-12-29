@@ -8,4 +8,5 @@
     <string name="fragment_products_header">Product list</string>
     <string name="fragment_products_scan">Scan product</string>
     <string name="fragment_products_no_products">Add new product by scanning a barcode</string>
+    <string name="fragment_products_product_removed">Product has been removed from your list</string>
 </resources>

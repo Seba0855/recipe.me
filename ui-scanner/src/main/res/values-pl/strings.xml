@@ -8,4 +8,5 @@
     <string name="fragment_products_header">Lista produktów</string>
     <string name="fragment_products_scan">Skanuj</string>
     <string name="fragment_products_no_products">By dodać produkt do listy, zeskanuj jego kod kreskowy</string>
+    <string name="fragment_products_product_removed">Produkt został usunięty z listy</string>
 </resources>
