@@ -17,6 +17,7 @@ import pl.smcebi.recipeme.ui.common.extensions.disableTooltipText
 import pl.smcebi.recipeme.ui.common.extensions.setKeyboardVisibilityListener
 import pl.smcebi.recipeme.ui.home.R.id.homeFragment
 import pl.smcebi.recipeme.ui.saved.R.id.savedRecipesFragment
+import pl.smcebi.recipeme.ui.scanner.R.id.productListFragment
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         getNavController().addOnDestinationChangedListener { _, destination, _ ->
             bottomNavigationView.isVisible =
-                destination.id == homeFragment || destination.id == savedRecipesFragment
+                destination.id == homeFragment || destination.id == savedRecipesFragment || destination.id == productListFragment
         }
     }
 

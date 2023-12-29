@@ -3,14 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/barcodes_nav_graph"
-    app:startDestination="@id/resolverFragment">
+    app:startDestination="@id/productListFragment">
+
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="pl.smcebi.recipeme.ui.scanner.products.ProductListFragment"
+        android:label="ProductListFragment"
+        tools:layout="@layout/fragment_product_list">
+
+        <deepLink app:uri="@string/deep_link_barcode_scanner" />
+        <action
+            android:id="@+id/navigateProductScanner"
+            app:destination="@id/resolverFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/resolverFragment"
         android:name="pl.smcebi.recipeme.ui.scanner.resolver.ProductResolverFragment"
         android:label="ScannerFragment"
-        tools:layout="@layout/fragment_product_resolver">
-
-        <deepLink app:uri="@string/deep_link_barcode_scanner" />
-    </fragment>
+        tools:layout="@layout/fragment_product_resolver" />
 </navigation>
