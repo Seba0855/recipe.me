@@ -1,4 +1,4 @@
-package pl.smcebi.recipeme.domain.common.products
+package pl.smcebi.domain.products
 
 data class ProductUI(
     val brand: String,

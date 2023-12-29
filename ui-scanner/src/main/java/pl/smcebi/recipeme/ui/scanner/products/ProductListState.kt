@@ -1,7 +1,7 @@
 package pl.smcebi.recipeme.ui.scanner.products
 
-import pl.smcebi.recipeme.domain.common.products.ProductUI
+import pl.smcebi.domain.products.ProductUI
 
 internal data class ProductListState(
-    val products: List<ProductUI> = emptyList()
+    val products: List<pl.smcebi.domain.products.ProductUI> = emptyList()
 )

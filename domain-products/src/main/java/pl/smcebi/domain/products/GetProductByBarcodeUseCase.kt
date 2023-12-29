@@ -1,9 +1,7 @@
-package pl.smcebi.recipeme.domain.common.products
+package pl.smcebi.domain.products
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import pl.smcebi.recipeme.datasource.products.BarcodeProductsDataSource
 import pl.smcebi.recipeme.domain.common.dispatchers.DispatcherIO
 import pl.smcebi.recipeme.domain.common.utils.DomainResult

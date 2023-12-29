@@ -15,9 +15,9 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import pl.smcebi.domain.products.GetProductByBarcodeUseCase
 import pl.smcebi.recipeme.barcode.scanner.BarcodeData
 import pl.smcebi.recipeme.barcode.scanner.local.BarcodeScannerMlKit
-import pl.smcebi.recipeme.domain.common.products.GetProductByBarcodeUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
 import pl.smcebi.recipeme.ui.common.vibration.VibrationProvider

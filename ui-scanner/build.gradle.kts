@@ -21,7 +21,7 @@ dependencies {
     implementation(project(":barcode-scanner"))
     implementation(project(":barcode-scanner-local"))
     implementation(project(":domain-common"))
-    implementation(project(":domain-recipes"))
+    implementation(project(":domain-products"))
     implementation(project(":ui-common"))
 
     implementation(libs.androidx.fragment)

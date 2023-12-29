@@ -9,15 +9,15 @@ plugins {
 }
 
 android {
-    namespace = "pl.smcebi.recipeme.domain.recipes"
+    namespace = "pl.smcebi.domain.products"
 }
 
 dependencies {
 
     implementation(project(":datasource-common"))
-    implementation(project(":datasource-recipes"))
-    implementation(project(":model-recipes"))
+    implementation(project(":datasource-products"))
     implementation(project(":domain-common"))
+    implementation(project(":model-products"))
     implementation(project(":database"))
 
     implementation(libs.kotlin.coroutines.core)
