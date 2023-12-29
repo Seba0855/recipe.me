@@ -4,6 +4,7 @@
     <string name="fragment_barcode_scanner_permission_rationale">I consent</string>
     <string name="fragment_barcode_scanner_permission_denied">Go to settings</string>
     <string name="fragment_resolver_scanning">Scanning…</string>
+    <string name="fragment_resolver_product_saved">Product has been saved to your product list</string>
 
     <string name="fragment_products_header">Product list</string>
     <string name="fragment_products_scan">Scan product</string>

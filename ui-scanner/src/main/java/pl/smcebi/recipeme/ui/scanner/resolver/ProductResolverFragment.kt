@@ -65,8 +65,12 @@ internal class ProductResolverFragment : Fragment(R.layout.fragment_product_reso
         when (event) {
             ProductResolverEvent.ResumeImageAnalysis -> startBarcodeCollection()
             ProductResolverEvent.StopImageAnalysis -> stopBarcodeCollection()
+            ProductResolverEvent.ShowProductSavedMessage -> getString(R.string.fragment_resolver_product_saved)
             is ProductResolverEvent.ShowProduct -> with(binding) {
-                scannedProductCardView.bind(event.product)
+                scannedProductCardView.bind(
+                    product = event.product,
+                    onProductClicked = viewModel::saveProduct
+                )
                 scannedProductCardView.root.isVisible = true
             }
 

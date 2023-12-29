@@ -16,6 +16,8 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import pl.smcebi.domain.products.GetProductByBarcodeUseCase
+import pl.smcebi.domain.products.ProductUI
+import pl.smcebi.domain.products.store.SaveProductUseCase
 import pl.smcebi.recipeme.barcode.scanner.BarcodeData
 import pl.smcebi.recipeme.barcode.scanner.local.BarcodeScannerMlKit
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
@@ -28,6 +30,7 @@ import kotlin.time.Duration.Companion.seconds
 @HiltViewModel
 internal class ProductResolverViewModel @Inject constructor(
     private val getProductByBarcodeUseCase: GetProductByBarcodeUseCase,
+    private val saveProductUseCase: SaveProductUseCase,
     private val barcodeScanner: BarcodeScannerMlKit,
     private val vibratorUtil: VibrationProvider,
 ) : ViewModel() {
@@ -65,6 +68,14 @@ internal class ProductResolverViewModel @Inject constructor(
                 mutableState.mutate {
                     copy(inProgress = false)
                 }
+            }
+        }
+    }
+
+    fun saveProduct(product: ProductUI) {
+        viewModelScope.launch {
+            saveProductUseCase(product).onSuccess {
+                mutableEvent.send(ProductResolverEvent.ShowProductSavedMessage)
             }
         }
     }
