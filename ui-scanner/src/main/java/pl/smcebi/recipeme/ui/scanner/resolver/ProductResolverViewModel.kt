@@ -3,6 +3,7 @@ package pl.smcebi.recipeme.ui.scanner.resolver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -14,19 +15,22 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import pl.smcebi.domain.products.GetProductByBarcodeUseCase
+import pl.smcebi.domain.products.ProductUI
+import pl.smcebi.domain.products.store.SaveProductUseCase
 import pl.smcebi.recipeme.barcode.scanner.BarcodeData
 import pl.smcebi.recipeme.barcode.scanner.local.BarcodeScannerMlKit
-import pl.smcebi.recipeme.domain.common.products.GetProductByBarcodeUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
 import pl.smcebi.recipeme.ui.common.vibration.VibrationProvider
-import timber.log.Timber
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 internal class ProductResolverViewModel @Inject constructor(
     private val getProductByBarcodeUseCase: GetProductByBarcodeUseCase,
+    private val saveProductUseCase: SaveProductUseCase,
     private val barcodeScanner: BarcodeScannerMlKit,
     private val vibratorUtil: VibrationProvider,
 ) : ViewModel() {
@@ -38,6 +42,7 @@ internal class ProductResolverViewModel @Inject constructor(
     val event: Flow<ProductResolverEvent> = mutableEvent.receiveAsFlow()
 
     private var scannerJob: Job? = null
+    private var showProductCardJob: Job? = null
 
     fun collectBarcodeData(owner: LifecycleOwner) {
         if (scannerJob?.isActive == true) return
@@ -68,11 +73,24 @@ internal class ProductResolverViewModel @Inject constructor(
         }
     }
 
+    fun saveProduct(product: ProductUI) {
+        viewModelScope.launch {
+            saveProductUseCase(product).onSuccess {
+                showProductCardJob?.cancel()
+                mutableEvent.send(ProductResolverEvent.ShowProductSavedAnimation)
+            }
+        }
+    }
+
     private suspend fun resolveBarcode(barcode: BarcodeData) {
         getProductByBarcodeUseCase(barcode.value)
             .onSuccess { productName ->
                 // handle resolved product info
-                mutableEvent.send(ProductResolverEvent.ShowProductName(productName))
+                showProductCardJob = viewModelScope.launch {
+                    mutableEvent.send(ProductResolverEvent.ShowProduct(productName))
+                    delay(5.seconds)
+                    mutableEvent.send(ProductResolverEvent.DismissProduct)
+                }
             }
             .onFailure { message ->
                 // show error

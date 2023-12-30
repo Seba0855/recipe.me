@@ -2,6 +2,7 @@ package pl.smcebi.recipeme.ui.scanner.resolver
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.animation.doOnEnd
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -60,10 +61,33 @@ internal class ProductResolverFragment : Fragment(R.layout.fragment_product_reso
         when (event) {
             ProductResolverEvent.ResumeImageAnalysis -> startBarcodeCollection()
             ProductResolverEvent.StopImageAnalysis -> stopBarcodeCollection()
-            is ProductResolverEvent.ShowProductName -> showSnackbar(
-                event.name,
-                ::startBarcodeCollection
-            )
+            ProductResolverEvent.ShowProductSavedAnimation -> {
+                with(binding.scannedProductCardView) {
+                    addProductButton.isVisible = false
+                    successIcon.playAnimation()
+                    successIcon.addAnimatorUpdateListener { animation ->
+                        animation.doOnEnd {
+                            binding.scannedProductCardView.root.isVisible = false
+                            successIcon.frame = 0
+                        }
+                    }
+                    startBarcodeCollection()
+                }
+            }
+
+            is ProductResolverEvent.ShowProduct -> with(binding) {
+                scannedProductCardView.bind(
+                    product = event.product,
+                    onProductClicked = viewModel::saveProduct
+                )
+                scannedProductCardView.addProductButton.isVisible = true
+                scannedProductCardView.root.isVisible = true
+            }
+
+            is ProductResolverEvent.DismissProduct -> {
+                binding.scannedProductCardView.root.isVisible = false
+                startBarcodeCollection()
+            }
 
             is ProductResolverEvent.ShowError -> showSnackbar(
                 event.message,

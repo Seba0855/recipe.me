@@ -92,6 +92,7 @@
 
     <color name="md_theme_light_primary">#F39A0C</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_onPrimaryFixed">#2B1700</color>
     <color name="md_theme_light_primaryContainer">#FDEBCE</color>
     <color name="md_theme_light_onPrimaryContainer">#F18700</color>
 

@@ -12,7 +12,7 @@ import pl.smcebi.recipeme.recipes.RecipesDataSource
 import javax.inject.Inject
 
 class GetRecipeNutritionUseCase @Inject internal constructor(
-    @Mock private val dataSource: RecipesDataSource,
+    private val dataSource: RecipesDataSource,
     @DispatcherIO private val dispatcher: CoroutineDispatcher,
 ) {
     suspend operator fun invoke(recipeId: String): DomainResult<NutritionUI, String?> =
