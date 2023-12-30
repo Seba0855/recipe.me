@@ -33,7 +33,7 @@
             android:textAppearance="?attr/textAppearanceLabelMedium"
             android:textColor="?attr/colorOnSecondaryContainer"
             app:layout_constraintBottom_toTopOf="@id/productNameTextView"
-            app:layout_constraintEnd_toStartOf="@id/openArrow"
+            app:layout_constraintEnd_toStartOf="@id/iconBarrier"
             app:layout_constraintStart_toEndOf="@id/productImageView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
@@ -46,22 +46,40 @@
             android:layout_marginHorizontal="@dimen/margin_small"
             android:textAppearance="?attr/textAppearanceLabelMedium"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/openArrow"
+            app:layout_constraintEnd_toStartOf="@id/iconBarrier"
             app:layout_constraintStart_toEndOf="@id/productImageView"
             app:layout_constraintTop_toBottomOf="@id/productBrandTextView"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="Sos boloński" />
 
-        <ImageView
-            android:id="@+id/openArrow"
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/iconBarrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="addProductButton, successIcon" />
+
+        <ImageView
+            android:id="@+id/addProductButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginEnd="@dimen/margin_big"
-            android:src="@drawable/ic_next_arrow"
+            android:src="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorOnPrimaryFixed"
             tools:ignore="ContentDescription" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/successIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/margin_big"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_rawRes="@raw/add_success" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

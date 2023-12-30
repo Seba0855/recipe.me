@@ -42,6 +42,7 @@ internal class ProductResolverViewModel @Inject constructor(
     val event: Flow<ProductResolverEvent> = mutableEvent.receiveAsFlow()
 
     private var scannerJob: Job? = null
+    private var showProductCardJob: Job? = null
 
     fun collectBarcodeData(owner: LifecycleOwner) {
         if (scannerJob?.isActive == true) return
@@ -75,7 +76,8 @@ internal class ProductResolverViewModel @Inject constructor(
     fun saveProduct(product: ProductUI) {
         viewModelScope.launch {
             saveProductUseCase(product).onSuccess {
-                mutableEvent.send(ProductResolverEvent.ShowProductSavedMessage)
+                showProductCardJob?.cancel()
+                mutableEvent.send(ProductResolverEvent.ShowProductSavedAnimation)
             }
         }
     }
@@ -84,7 +86,7 @@ internal class ProductResolverViewModel @Inject constructor(
         getProductByBarcodeUseCase(barcode.value)
             .onSuccess { productName ->
                 // handle resolved product info
-                viewModelScope.launch {
+                showProductCardJob = viewModelScope.launch {
                     mutableEvent.send(ProductResolverEvent.ShowProduct(productName))
                     delay(5.seconds)
                     mutableEvent.send(ProductResolverEvent.DismissProduct)
