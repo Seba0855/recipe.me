@@ -4,8 +4,9 @@
         <!--    Color primary    -->
         <item name="colorPrimary">@color/primary60</item>
         <item name="colorOnPrimary">@color/primary100</item>
-        <item name="colorPrimaryContainer">@color/primary30</item>
-        <item name="colorOnPrimaryContainer">@color/primary60</item>
+        <item name="colorOnPrimaryFixed">@color/md_theme_light_onPrimaryFixed</item>
+        <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
 
         <!--    Color secondary    -->
         <item name="colorSecondary">@color/secondary100</item>
@@ -31,7 +32,7 @@
         <item name="colorSurface">@android:color/white</item>
         <item name="colorOnSurface">@color/secondary100</item>
         <item name="colorSurfaceVariant">@color/neutral_variant50</item>
-        <item name="colorOnSurfaceVariant">@color/neutral_variant90</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
         <item name="colorOutline">@color/neutral_variant50</item>
 
         <!--    Text appearance    -->
