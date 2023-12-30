@@ -19,7 +19,7 @@ internal object DatabaseConstants {
     const val COLUMN_RECIPE_DURATION_AND_SERVINGS = "column_recipe_duration_and_servings"
 
     // Product entity
-    const val COLUMN_PRODUCT_ID = "column_product_id"
+    const val COLUMN_PRODUCT_EAN = "column_product_ean"
     const val COLUMN_PRODUCT_BRAND = "column_product_brand"
     const val COLUMN_PRODUCT_NAME = "column_product_name"
     const val COLUMN_PRODUCT_IMAGE_URL = "column_product_image_url"

@@ -16,13 +16,14 @@ class GetProductByBarcodeUseCase @Inject internal constructor(
         withContext(dispatcher) {
             barcodeProductsDataSource.getProduct(ean).map(
                 onSuccess = { productResponse ->
-                    val product = productResponse.product
+                    val (productEan, product, _) = productResponse
 
                     if (product == null) {
                         DomainResult.Failure("Product not found")
                     } else {
                         DomainResult.Success(
                             ProductUI(
+                                ean = productEan,
                                 brand = product.brands,
                                 name = product.productName,
                                 imageUrl = product.selectedImages?.front?.display?.imageUrl.orEmpty()

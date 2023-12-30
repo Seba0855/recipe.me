@@ -15,6 +15,7 @@ import pl.smcebi.domain.products.store.CollectStoredProductsUseCase
 import pl.smcebi.domain.products.store.RemoveStoredProductUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel

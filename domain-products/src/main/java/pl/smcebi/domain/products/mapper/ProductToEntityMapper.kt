@@ -10,15 +10,17 @@ internal class ProductToEntityMapper @Inject internal constructor() {
 
     fun mapToEntity(productUI: ProductUI): ProductEntity =
         ProductEntity(
+            ean = productUI.ean,
             brand = productUI.brand,
             name = productUI.name,
             imageUrl = productUI.imageUrl
         )
 
-    fun mapReverse(recipeEntity: ProductEntity): ProductUI =
+    fun mapReverse(productEntity: ProductEntity): ProductUI =
         ProductUI(
-            brand = recipeEntity.brand,
-            name = recipeEntity.name,
-            imageUrl = recipeEntity.imageUrl
+            ean = productEntity.ean,
+            brand = productEntity.brand,
+            name = productEntity.name,
+            imageUrl = productEntity.imageUrl,
         )
 }
