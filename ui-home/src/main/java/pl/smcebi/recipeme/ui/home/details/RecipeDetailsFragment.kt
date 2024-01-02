@@ -65,7 +65,7 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
             }
             saveButton.apply {
                 setSafeOnClickListener {
-                    notImplemented()
+                    viewModel.onSaveButtonClicked()
                 }
                 clipToOutline = true
             }
@@ -128,6 +128,7 @@ internal class RecipeDetailsFragment : Fragment(R.layout.fragment_recipe_details
         when (event) {
             is RecipeDetailsEvent.NavigateInstructions -> navigateInstructions(event.recipe)
             is RecipeDetailsEvent.ShowError -> showSnackbar(event.message)
+            is RecipeDetailsEvent.ShowRecipeSavedMessage -> showSnackbar(getString(R.string.fragment_home_recipe_saved))
         }
     }
 

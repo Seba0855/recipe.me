@@ -5,14 +5,10 @@ import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
 import pl.smcebi.recipeme.domain.recipes.model.RecipesUI
 
-@Keep
-internal sealed interface RecipeDetailsEvent : Parcelable {
-    @Keep
-    @Parcelize
-    data class NavigateInstructions(val recipe: RecipesUI) : RecipeDetailsEvent
+internal sealed interface RecipeDetailsEvent {
 
-    @Keep
-    @Parcelize
+    data object ShowRecipeSavedMessage : RecipeDetailsEvent
+    data class NavigateInstructions(val recipe: RecipesUI) : RecipeDetailsEvent
     @JvmInline
     value class ShowError(val message: String?) : RecipeDetailsEvent
 }
