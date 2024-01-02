@@ -2,6 +2,7 @@ package pl.smcebi.recipeme.ui.home.details
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -9,8 +10,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 import pl.smcebi.recipeme.domain.recipes.details.GetRecipeByIdUseCase
 import pl.smcebi.recipeme.domain.recipes.details.GetRecipeNutritionUseCase
+import pl.smcebi.recipeme.domain.recipes.store.SaveRecipeUseCase
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
 import pl.smcebi.recipeme.ui.common.extensions.mutate
 import pl.smcebi.recipeme.ui.common.extensions.withProgressBar
@@ -20,6 +23,7 @@ import javax.inject.Inject
 internal class RecipeDetailsViewModel @Inject constructor(
     private val getRecipeNutritionUseCase: GetRecipeNutritionUseCase,
     private val getRecipeByIdUseCase: GetRecipeByIdUseCase,
+    private val saveRecipeUseCase: SaveRecipeUseCase,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
@@ -44,6 +48,16 @@ internal class RecipeDetailsViewModel @Inject constructor(
     fun onTryAgainClicked() {
         mutableState.mutate { copy(isError = false) }
         initializeFetch()
+    }
+
+    fun onSaveButtonClicked() {
+        viewModelScope.launch {
+            state.value.recipe?.let { recipe ->
+                saveRecipeUseCase(recipe).onSuccess {
+                    mutableEvent.send(RecipeDetailsEvent.ShowRecipeSavedMessage)
+                }
+            }
+        }
     }
 
     private fun initializeFetch() {
