@@ -1,7 +1,7 @@
 [versions]
 # Application version code (it will be used to compute version name, eg. 1.2.0)
-versionMajor = "0"
-versionMinor = "1"
+versionMajor = "1"
+versionMinor = "0"
 versionPatch = "0"
 
 # Application configuration

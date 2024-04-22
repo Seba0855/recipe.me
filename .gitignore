@@ -20,10 +20,12 @@ output.json
 
 # IntelliJ
 *.iml
-.idea/
+.idea/*
+.idea/gradle.xml
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
+app/*
 
 # Keystore files
 *.jks
