@@ -5,6 +5,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.getByType
+import org.jetbrains.kotlin.de.undercouch.gradle.tasks.download.org.apache.commons.logging.LogFactory.release
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import pl.smcebi.recipeme.utils.generateAppVersionCode
 import pl.smcebi.recipeme.utils.generateAppVersionName
@@ -25,6 +26,15 @@ class AndroidApplicationPlugin : Plugin<Project> {
             with(extensions.getByType<AppExtension>()) {
                 compileSdkVersion = libs.getVersionByName("compileSdk")
 
+                signingConfigs {
+                    register("release") {
+                        storeFile()
+                        storePassword()
+                        keyPassword()
+                        keyAlias()
+                    }
+                }
+
                 with(defaultConfig) {
                     applicationId = "pl.smcebi.recipeme"
                     minSdk = libs.getVersionByName("minSdk").toInt()
@@ -41,11 +51,13 @@ class AndroidApplicationPlugin : Plugin<Project> {
                         applicationIdSuffix = ".debug"
                         versionNameSuffix = "-DEBUG"
                         matchingFallbacks += "release"
+                        signingConfig = signingConfigs.getByName("debug")
                     }
                     getByName("release") {
                         isDebuggable = false
                         isMinifyEnabled = true
                         isShrinkResources = false
+                        signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
 
                         proguardFiles(
                             getDefaultProguardFile("proguard-android-optimize.txt"),
