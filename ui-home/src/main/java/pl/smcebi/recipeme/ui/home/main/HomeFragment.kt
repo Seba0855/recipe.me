@@ -14,8 +14,6 @@ import com.google.android.material.search.SearchView.TransitionState.HIDING
 import com.google.android.material.search.SearchView.TransitionState.SHOWN
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
-import pl.smcebi.recipeme.domain.common.utils.Selectable.Companion.toSelectable
-import pl.smcebi.recipeme.domain.recipes.model.MealType
 import pl.smcebi.recipeme.ui.common.extensions.collectOnViewLifecycle
 import pl.smcebi.recipeme.ui.common.extensions.onBackPressed
 import pl.smcebi.recipeme.ui.common.extensions.setSafeOnClickListener

@@ -1,5 +1,8 @@
 package pl.smcebi.recipeme.domain.common.utils
 
+import androidx.annotation.Keep
+
+@Keep
 data class Selectable<T : Any>(
     val value: T,
     val isSelected: Boolean

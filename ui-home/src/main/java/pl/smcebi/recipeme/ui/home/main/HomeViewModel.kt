@@ -10,11 +10,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import pl.smcebi.recipeme.domain.common.translation.TranslateTextUseCase
 import pl.smcebi.recipeme.domain.common.utils.Selectable.Companion.toSelectable
-import pl.smcebi.recipeme.domain.recipes.search.GetAutocompletedRecipesUseCase
 import pl.smcebi.recipeme.domain.recipes.GetRandomRecipesUseCase
 import pl.smcebi.recipeme.domain.recipes.model.MealType
+import pl.smcebi.recipeme.domain.recipes.search.GetAutocompletedRecipesUseCase
 import pl.smcebi.recipeme.domain.recipes.store.SaveRecipeUseCase
 import pl.smcebi.recipeme.ui.common.BottomNavCommunicationBridge
 import pl.smcebi.recipeme.ui.common.extensions.EventsChannel
@@ -26,7 +25,6 @@ import javax.inject.Inject
 @HiltViewModel
 internal class HomeViewModel @Inject constructor(
     private val getRandomRecipesUseCase: GetRandomRecipesUseCase,
-    private val translateTextUseCase: TranslateTextUseCase,
     private val getAutocompletedRecipesUseCase: Lazy<GetAutocompletedRecipesUseCase>,
     private val bottomNavCommunicationBridge: Lazy<BottomNavCommunicationBridge>,
     private val saveRecipeUseCase: SaveRecipeUseCase,

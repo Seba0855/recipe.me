@@ -6,6 +6,7 @@ build/
 local.properties
 signing.properties
 secret.properties
+signing/release.properties
 
 # Log/OS Files
 *.log
@@ -29,7 +30,6 @@ app/*
 
 # Keystore files
 signing/*.jks
-signing/release.properties
 *.keystore
 
 # Google Services (e.g. APIs or Firebase)
