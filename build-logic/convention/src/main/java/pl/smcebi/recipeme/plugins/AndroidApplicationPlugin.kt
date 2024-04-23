@@ -1,5 +1,7 @@
 package pl.smcebi.recipeme.plugins
 
+import com.android.build.api.dsl.ApkSigningConfig
+import com.android.build.api.dsl.SigningConfig
 import com.android.build.gradle.AppExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -18,6 +20,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("androidx.navigation.safeargs.kotlin")
+                apply("pl.smcebi.recipeme.signing")
             }
 
             // Versions are resolved from rootProject/gradle/libs.versions.toml
@@ -25,15 +28,6 @@ class AndroidApplicationPlugin : Plugin<Project> {
 
             with(extensions.getByType<AppExtension>()) {
                 compileSdkVersion = libs.getVersionByName("compileSdk")
-
-                signingConfigs {
-                    register("release") {
-                        storeFile()
-                        storePassword()
-                        keyPassword()
-                        keyAlias()
-                    }
-                }
 
                 with(defaultConfig) {
                     applicationId = "pl.smcebi.recipeme"

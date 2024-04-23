@@ -28,5 +28,9 @@ gradlePlugin {
             id = "pl.smcebi.recipeme.model"
             implementationClass = "pl.smcebi.recipeme.plugins.KotlinLibraryPlugin"
         }
+        create("signing") {
+            id = "pl.smcebi.recipeme.signing"
+            implementationClass = "pl.smcebi.recipeme.plugins.SigningPlugin"
+        }
     }
 }
