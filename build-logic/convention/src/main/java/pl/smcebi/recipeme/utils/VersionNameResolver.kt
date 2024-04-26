@@ -6,8 +6,9 @@ internal fun VersionCatalog.generateAppVersionCode(): Int {
     val versionMajor = getVersionByName("versionMajor").toInt()
     val versionMinor = getVersionByName("versionMinor").toInt()
     val versionPatch = getVersionByName("versionPatch").toInt()
+    val versionInternal = getVersionByName("versionInternal").toInt()
 
-    return 1_000_000 * versionMajor + 10_000 * versionMinor + 100 * versionPatch
+    return 1_000_000 * versionMajor + 10_000 * versionMinor + 100 * versionPatch + versionInternal
 }
 
 internal fun VersionCatalog.generateAppVersionName(): String {

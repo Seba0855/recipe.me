@@ -3,6 +3,7 @@
 versionMajor = "1"
 versionMinor = "0"
 versionPatch = "0"
+versionInternal = "1"
 
 # Application configuration
 compileSdk = "android-34"
