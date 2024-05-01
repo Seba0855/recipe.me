@@ -1,10 +1,13 @@
 package pl.smcebi.recipeme.plugins
 
+import com.android.build.api.dsl.ApkSigningConfig
+import com.android.build.api.dsl.SigningConfig
 import com.android.build.gradle.AppExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.getByType
+import org.jetbrains.kotlin.de.undercouch.gradle.tasks.download.org.apache.commons.logging.LogFactory.release
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import pl.smcebi.recipeme.utils.generateAppVersionCode
 import pl.smcebi.recipeme.utils.generateAppVersionName
@@ -17,6 +20,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("androidx.navigation.safeargs.kotlin")
+                apply("pl.smcebi.recipeme.signing")
             }
 
             // Versions are resolved from rootProject/gradle/libs.versions.toml
@@ -41,11 +45,13 @@ class AndroidApplicationPlugin : Plugin<Project> {
                         applicationIdSuffix = ".debug"
                         versionNameSuffix = "-DEBUG"
                         matchingFallbacks += "release"
+                        signingConfig = signingConfigs.getByName("debug")
                     }
                     getByName("release") {
                         isDebuggable = false
                         isMinifyEnabled = true
                         isShrinkResources = false
+                        signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
 
                         proguardFiles(
                             getDefaultProguardFile("proguard-android-optimize.txt"),
