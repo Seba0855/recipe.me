@@ -246,3 +246,60 @@ zmierzoną na dokładnie zero, przy mierniku, na który zezwala 2.5. Zgodne z wy
 `step3`, gdzie istniejący podział w projekcie referencyjnym również nie zlokalizował
 unieważnienia. Wynik negatywny wobec praktyki zalecanej w literaturze, do zaraportowania
 wprost.
+
+---
+
+## Przebieg pomiarowy z 2026-09-10/11 — pierwsza część
+
+Sześć serii efemerycznych scenariusza `ref_clean`, `--repeat 10`, osiem rdzeni, 20 GB bez
+przestrzeni wymiany. Ramiona są gałęziami, nie scenariuszami, więc profiler nie może ich
+przepleść wewnątrz jednego wywołania; baseline zmierzono na obu końcach jako najtańszy
+dostępny substytut. Katalog: `runs/_pass-20260910-231746-interventions`.
+
+| ramię | mediana [ms] | Q1–Q3 | IQR % | kontrola stabilności |
+|---|---|---|---|---|
+| baseline, pierwszy | 16315 | 15123–17100 | 12,1 | **fail**, dryf +13,3% |
+| I1 sterta JVM | 15470 | 15318–16341 | 6,6 | **fail**, dryf −7,1% |
+| I2 `workers.max` | 15279 | 15109–15573 | 3,0 | pass |
+| I3 higiena | 15731 | 15345–15821 | 3,0 | pass |
+| I4 wejścia konfiguracyjne | 15752 | 15492–15789 | 1,9 | pass |
+| baseline, ostatni | 15802 | 15764–16108 | 2,2 | pass |
+
+### Ustalenie metodyczne: pierwsza seria wieczoru jest nieporównywalna
+
+Rozrzut spada monotonicznie przez cały przebieg: 12,1 → 6,6 → 3,0 → 3,0 → 1,9 → 2,2
+procent. Host rozgrzewał się mimo trybu efemerycznego — kontener startuje od zera, ale
+warstwy obrazu, pamięć podręczna stron systemu plików i `ro-dep-cache` po stronie hosta
+już nie.
+
+Zawęża to obserwację z `synteza-pomiarow.md`, że serie efemeryczne są najbardziej
+powtarzalne w całym badaniu przy IQR 0,8–5,3%: **z wyjątkiem pierwszej serii po
+bezczynności hosta.** Do dopisania w 2.5 albo w ograniczeniach zakończenia; przy planowaniu
+kolejnych przebiegów pierwsza seria idzie do odrzucenia.
+
+### Odczyt
+
+Podrozdział 2.5 wymaga powtórzenia w całości serii, która nie przeszła kontroli, więc
+ramiona pierwsze i drugie są nie do użytku. Odniesieniem zostaje baseline ostatni, jedyny
+ważny.
+
+| interwencja | wobec baseline ostatniego | werdykt |
+|---|---|---|
+| I2 `workers.max` | −3,3%, rozstępy **rozłączne** | różnica mierzalna, ale **poniżej progu 5%** — praktycznie nieodczuwalna |
+| I3 higiena | rozstępy nakładają się | **n.r.**, wartości procentowej nie podaje się |
+| I4 wejścia konfiguracyjne | rozstępy nakładają się | **n.r.** |
+| I1 sterta JVM | seria nieważna | do powtórzenia |
+
+⚠️ **Kontroli dryfu całego przebiegu nie da się orzec**: jej pierwszy koniec jest serią,
+która oblała własną kontrolę stabilności. Nominalnie −3,1%, czyli poniżej progu, ale
+zbudowane na nieważnym wejściu.
+
+⚠️ **Zastrzeżenie do I2.** Deklarowana wartość `workers.max=8` jest liczbowo równa
+wartości domyślnej przy ośmiu rdzeniach kontenera, więc strukturalnie jest to
+nie-operacja. Rozłączne rozstępy oznaczają, że różnica jest realna **w tych dwóch
+seriach**, ale serie dzieli czterdzieści pięć minut, a kontrola stabilności widzi wyłącznie
+dryf wewnątrz serii, nie między nimi. Ramiona są gałęziami, więc przeplecenie — które
+przed tym właśnie chroni — jest niewykonalne. Różnica poniżej progu istotności praktycznej
+przy gałce przewidzianej jako nie-operacja jest prawdopodobniej zmiennością międzyseryjną
+niż efektem, a badanie nie ma przyrządu, żeby je rozdzielić. Materiał do ograniczeń, nie do
+rankingu H4.
