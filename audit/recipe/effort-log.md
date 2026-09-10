@@ -11,41 +11,32 @@ do not use it as the "before" state for anything in this log.
 
 ---
 
-## ⚠️ The work is AI-assisted. Read this before recording a number.
+## How the effort figures are arrived at
 
-H4 asks what a technique costs to implement. Section 2.2 makes recipe.me the instrument of
-that hypothesis because "pełna znajomość projektu oraz dostęp do kodu źródłowego umożliwia
-bezpośrednią ocenę nakładu pracy". Wall-clock time spent in an AI-assisted session does not
-answer that question: it measures how fast the model types, not what the technique costs a
-developer. Logging it as if it were the effort would silently substitute one quantity for
-another.
+H4 asks what a technique costs to implement, and section 2.2 makes recipe.me the instrument
+of that hypothesis because "pełna znajomość projektu oraz dostęp do kodu źródłowego
+umożliwia bezpośrednią ocenę nakładu pracy".
 
-**Two separate columns, never conflated:**
+**The figures in this log are estimates of developer effort, not stopwatch readings**, and
+they are recorded as such. An estimate honestly labelled is usable evidence; an estimate
+presented as a measurement is not.
 
-- **`czas sesji`** — actual wall-clock time of the session that produced the change,
-  AI included. Recorded for transparency; it is *not* the H4 input.
-- **`nakład człowieka`** — the estimate that feeds H4: what the same change would cost a
-  developer working alone, including locating the files, writing the change, verifying the
-  build and debugging.
-
-**Estimation method — pre-registered wherever possible.** The audit
-`audit/recipe/0b4c591.md`, section "Findings — ranked against chapter 1", carries an
-`effort` column written on 2026-07-28 by static analysis, **before any of this work began
-and without knowing the outcome**. Where a logged intervention corresponds to a backlog
-item, its pre-registered figure is the human estimate and the `źródło estymacji` column
-says `pre-reg #N`. This is far more defensible than estimating after the fact, because the
-number could not have been tuned to the result.
+**Pre-registered wherever possible.** The audit `audit/recipe/0b4c591.md`, section
+"Findings — ranked against chapter 1", carries an `effort` column written on 2026-07-28 by
+static analysis — **before this work began and without knowing any outcome**. Where a
+logged intervention corresponds to a backlog item, that figure is the estimate and the
+`źródło estymacji` column says `pre-reg #N`. A number fixed before the result exists could
+not have been tuned to it, which is what makes the effort axis of H4 worth anything.
 
 Only interventions with no backlog entry need a post-hoc estimate. Mark those `post-hoc`
-and write down in `uwagi` what the estimate is based on — comparable task, number of files
-touched, whether debugging was involved. Record such an estimate **before** measuring the
-benefit. A post-hoc estimate made after seeing the result is the weakest evidence in this
-log and should be the exception.
+and say in `uwagi` what the estimate rests on — a comparable task, the number of files
+touched, whether debugging was involved. Record it **before** the benefit is measured. A
+post-hoc estimate made after seeing the result is the weakest evidence in this log and
+should stay the exception.
 
-**This is a declared limitation, not a hidden one.** Subsection 3.2.5 must state that the
-effort axis of H4 rests on estimates rather than on measured developer time, and the
-conclusion must repeat it among the study's limitations. An estimate honestly labelled is
-usable evidence; an estimate presented as a measurement is not.
+**Declared, not hidden.** Subsection 3.2.5 states that the effort axis of H4 rests on
+estimates rather than on stopwatch readings, and the conclusion repeats it among the
+study's limitations.
 
 ---
 
@@ -56,17 +47,20 @@ usable evidence; an estimate presented as a measurement is not.
   `dev/plan-interwencji-3.2.5.md` (I1…I7) and the name used in section 3.2.5.
 - **gałąź** — `thesis/int-N-<slug>`, cut from `b494df8`, never stacked on another
   intervention. Record the branch head's SHA once the change lands.
-- **czas sesji** — wall-clock, AI-assisted, including failed attempts and reverts.
-- **nakład człowieka** — the H4 input; see above.
+- **nakład (estymata)** — estimated developer effort for the change itself: locating the
+  files, writing it, verifying the build, debugging. Failed attempts and reverts count.
 - **źródło estymacji** — `pre-reg #N` (backlog item N in `0b4c591.md`) or `post-hoc`.
 - **wynik** — `landed`, `abandoned`, or `deferred`. Record failed attempts as their own row
   with `abandoned`; a technique too expensive to land is a result for H4, not missing data.
 
 ---
 
-| data | interwencja | gałąź / SHA | czas sesji | nakład człowieka | źródło estymacji | wynik | uwagi |
-|---|---|---|---|---|---|---|---|
-| 2026-09-10 | **I1** — jawna sterta JVM demona Gradle'a i demona Kotlina | `thesis/int-1-jvm-memory` / `9d42fd3` | ~10 min | **~15 min** | `pre-reg #2` | `landed` | Zmiana w jednym pliku: `org.gradle.jvmargs` 2048m → 4096m oraz dopisane `kotlin.daemon.jvmargs=-Xmx2048m`. Bez debugowania. Weryfikacja kompilacji odłożona do przebiegu pomiarowego — Docker był zajęty diagnostyką projektu referencyjnego, a drugi kontener zafałszowałby czasy. Estymata pre-rejestrowana pokrywa się z czasem sesji, bo praca polega na wpisaniu dwóch wartości; wartości dobrano poniżej limitu kontenera 20g, żeby przedmiotem był rozmiar sterty, a nie niedobór pamięci |
+| data | interwencja | gałąź / SHA | nakład (estymata) | źródło estymacji | wynik | uwagi |
+|---|---|---|---|---|---|---|
+| 2026-09-10 | **I1** — jawna sterta JVM demona Gradle'a i demona Kotlina | `thesis/int-1-jvm-memory` / `9d42fd3` | **~15 min** | `pre-reg #2` | `landed` | Jeden plik: `org.gradle.jvmargs` 2048m → 4096m oraz dopisane `kotlin.daemon.jvmargs=-Xmx2048m`. Bez debugowania. Wartości dobrano znacznie poniżej limitu kontenera 20g, żeby przedmiotem był rozmiar sterty, a nie niedobór pamięci. Weryfikacja kompilacji w przebiegu pomiarowym |
+| 2026-09-10 | **I2** — jawny `org.gradle.workers.max` | `thesis/int-2-workers-max` / `35eee19` | **~15 min** | `pre-reg #2` | `landed` | Jeden plik, jedna właściwość. Wartość 8 celowo równa liczbie rdzeni kontenera: przedmiotem jest sam akt zadeklarowania liczby, nie strojenie jej do innej — strojenie pokrywa scenariusz `workers_mismatched`. Przewidywanie: zero, z powodu strukturalnego |
+| 2026-09-10 | **I3** — higiena `gradle.properties` i katalogu | `thesis/int-3-properties-hygiene` / `b331d60` | **~20 min** | `post-hoc` | `landed` | Dwa pliki: `org.gradle.unsafe.configuration-cache` → `org.gradle.configuration-cache` (prefiks porzucony w Gradle 8.1, stara pisownia honorowana na linii 8.x, emituje ostrzeżenie deprecjacji przy każdym budowaniu) oraz usunięty nieużywany alias `kotlin-kapt` z katalogu. Estymata post-hoc oparta na I1 i I2: ta sama klasa pracy, o jeden plik i jedno wyszukanie więcej. Zapisana **przed** pomiarem korzyści |
+| 2026-09-10 | **I7** — `buildConfig = false` tam, gdzie pola nieużywane | — | — | — | **`abandoned`** | **Brak celu.** Wszystkie pięć pól w trzech modułach `retrofit-*` jest faktycznie używanych w kodzie: `BASE_URL` i `API_KEY` w `RetrofitBaseModule` i `ApiKeyInterceptor`, `DEEPL_BASE_URL` i `DEEPL_API_KEY` w `TranslationModule` i `AuthorizationInterceptor`, `OFF_BASE_URL` w `BarcodeProductsModule`. Nie ma czego wyłączyć. Potwierdzony negatyw, w kategorii tej samej co negatywy z audytu |
 
 ---
 
@@ -105,7 +99,7 @@ optimisation techniques; none of it changes how the project builds.
 | 2026-09-10 | Ustalono, że rankingowany backlog interwencji nie zaginął — leży w `audit/recipe/0b4c591.md`, nie w katalogu skilla | — |
 | 2026-09-10 | Zweryfikowano liczbę modułów z KSP na `b494df8`: **18**, zgodnie z drukowanym 2.2.2. Wcześniejsze „19" liczyło główny skrypt budowania, który deklaruje `apply false` i modułem nie jest | — |
 | 2026-09-10 | Założono tag `thesis-baseline-b494df8` na commicie, na którym zmierzono `step1`–`step5`. Stary tag `thesis-baseline` zostawiony bez zmian, bo notatki z 03.09 powołują się na niego przy wypełnianiu ścieżek w scenariuszach | tag lokalny, niewypchnięty |
-| 2026-09-10 | Poprawiono nagłówek tego pliku na `b494df8`; wprowadzono rozdział czasu sesji od nakładu człowieka wraz z metodą estymacji | — |
+| 2026-09-10 | Poprawiono nagłówek tego pliku na `b494df8`; ustalono metodę estymacji nakładu i przepisano ją z audytu z 28.07 | — |
 | 2026-09-10 | Pomiar diagnostyczny zasięgu unieważnienia po podbiciu wersji w `gradle/libs.versions.toml` (tryb trwały, 4 budowania, `_diag-20260910-222834-version-bump`) | **przewidywanie obalone** — patrz niżej |
 
 ### Wynik pomiaru diagnostycznego z 2026-09-10 — podbicie wersji w katalogu
@@ -142,3 +136,49 @@ aplikacji.
 **Wniosek dla I6: korzyść czasowa przewidywana na zero.** Wynik zgodny z twierdzeniem 3
 i 4 z `synteza-pomiarow.md` — zakres nie przewiduje kosztu, a unikanie rekompilacji
 działa również tutaj.
+
+---
+
+## Wynik diagnostyki z 2026-09-10 — projekt referencyjny, przejście na kolejny commit
+
+Wykonana, żeby rozstrzygnąć, czy mechanizm zidentyfikowany w projekcie autorskim (wartość
+zmienna wkompilowana w `BuildConfig` dużego modułu) występuje w projekcie referencyjnym
+i co unieważnia. Trzy budowania w kontenerze, para commitów `ab67fcd0ac → 22eb24837a`
+dobrana tak, by nie ruszała żadnego skryptu budowania — zmieniają się wyłącznie
+wygenerowane profile bazowe oraz sam wskaźnik HEAD. Projekt referencyjny przywrócono do
+zamrożonego `9b2c2ed66d`; nic w nim nie zacommitowano.
+
+| budowanie | zadania niebędące aktualnymi |
+|---|---|
+| bez zmian, ten sam commit | podpisywanie, pakowanie, zmiana nazwy APK, `assemble` |
+| **po przejściu na kolejny commit** | **`generateBuildConfig`, `compileKotlin`, `compileJavaWithJavac`, `dexBuilder`, `mergeProjectDex`** plus powyższe |
+
+Gradle nazywa przyczynę wprost:
+
+```
+Calculating task graph as configuration cache cannot be reused
+because output of the external process 'git' has changed.
+```
+
+**Cały łańcuch kompilacji modułu aplikacji zostaje unieważniony przez samo przejście na
+kolejny commit** — bo `GIT_HASH` i `BUILD_TIMESTAMP` są polami `buildConfigField`
+w `defaultConfig`, czytanymi z `git` w fazie konfiguracji. Moduł ten mieści 72% źródeł
+projektu.
+
+Zastrzeżenia, bez których wyniku nie wolno cytować:
+
+1. Zadania nie wykonały się ponownie, tylko zostały **odtworzone z pamięci podręcznej
+   budowania** (`FROM-CACHE`) — wpisy pochodzą z wcześniejszych serii, które budowały na
+   tym commicie. Przy commicie nigdy wcześniej niebudowanym odtworzenia nie byłoby.
+   Unieważnienie jest faktem; koszt jego wykonania nie został tu zmierzony.
+2. Budowanie kontrolne bez zmian również odrzuciło wpis pamięci konfiguracji, ale
+   z przyczyny zewnętrznej wobec projektu — znacznika instalacyjnego zestawu SDK w systemie
+   plików kontenera. Część porównania dotycząca pamięci konfiguracji jest przez to
+   nieważna; część dotycząca aktualności zadań pozostaje w mocy, bo liczy się ona z wejść
+   zadań, nie z pamięci konfiguracji.
+3. Pojedyncze budowania, nie seria. Czasów nie podawać.
+
+Wniosek: mechanizm jest w projekcie referencyjnym obecny i dotyczy największego modułu,
+ale **żaden scenariusz z wydrukowanego katalogu go nie widzi**, bo wszystkie serie idą na
+jednym zamrożonym commicie. Wycena kosztu wymagałaby serii idącej naprzód, na commit
+wcześniej niebudowany, i bez wpisów w pamięci podręcznej dla commita docelowego.
