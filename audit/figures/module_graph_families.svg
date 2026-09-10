@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2760" height="2700" viewBox="0 0 2760 2700" font-family="Calibri, Arial, sans-serif">
+<rect x="0" y="0" width="2760" height="2700" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#90a4ae"/></marker>
+<marker id="arrow-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c62828"/></marker>
+</defs>
+<path d="M 1120.0 304.0 Q 1120.0 304.0 1120.0 382.0 Q 1120.0 460.0 1120.0 460.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 1120.0 644.0 Q 1120.0 644.0 1120.0 722.0 Q 1120.0 800.0 1120.0 800.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 1120.0 984.0 Q 950.0 984.0 950.0 1062.0 Q 950.0 1140.0 780.0 1140.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 740.0 1572.0 Q 910.0 1572.0 910.0 1402.0 Q 910.0 1232.0 1080.0 1232.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 440.0 1664.0 Q 780.0 1664.0 780.0 1742.0 Q 780.0 1820.0 1120.0 1820.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 1420.0 1572.0 Q 1590.0 1572.0 1590.0 1402.0 Q 1590.0 1232.0 1760.0 1232.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 1120.0 2004.0 Q 1120.0 2004.0 1120.0 2082.0 Q 1120.0 2160.0 1120.0 2160.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 1420.0 212.0 L 2272.0 212.0 Q 2292.0 212.0 2292.0 232.0 L 2292.0 1212.0 Q 2292.0 1232.0 2272.0 1232.0 L 1080.0 1232.0" fill="none" stroke="#c62828" stroke-width="4.4" stroke-dasharray="12,10" marker-end="url(#arrow-v)" opacity="0.95"/>
+<path d="M 1420.0 212.0 L 2324.0 212.0 Q 2344.0 212.0 2344.0 232.0 L 2344.0 1552.0 Q 2344.0 1572.0 2324.0 1572.0 L 740.0 1572.0" fill="none" stroke="#c62828" stroke-width="4.4" stroke-dasharray="12,10" marker-end="url(#arrow-v)" opacity="0.95"/>
+<path d="M 1420.0 212.0 L 2376.0 212.0 Q 2396.0 212.0 2396.0 232.0 L 2396.0 1892.0 Q 2396.0 1912.0 2376.0 1912.0 L 1420.0 1912.0" fill="none" stroke="#c62828" stroke-width="4.4" stroke-dasharray="12,10" marker-end="url(#arrow-v)" opacity="0.95"/>
+<path d="M 1420.0 552.0 L 2428.0 552.0 Q 2448.0 552.0 2448.0 572.0 L 2448.0 1212.0 Q 2448.0 1232.0 2428.0 1232.0 L 1760.0 1232.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 1420.0 552.0 L 2480.0 552.0 Q 2500.0 552.0 2500.0 572.0 L 2500.0 1552.0 Q 2500.0 1572.0 2480.0 1572.0 L 1420.0 1572.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 1420.0 892.0 L 2532.0 892.0 Q 2552.0 892.0 2552.0 912.0 L 2552.0 1552.0 Q 2552.0 1572.0 2532.0 1572.0 L 2100.0 1572.0" fill="none" stroke="#c62828" stroke-width="4.4" stroke-dasharray="12,10" marker-end="url(#arrow-v)" opacity="0.95"/>
+<path d="M 1420.0 892.0 L 2584.0 892.0 Q 2604.0 892.0 2604.0 912.0 L 2604.0 2232.0 Q 2604.0 2252.0 2584.0 2252.0 L 1420.0 2252.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 740.0 1572.0 L 2636.0 1572.0 Q 2656.0 1572.0 2656.0 1592.0 L 2656.0 2232.0 Q 2656.0 2252.0 2636.0 2252.0 L 1420.0 2252.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M 1080.0 1232.0 L 2688.0 1232.0 Q 2708.0 1232.0 2708.0 1252.0 L 2708.0 2232.0 Q 2708.0 2252.0 2688.0 2252.0 L 1420.0 2252.0" fill="none" stroke="#90a4ae" stroke-width="3.6" marker-end="url(#arrow)" opacity="0.9"/>
+<rect x="820.0" y="120.0" width="600" height="184" rx="20" fill="#37474f" fill-opacity="0.10" stroke="#37474f" stroke-width="4.4"/>
+<rect x="820.0" y="120.0" width="600" height="52" rx="20" fill="#37474f"/>
+<rect x="820.0" y="146.0" width="600" height="26" fill="#37474f"/>
+<text x="1120.0" y="155.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">app</text>
+<text x="1120.0" y="284.2" text-anchor="middle" font-size="21.0" fill="#263238">app</text>
+<rect x="820.0" y="460.0" width="600" height="184" rx="20" fill="#5c6bc0" fill-opacity="0.10" stroke="#5c6bc0" stroke-width="4.4"/>
+<rect x="820.0" y="460.0" width="600" height="52" rx="20" fill="#5c6bc0"/>
+<rect x="820.0" y="486.0" width="600" height="26" fill="#5c6bc0"/>
+<text x="1120.0" y="495.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">UI</text>
+<text x="1120.0" y="540.0" text-anchor="middle" font-size="21.0" fill="#263238">ui-common</text>
+<text x="1120.0" y="573.0" text-anchor="middle" font-size="21.0" fill="#263238">ui-home</text>
+<text x="1120.0" y="606.0" text-anchor="middle" font-size="21.0" fill="#263238">ui-scanner</text>
+<text x="1120.0" y="639.0" text-anchor="middle" font-size="21.0" fill="#263238">ui-saved</text>
+<rect x="820.0" y="800.0" width="600" height="184" rx="20" fill="#26a69a" fill-opacity="0.10" stroke="#26a69a" stroke-width="4.4"/>
+<rect x="820.0" y="800.0" width="600" height="52" rx="20" fill="#26a69a"/>
+<rect x="820.0" y="826.0" width="600" height="26" fill="#26a69a"/>
+<text x="1120.0" y="835.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">domena</text>
+<text x="1120.0" y="889.4" text-anchor="middle" font-size="21.0" fill="#263238">domain-common</text>
+<text x="1120.0" y="933.4" text-anchor="middle" font-size="21.0" fill="#263238">domain-recipes</text>
+<text x="1120.0" y="977.4" text-anchor="middle" font-size="21.0" fill="#263238">domain-products</text>
+<rect x="480.0" y="1140.0" width="600" height="184" rx="20" fill="#7cb342" fill-opacity="0.10" stroke="#7cb342" stroke-width="4.4"/>
+<rect x="480.0" y="1140.0" width="600" height="52" rx="20" fill="#7cb342"/>
+<rect x="480.0" y="1166.0" width="600" height="26" fill="#7cb342"/>
+<text x="780.0" y="1175.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">datasource (kontrakt)</text>
+<text x="780.0" y="1220.0" text-anchor="middle" font-size="21.0" fill="#263238">datasource-common</text>
+<text x="780.0" y="1253.0" text-anchor="middle" font-size="21.0" fill="#263238">datasource-recipes</text>
+<text x="780.0" y="1286.0" text-anchor="middle" font-size="21.0" fill="#263238">datasource-products</text>
+<text x="780.0" y="1319.0" text-anchor="middle" font-size="21.0" fill="#263238">datasource-translation</text>
+<rect x="1160.0" y="1140.0" width="600" height="184" rx="20" fill="#9e9d24" fill-opacity="0.10" stroke="#9e9d24" stroke-width="4.4"/>
+<rect x="1160.0" y="1140.0" width="600" height="52" rx="20" fill="#9e9d24"/>
+<rect x="1160.0" y="1166.0" width="600" height="26" fill="#9e9d24"/>
+<text x="1460.0" y="1175.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">barcode (kontrakt)</text>
+<text x="1460.0" y="1304.2" text-anchor="middle" font-size="21.0" fill="#263238">barcode-scanner</text>
+<rect x="140.0" y="1480.0" width="600" height="184" rx="20" fill="#ef6c00" fill-opacity="0.10" stroke="#ef6c00" stroke-width="4.4"/>
+<rect x="140.0" y="1480.0" width="600" height="52" rx="20" fill="#ef6c00"/>
+<rect x="140.0" y="1506.0" width="600" height="26" fill="#ef6c00"/>
+<text x="440.0" y="1515.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">datasource (impl.)</text>
+<text x="440.0" y="1569.4" text-anchor="middle" font-size="21.0" fill="#263238">datasource-recipes-network</text>
+<text x="440.0" y="1613.4" text-anchor="middle" font-size="21.0" fill="#263238">datasource-products-network</text>
+<text x="440.0" y="1657.4" text-anchor="middle" font-size="21.0" fill="#263238">datasource-translation-network</text>
+<rect x="820.0" y="1480.0" width="600" height="184" rx="20" fill="#f9a825" fill-opacity="0.10" stroke="#f9a825" stroke-width="4.4"/>
+<rect x="820.0" y="1480.0" width="600" height="52" rx="20" fill="#f9a825"/>
+<rect x="820.0" y="1506.0" width="600" height="26" fill="#f9a825"/>
+<text x="1120.0" y="1515.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">barcode (impl.)</text>
+<text x="1120.0" y="1644.2" text-anchor="middle" font-size="21.0" fill="#263238">barcode-scanner-local</text>
+<rect x="1500.0" y="1480.0" width="600" height="184" rx="20" fill="#c62828" fill-opacity="0.10" stroke="#c62828" stroke-width="4.4"/>
+<rect x="1500.0" y="1480.0" width="600" height="52" rx="20" fill="#c62828"/>
+<rect x="1500.0" y="1506.0" width="600" height="26" fill="#c62828"/>
+<text x="1800.0" y="1515.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">Room</text>
+<text x="1800.0" y="1644.2" text-anchor="middle" font-size="21.0" fill="#263238">database</text>
+<rect x="820.0" y="1820.0" width="600" height="184" rx="20" fill="#8e24aa" fill-opacity="0.10" stroke="#8e24aa" stroke-width="4.4"/>
+<rect x="820.0" y="1820.0" width="600" height="52" rx="20" fill="#8e24aa"/>
+<rect x="820.0" y="1846.0" width="600" height="26" fill="#8e24aa"/>
+<text x="1120.0" y="1855.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">retrofit / sieć</text>
+<text x="1120.0" y="1900.0" text-anchor="middle" font-size="21.0" fill="#263238">retrofit-base</text>
+<text x="1120.0" y="1933.0" text-anchor="middle" font-size="21.0" fill="#263238">retrofit-recipes</text>
+<text x="1120.0" y="1966.0" text-anchor="middle" font-size="21.0" fill="#263238">retrofit-deepl</text>
+<text x="1120.0" y="1999.0" text-anchor="middle" font-size="21.0" fill="#263238">retrofit-openfoodfacts</text>
+<rect x="820.0" y="2160.0" width="600" height="184" rx="20" fill="#546e7a" fill-opacity="0.10" stroke="#546e7a" stroke-width="4.4"/>
+<rect x="820.0" y="2160.0" width="600" height="52" rx="20" fill="#546e7a"/>
+<rect x="820.0" y="2186.0" width="600" height="26" fill="#546e7a"/>
+<text x="1120.0" y="2195.0" text-anchor="middle" font-size="27.0" font-weight="600" fill="#ffffff">modele (JVM)</text>
+<text x="1120.0" y="2249.4" text-anchor="middle" font-size="21.0" fill="#263238">model-recipes</text>
+<text x="1120.0" y="2293.4" text-anchor="middle" font-size="21.0" fill="#263238">model-products</text>
+<text x="1120.0" y="2337.4" text-anchor="middle" font-size="21.0" fill="#263238">model-deepl</text>
+<line x1="140" y1="2656" x2="240" y2="2656" stroke="#c62828" stroke-width="4.4" stroke-dasharray="12,10"/>
+<text x="256" y="2664.0" font-size="23.0" fill="#333">naruszenie warstwowej struktury modułów (podrozdz. 1.4 / 3.1)</text>
+</svg>
