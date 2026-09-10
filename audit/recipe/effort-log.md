@@ -61,6 +61,7 @@ study's limitations.
 | 2026-09-10 | **I2** — jawny `org.gradle.workers.max` | `thesis/int-2-workers-max` / `35eee19` | **~15 min** | `pre-reg #2` | `landed` | Jeden plik, jedna właściwość. Wartość 8 celowo równa liczbie rdzeni kontenera: przedmiotem jest sam akt zadeklarowania liczby, nie strojenie jej do innej — strojenie pokrywa scenariusz `workers_mismatched`. Przewidywanie: zero, z powodu strukturalnego |
 | 2026-09-10 | **I3** — higiena `gradle.properties` i katalogu | `thesis/int-3-properties-hygiene` / `bdb3553` | **~20 min** | `post-hoc` | `landed` | Dwa pliki: `org.gradle.unsafe.configuration-cache` → `org.gradle.configuration-cache` oraz usunięty nieużywany alias `kotlin-kapt`. ⚠️ Pierwotne uzasadnienie mówiło, że stara pisownia emituje ostrzeżenie deprecjacji — **sprawdzone `--warning-mode all` na baseline: nie emituje żadnego**. Stara nazwa jest honorowana milcząco, więc zmiana jest wyłącznie nazewnicza i nie ma żadnego obserwowalnego efektu. Komunikat commita poprawiony. Estymata post-hoc oparta na I1 i I2, zapisana przed pomiarem korzyści |
 | 2026-09-10 | **I4** — wejścia konfiguracyjne przez `providers.fileContents` zamiast bezpośredniego odczytu | `thesis/int-4-config-time-inputs` / `a2a8129` | **1–2 h** | `pre-reg #1` | `landed` | Cztery pliki: trzy skrypty `retrofit-*` porzucają `gradleLocalProperties` (wewnętrzne API AGP spod `com.android.build.gradle.internal`), `SigningPlugin` porzuca `FileInputStream` wraz z sondą `exists()`. **Pierwsze podejście nie zbudowało się** — `buildConfigField` wymaga `String`, a odczyt przez provider zwraca `String?`; oryginał przechodził tylko dlatego, że API AGP zwracało typ platformowy. Poprawione przez jawną obsługę braku wpisu: brakująca wartość zatrzymuje teraz konfigurację i podaje nazwę właściwości, zamiast wkompilować literał `null` do `BuildConfig` i ujawnić się dopiero w czasie działania. Weryfikacja: buduje się, wszystkie pięć pól generuje się jak poprzednio |
+| 2026-09-10 | **I5** — podział `build-logic` na `:plugins` i `:tools` | `thesis/int-5-build-logic-split` / `ec118f6` | **2–4 h** | `pre-reg #4` | `landed` | Podprojekt `:convention` rozdzielony: `:tools` niesie pomocnicze funkcje rozwiązujące wersję i nie wie nic o wtyczkach, `:plugins` niesie cztery klasy wtyczek i zależy od `:tools`. Identyfikatory wtyczek i klasy implementacji bez zmian, więc żaden moduł konsumujący nie wymagał edycji. **Koszt uboczny do odnotowania:** funkcje pomocnicze były `internal`, co wystarczało, dopóki dzieliły jednostkę kompilacji z jedynym wywołującym; przez granicę modułu `internal` przestaje być widoczne, więc podział wymusza poszerzenie widoczności. Węższa granica unieważniania kupiona ceną szerszej granicy API |
 | 2026-09-10 | **I7** — `buildConfig = false` tam, gdzie pola nieużywane | — | — | — | **`abandoned`** | **Brak celu.** Wszystkie pięć pól w trzech modułach `retrofit-*` jest faktycznie używanych w kodzie: `BASE_URL` i `API_KEY` w `RetrofitBaseModule` i `ApiKeyInterceptor`, `DEEPL_BASE_URL` i `DEEPL_API_KEY` w `TranslationModule` i `AuthorizationInterceptor`, `OFF_BASE_URL` w `BarcodeProductsModule`. Nie ma czego wyłączyć. Potwierdzony negatyw, w kategorii tej samej co negatywy z audytu |
 
 ---
@@ -204,3 +205,44 @@ pliku nie miało szans nic dać — numer wersji jest wartością.
 W trybie efemerycznym bez znaczenia, bo oba ramiona startują od zera; w trybie trwałym musi
 ją pochłonąć rozgrzewka, inaczej zostanie zmierzony koszt przełączenia gałęzi zamiast
 interwencji.
+
+---
+
+## Wynik pomiaru I5 — zakres unieważnienia po dotknięciu wtyczki konwencji
+
+Dwa ramiona, po trzy budowania każde, ta sama zmiana non-ABI (prywatna składowa dodana do
+ciała klasy) wniesiona do `AndroidLibraryPlugin.kt` pod adresem właściwym dla ramienia.
+Miernikiem jest zakres, nie czas: mediana trybu trwałego tego projektu jest rzędu sekundy,
+a `touch_build_logic` nie przechodzi kontroli stabilności, więc porównanie czasów
+raportowałoby szum. Zakres jest wielkością deterministyczną.
+
+| ramię | budowanie | moduły rekompilujące Kotlina | zadania wykonane |
+|---|---|---|---|
+| monolit (`b494df8`) | bez zmian | 0 | 3 |
+| monolit | **po dotknięciu wtyczki** | **1** — `:build-logic:convention` | 11 |
+| po podziale (`ec118f6`) | bez zmian | 0 | 3 |
+| po podziale | **po dotknięciu wtyczki** | **1** — `:build-logic:plugins` | 11 |
+
+**Wynik: identyczny w obu ramionach.** Rekompiluje się wyłącznie sam podprojekt logiki
+budowania; **ani jeden moduł aplikacji nie jest unieważniany** — ani przed podziałem, ani
+po nim.
+
+Podział nie zawęził zakresu, bo **nie było czego zawężać**: zmiana nienaruszająca interfejsu
+publicznego wtyczki konwencji nie unieważnia jej konsumentów już w układzie monolitycznym.
+Unikanie rekompilacji działa na granicy logiki budowania tak samo, jak działa między
+modułami aplikacji.
+
+Zestawione z obserwacją z weryfikacji I3 daje to obraz pełny:
+
+| zmiana w logice budowania | konsumenci unieważnieni |
+|---|---|
+| nienaruszająca interfejsu (prywatna składowa) | **żaden** |
+| naruszająca kształt katalogu (usunięty alias wtyczki → regeneracja akcesorów) | **wszyscy** — 349 zadań wykonanych |
+
+Podział `build-logic` nie wpływa na to, który z tych dwóch przypadków zachodzi.
+
+**Konsekwencja dla H4:** interwencja o pre-rejestrowanym nakładzie 2–4 h daje korzyść
+zmierzoną na dokładnie zero, przy mierniku, na który zezwala 2.5. Zgodne z wynikiem
+`step3`, gdzie istniejący podział w projekcie referencyjnym również nie zlokalizował
+unieważnienia. Wynik negatywny wobec praktyki zalecanej w literaturze, do zaraportowania
+wprost.
