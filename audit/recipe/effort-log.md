@@ -66,6 +66,7 @@ usable evidence; an estimate presented as a measurement is not.
 
 | data | interwencja | gałąź / SHA | czas sesji | nakład człowieka | źródło estymacji | wynik | uwagi |
 |---|---|---|---|---|---|---|---|
+| 2026-09-10 | **I1** — jawna sterta JVM demona Gradle'a i demona Kotlina | `thesis/int-1-jvm-memory` / `9d42fd3` | ~10 min | **~15 min** | `pre-reg #2` | `landed` | Zmiana w jednym pliku: `org.gradle.jvmargs` 2048m → 4096m oraz dopisane `kotlin.daemon.jvmargs=-Xmx2048m`. Bez debugowania. Weryfikacja kompilacji odłożona do przebiegu pomiarowego — Docker był zajęty diagnostyką projektu referencyjnego, a drugi kontener zafałszowałby czasy. Estymata pre-rejestrowana pokrywa się z czasem sesji, bo praca polega na wpisaniu dwóch wartości; wartości dobrano poniżej limitu kontenera 20g, żeby przedmiotem był rozmiar sterty, a nie niedobór pamięci |
 
 ---
 
@@ -105,3 +106,39 @@ optimisation techniques; none of it changes how the project builds.
 | 2026-09-10 | Zweryfikowano liczbę modułów z KSP na `b494df8`: **18**, zgodnie z drukowanym 2.2.2. Wcześniejsze „19" liczyło główny skrypt budowania, który deklaruje `apply false` i modułem nie jest | — |
 | 2026-09-10 | Założono tag `thesis-baseline-b494df8` na commicie, na którym zmierzono `step1`–`step5`. Stary tag `thesis-baseline` zostawiony bez zmian, bo notatki z 03.09 powołują się na niego przy wypełnianiu ścieżek w scenariuszach | tag lokalny, niewypchnięty |
 | 2026-09-10 | Poprawiono nagłówek tego pliku na `b494df8`; wprowadzono rozdział czasu sesji od nakładu człowieka wraz z metodą estymacji | — |
+| 2026-09-10 | Pomiar diagnostyczny zasięgu unieważnienia po podbiciu wersji w `gradle/libs.versions.toml` (tryb trwały, 4 budowania, `_diag-20260910-222834-version-bump`) | **przewidywanie obalone** — patrz niżej |
+
+### Wynik pomiaru diagnostycznego z 2026-09-10 — podbicie wersji w katalogu
+
+Cztery budowania w trybie trwałym, te same limity kontenera i te same wolumeny co serie.
+Liczenie modułów przez `count-recompiled-modules.py`, czyli tym samym narzędziem
+i tymi samymi definicjami, których używa praca.
+
+| budowanie | czas | pamięć konfiguracji | moduły rekompilowane | zadania wykonane |
+|---|---|---|---|---|
+| bez zmian | 5 s | `Reusing configuration cache` | 0 | 2 |
+| wersja podbita | 19 s | **odrzucona** | **1 — `:app`** | 14 |
+| wersja przywrócona | 13 s | odrzucona | 0 | 4 (+11 z cache) |
+
+**Hipoteza robocza, że edycja katalogu rekompiluje `:convention` i przez to unieważnia
+wszystkie 25 modułów, jest fałszywa.** Rekompiluje się wyłącznie moduł aplikacji, i to
+z powodu własnego: `versionCode` i `versionName` wchodzą do jego `BuildConfig` i manifestu,
+więc uruchamia się `generateDebugBuildConfig`, przetwarzanie manifestu, `compileDebugKotlin`,
+dex i pakowanie. Zależność aplikacji od własnego numeru wersji jest nieusuwalna.
+
+Co edycja katalogu unieważnia naprawdę, i co Gradle nazywa wprost:
+
+```
+Calculating task graph as configuration cache cannot be reused
+because file 'gradle/libs.versions.toml' has changed.
+```
+
+To jest jedyny efekt wykraczający poza moduł aplikacji — i przeniesienie wersji do innego
+pliku **go nie usunie**, bo nowy plik również byłby czytany w fazie konfiguracji, więc
+również unieważniałby wpis. Faza konfiguracji na recipe.me to 0,6–1,1 s wg Tabel 10 i 11,
+czyli ułamek zmierzonych czternastu sekund różnicy; reszta to nieusuwalna praca modułu
+aplikacji.
+
+**Wniosek dla I6: korzyść czasowa przewidywana na zero.** Wynik zgodny z twierdzeniem 3
+i 4 z `synteza-pomiarow.md` — zakres nie przewiduje kosztu, a unikanie rekompilacji
+działa również tutaj.
