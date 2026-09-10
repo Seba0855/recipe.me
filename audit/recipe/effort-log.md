@@ -59,7 +59,8 @@ study's limitations.
 |---|---|---|---|---|---|---|
 | 2026-09-10 | **I1** — jawna sterta JVM demona Gradle'a i demona Kotlina | `thesis/int-1-jvm-memory` / `9d42fd3` | **~15 min** | `pre-reg #2` | `landed` | Jeden plik: `org.gradle.jvmargs` 2048m → 4096m oraz dopisane `kotlin.daemon.jvmargs=-Xmx2048m`. Bez debugowania. Wartości dobrano znacznie poniżej limitu kontenera 20g, żeby przedmiotem był rozmiar sterty, a nie niedobór pamięci. Weryfikacja kompilacji w przebiegu pomiarowym |
 | 2026-09-10 | **I2** — jawny `org.gradle.workers.max` | `thesis/int-2-workers-max` / `35eee19` | **~15 min** | `pre-reg #2` | `landed` | Jeden plik, jedna właściwość. Wartość 8 celowo równa liczbie rdzeni kontenera: przedmiotem jest sam akt zadeklarowania liczby, nie strojenie jej do innej — strojenie pokrywa scenariusz `workers_mismatched`. Przewidywanie: zero, z powodu strukturalnego |
-| 2026-09-10 | **I3** — higiena `gradle.properties` i katalogu | `thesis/int-3-properties-hygiene` / `b331d60` | **~20 min** | `post-hoc` | `landed` | Dwa pliki: `org.gradle.unsafe.configuration-cache` → `org.gradle.configuration-cache` (prefiks porzucony w Gradle 8.1, stara pisownia honorowana na linii 8.x, emituje ostrzeżenie deprecjacji przy każdym budowaniu) oraz usunięty nieużywany alias `kotlin-kapt` z katalogu. Estymata post-hoc oparta na I1 i I2: ta sama klasa pracy, o jeden plik i jedno wyszukanie więcej. Zapisana **przed** pomiarem korzyści |
+| 2026-09-10 | **I3** — higiena `gradle.properties` i katalogu | `thesis/int-3-properties-hygiene` / `bdb3553` | **~20 min** | `post-hoc` | `landed` | Dwa pliki: `org.gradle.unsafe.configuration-cache` → `org.gradle.configuration-cache` oraz usunięty nieużywany alias `kotlin-kapt`. ⚠️ Pierwotne uzasadnienie mówiło, że stara pisownia emituje ostrzeżenie deprecjacji — **sprawdzone `--warning-mode all` na baseline: nie emituje żadnego**. Stara nazwa jest honorowana milcząco, więc zmiana jest wyłącznie nazewnicza i nie ma żadnego obserwowalnego efektu. Komunikat commita poprawiony. Estymata post-hoc oparta na I1 i I2, zapisana przed pomiarem korzyści |
+| 2026-09-10 | **I4** — wejścia konfiguracyjne przez `providers.fileContents` zamiast bezpośredniego odczytu | `thesis/int-4-config-time-inputs` / `a2a8129` | **1–2 h** | `pre-reg #1` | `landed` | Cztery pliki: trzy skrypty `retrofit-*` porzucają `gradleLocalProperties` (wewnętrzne API AGP spod `com.android.build.gradle.internal`), `SigningPlugin` porzuca `FileInputStream` wraz z sondą `exists()`. **Pierwsze podejście nie zbudowało się** — `buildConfigField` wymaga `String`, a odczyt przez provider zwraca `String?`; oryginał przechodził tylko dlatego, że API AGP zwracało typ platformowy. Poprawione przez jawną obsługę braku wpisu: brakująca wartość zatrzymuje teraz konfigurację i podaje nazwę właściwości, zamiast wkompilować literał `null` do `BuildConfig` i ujawnić się dopiero w czasie działania. Weryfikacja: buduje się, wszystkie pięć pól generuje się jak poprzednio |
 | 2026-09-10 | **I7** — `buildConfig = false` tam, gdzie pola nieużywane | — | — | — | **`abandoned`** | **Brak celu.** Wszystkie pięć pól w trzech modułach `retrofit-*` jest faktycznie używanych w kodzie: `BASE_URL` i `API_KEY` w `RetrofitBaseModule` i `ApiKeyInterceptor`, `DEEPL_BASE_URL` i `DEEPL_API_KEY` w `TranslationModule` i `AuthorizationInterceptor`, `OFF_BASE_URL` w `BarcodeProductsModule`. Nie ma czego wyłączyć. Potwierdzony negatyw, w kategorii tej samej co negatywy z audytu |
 
 ---
@@ -100,6 +101,7 @@ optimisation techniques; none of it changes how the project builds.
 | 2026-09-10 | Zweryfikowano liczbę modułów z KSP na `b494df8`: **18**, zgodnie z drukowanym 2.2.2. Wcześniejsze „19" liczyło główny skrypt budowania, który deklaruje `apply false` i modułem nie jest | — |
 | 2026-09-10 | Założono tag `thesis-baseline-b494df8` na commicie, na którym zmierzono `step1`–`step5`. Stary tag `thesis-baseline` zostawiony bez zmian, bo notatki z 03.09 powołują się na niego przy wypełnianiu ścieżek w scenariuszach | tag lokalny, niewypchnięty |
 | 2026-09-10 | Poprawiono nagłówek tego pliku na `b494df8`; ustalono metodę estymacji nakładu i przepisano ją z audytu z 28.07 | — |
+| 2026-09-10 | Przebieg weryfikacyjny gałęzi I1–I4 (`_verification-20260910-225012` i `-225502`): każda buduje się do `BUILD SUCCESSFUL`; sprawdzono też `--warning-mode all` na baseline | I4 wymagało poprawki, reszta bez uwag |
 | 2026-09-10 | Pomiar diagnostyczny zasięgu unieważnienia po podbiciu wersji w `gradle/libs.versions.toml` (tryb trwały, 4 budowania, `_diag-20260910-222834-version-bump`) | **przewidywanie obalone** — patrz niżej |
 
 ### Wynik pomiaru diagnostycznego z 2026-09-10 — podbicie wersji w katalogu
@@ -182,3 +184,23 @@ Wniosek: mechanizm jest w projekcie referencyjnym obecny i dotyczy największego
 ale **żaden scenariusz z wydrukowanego katalogu go nie widzi**, bo wszystkie serie idą na
 jednym zamrożonym commicie. Wycena kosztu wymagałaby serii idącej naprzód, na commit
 wcześniej niebudowany, i bez wpisów w pamięci podręcznej dla commita docelowego.
+
+---
+
+## Ustalenie uboczne z weryfikacji — katalog wersji unieważnia różnie
+
+Dwa pomiary z tego samego dnia dają razem wynik, którego żaden osobno nie pokazuje.
+
+| zmiana w `gradle/libs.versions.toml` | co się unieważnia |
+|---|---|
+| zmiana **wartości** wpisu (podbicie wersji aplikacji) | wpis pamięci konfiguracji; rekompiluje się **jeden moduł** — aplikacja, przez własny `BuildConfig` |
+| zmiana **struktury** katalogu (usunięcie aliasu wtyczki w I3) | akcesory typu logiki budowania, a przez to `:convention` i **wszystkie moduły stosujące wtyczki konwencji**: 349 zadań wykonanych wobec 2 w budowaniu bez zmian |
+
+Katalog jest wejściem logiki budowania, ale kosztowne jest wyłącznie ruszenie jego
+**kształtu**, nie wartości. To wyjaśnia, dlaczego przeniesienie numeru wersji do osobnego
+pliku nie miało szans nic dać — numer wersji jest wartością.
+
+⚠️ Konsekwencja dla pomiaru I3: wejście na tę gałąź kosztuje jednorazową pełną przebudowę.
+W trybie efemerycznym bez znaczenia, bo oba ramiona startują od zera; w trybie trwałym musi
+ją pochłonąć rozgrzewka, inaczej zostanie zmierzony koszt przełączenia gałęzi zamiast
+interwencji.
