@@ -303,3 +303,60 @@ przed tym właśnie chroni — jest niewykonalne. Różnica poniżej progu istot
 przy gałce przewidzianej jako nie-operacja jest prawdopodobniej zmiennością międzyseryjną
 niż efektem, a badanie nie ma przyrządu, żeby je rozdzielić. Materiał do ograniczeń, nie do
 rankingu H4.
+
+---
+
+## Przebieg pomiarowy — dopięcie i wynik łączny
+
+Trzy serie dodatkowe na rozgrzanym hoście: baseline, powtórzenie I1, baseline.
+Katalog `runs/_pass-20260911-011716-interventions-cont`.
+
+| ramię | mediana [ms] | Q1–Q3 | IQR % | kontrola stabilności |
+|---|---|---|---|---|
+| baseline, ciepły | 15337 | 15310–15508 | 1,3 | pass |
+| I1 sterta JVM | 15238 | 15171–15383 | 1,4 | pass |
+| baseline, zamykający | 15784 | 15420–15935 | 3,3 | pass |
+
+**Kontrola dryfu przeszła**: 15337 wobec 15784, czyli 2,9%, poniżej progu pięciu procent.
+Mocniej — rozstępy ćwiartkowe obu serii bazowych **nakładają się**, więc regułą 2.5 są one
+wzajemnie nierozróżnialne. Jest to najczystsza postać tej kontroli, jaką da się uzyskać.
+
+### Trzy ważne serie bazowe tej samej konfiguracji
+
+| seria | mediana [ms] | Q1–Q3 |
+|---|---|---|
+| przebieg 1, ramię 6 | 15802 | 15764–16108 |
+| przebieg 2, ramię 7 | 15337 | 15310–15508 |
+| przebieg 2, ramię 9 | 15784 | 15420–15935 |
+
+Rozpiętość median **nietkniętej konfiguracji wynosi 15337–15802 ms, czyli 3,0%.** To jest
+zmienność międzyseryjna zmierzona wprost, na konfiguracji, w której nic nie zmieniono.
+
+### Wynik łączny wszystkich interwencji
+
+Każdą interwencję zestawiono z każdą ważną serią bazową.
+
+| interwencja | mediana [ms] | Q1–Q3 | werdykt |
+|---|---|---|---|
+| I1 sterta JVM | 15238 | 15171–15383 | **n.r.** — rozstępy nakładają się z serią bazową |
+| I2 `workers.max` | 15279 | 15109–15573 | **n.r.** — rozstępy nakładają się z serią bazową |
+| I3 higiena | 15731 | 15345–15821 | **n.r.** |
+| I4 wejścia konfiguracyjne | 15752 | 15492–15789 | **n.r.** |
+| I5 podział `build-logic` | — | — | **zero**, miernik zakresu |
+
+**Żadna z pięciu interwencji nie jest odróżnialna od konfiguracji nietkniętej.**
+
+### Zastrzeżenie do I2 rozstrzygnięte — różnica była artefaktem doboru odniesienia
+
+W pierwszym przebiegu I2 dawało −3,3% przy rozstępach rozłącznych wobec jedynej wówczas
+ważnej serii bazowej. Po dołożeniu dwóch kolejnych serii bazowych obraz się zmienia:
+mediana I2 wynosi 15279 ms i leży **poniżej wszystkich trzech serii bazowych**, ale wobec
+najbliższej z nich (15337 ms) różnica to **−0,4%**, a rozstępy się nakładają.
+
+Różnica −3,3% była więc własnością tego, którą serię bazową się wybrało, nie własnością
+interwencji. Co więcej, **rozpiętość samych serii bazowych (3,0%) obejmuje największą
+zaobserwowaną różnicę interwencyjną (3,3%)** — żadna zmiana konfiguracji nie wyszła poza
+zmienność konfiguracji niezmienionej.
+
+To jest mocniejsze uzasadnienie werdyktów niż samo powołanie się na próg pięciu procent,
+bo opiera się na danych tego badania, a nie na stałej przyjętej a priori.
